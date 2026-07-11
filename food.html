@@ -32,6 +32,12 @@
   </section>
 
   <div class="container">
+    <div class="search-box">
+      <input type="search" id="search-input" data-category="food" placeholder="🔍 사료·용품에서 검색 (예: 급여량, 습식)">
+    </div>
+    <div class="card-grid" id="search-results" hidden></div>
+
+    <div class="js-hide-on-search">
     <h2 class="section-title">발행된 글</h2>
     <div class="card-grid">
       <a class="card" href="posts/cat-food-guide.html">
@@ -53,6 +59,7 @@
       <li>강아지 나이별 사료 (퍼피·어덜트·시니어) 차이</li>
       <li>고양이 자동급식기·정수기 고르는 법</li>
     </ul>
+    </div><!-- /js-hide-on-search -->
   </div>
 </main>
 
@@ -69,5 +76,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

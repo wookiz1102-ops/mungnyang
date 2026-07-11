@@ -32,6 +32,12 @@
   </section>
 
   <div class="container">
+    <div class="search-box">
+      <input type="search" id="search-input" data-category="health" placeholder="🔍 건강·증상에서 검색 (예: 설사, 구토, 초콜릿)">
+    </div>
+    <div class="card-grid" id="search-results" hidden></div>
+
+    <div class="js-hide-on-search">
     <h2 class="section-title">발행된 글</h2>
     <div class="card-grid">
       <a class="card" href="posts/cat-vomiting.html">
@@ -70,6 +76,7 @@
       ⚕️ 본 카테고리의 정보는 일반적인 참고용입니다. 증상이 계속되거나 심해지면 반드시
       수의사의 진료를 받으세요.
     </div>
+    </div><!-- /js-hide-on-search -->
   </div>
 </main>
 
@@ -86,5 +93,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

@@ -32,6 +32,12 @@
   </section>
 
   <div class="container">
+    <div class="search-box">
+      <input type="search" id="search-input" data-category="training" placeholder="🔍 행동·훈련에서 검색 (예: 배변, 분리불안)">
+    </div>
+    <div class="card-grid" id="search-results" hidden></div>
+
+    <div class="js-hide-on-search">
     <h2 class="section-title">발행된 글</h2>
     <div class="card-grid">
       <a class="card" href="posts/cat-litter-training.html">
@@ -59,6 +65,7 @@
       <li>강아지 짖음 교정하는 5단계 훈련</li>
       <li>고양이 발톱 깎기, 스트레스 없이 하는 법</li>
     </ul>
+    </div><!-- /js-hide-on-search -->
   </div>
 </main>
 
@@ -75,5 +82,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

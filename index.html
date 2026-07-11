@@ -41,6 +41,12 @@
 
   <div class="container">
 
+    <div class="search-box">
+      <input type="search" id="search-input" placeholder="🔍 전체 글에서 검색해 보세요 (예: 사료, 배변훈련, 예방접종)">
+    </div>
+    <div class="card-grid" id="search-results" hidden></div>
+
+    <div class="js-hide-on-search">
     <h2 class="section-title">카테고리</h2>
     <div class="card-grid">
       <a class="card" href="breeds.html">
@@ -179,6 +185,7 @@
       <div class="result" id="age-result"></div>
       <p class="note">※ 일반적인 환산표 기준의 근사치이며, 품종·건강 상태에 따라 다를 수 있습니다.</p>
     </div>
+    </div><!-- /js-hide-on-search -->
 
   </div>
 </main>
@@ -196,6 +203,8 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 <script>
 // 강아지 나이 → 사람 나이 변환기
 document.getElementById("age-btn").addEventListener("click", function () {

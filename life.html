@@ -32,6 +32,12 @@
   </section>
 
   <div class="container">
+    <div class="search-box">
+      <input type="search" id="search-input" data-category="life" placeholder="🔍 생활 정보에서 검색 (예: 예방접종, 산책)">
+    </div>
+    <div class="card-grid" id="search-results" hidden></div>
+
+    <div class="js-hide-on-search">
     <h2 class="section-title">발행된 글</h2>
     <div class="card-grid">
       <a class="card" href="posts/dog-vaccination.html">
@@ -65,6 +71,7 @@
       <li>반려동물 등록제, 방법과 과태료</li>
       <li>강아지 펫보험 필요할까? 가입 전 체크</li>
     </ul>
+    </div><!-- /js-hide-on-search -->
   </div>
 </main>
 
@@ -81,5 +88,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/search-data.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

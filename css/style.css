@@ -282,6 +282,31 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
   max-width: var(--article-w);
 }
 
+/* ---------- 검색 ---------- */
+.search-box { margin: 1.6rem 0 0.4rem; }
+.search-box input {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  font-size: 1rem;
+  background: var(--card);
+  font-family: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.search-box input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+#search-results { margin-top: 1.2rem; }
+.search-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem 1rem;
+}
+
 /* ---------- 발행 예정 ---------- */
 .upcoming-list {
   list-style: none;
