@@ -11,7 +11,7 @@
 //   date      : 등록일 (선택)
 window.PRODUCTS = [
   {
-    img: "",
+    img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/image_audit/stage/manual/ed55581be20858ea2cf996a7ef2cad6a0545a4c0c5c76c99e035c7ddd2e6_1751442474115.png",
     name: "펫그래비티 무선 무필터 물비움 정수기 3L",
     desc: "무선·무필터 순환식, 3L 대용량 스테인리스. 음수량을 늘려 비뇨기·신장 건강 관리에 좋아요.",
     listPrice: "190,000원",
