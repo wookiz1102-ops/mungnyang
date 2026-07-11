@@ -399,6 +399,26 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
   padding: 3rem 1rem;
   line-height: 1.8;
 }
+.product-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0 0 1.4rem;
+}
+.filter-btn {
+  padding: 0.45rem 1rem;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--muted);
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.filter-btn:hover { border-color: var(--primary); color: var(--text); }
+.filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 .product-pager {
   display: flex;
   gap: 0.4rem;

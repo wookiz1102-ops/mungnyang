@@ -7,7 +7,8 @@
 //   salePrice : 할인가 (선택, 예: "48,900원") — 있어야 가격 블록이 표시됨
 //   discount  : 할인율 (선택, 예: "74%")
 //   url       : 쿠팡 파트너스 링크
-//   tag       : 카테고리 배지 (선택)
+//   tag       : 카테고리 배지 — 아래 6개 중 하나로 통일 (필터 버튼과 연동)
+//               "급식·물" / "배변·위생" / "건강·안전" / "훈련·놀이" / "미용·목욕" / "하우스·외출"
 //   date      : 등록일 (선택)
 window.PRODUCTS = [
   {
@@ -18,7 +19,7 @@ window.PRODUCTS = [
     salePrice: "48,900원",
     discount: "74%",
     url: "https://link.coupang.com/a/fiXomXbxeK",
-    tag: "정수기",
+    tag: "급식·물",
     date: "2026.07.12"
   }
 ];
