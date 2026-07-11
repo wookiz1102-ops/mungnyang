@@ -19,26 +19,34 @@
   var catFood = { t: "고양이 사료 고르는 기준 5가지", d: "비만·비뇨기 관리에 중요한 사료 선택 기준.", e: "🐟", m: "사료·용품", u: "posts/cat-food-guide.html" };
   var kidney = { t: "고양이 신부전 초기 증상 알아보기", d: "노령묘 최다 질환 — 초기 신호와 조기 발견법.", e: "💧", m: "건강·증상", u: "posts/cat-kidney-disease.html" };
 
+  // 개별 품종 심화 글
+  var maltese = { t: "말티즈 키우기 완벽 가이드", d: "성격·수명·주의할 질병·관리법을 한 번에.", e: "🐶", m: "품종 심화", u: "posts/breed-maltese.html" };
+  var poodle = { t: "토이푸들 키우기 완벽 가이드", d: "지능·훈련·미용·질병까지 완벽 정리.", e: "🐩", m: "품종 심화", u: "posts/breed-poodle.html" };
+  var pom = { t: "포메라니안 키우기 완벽 가이드", d: "기관허탈·슬개골·털 관리 등 필수 정보.", e: "🦊", m: "품종 심화", u: "posts/breed-pomeranian.html" };
+  var korat = { t: "코리안 숏헤어(코숏) 키우기 완벽 가이드", d: "성격·수명·건강 관리와 입양 방법.", e: "🐱", m: "품종 심화", u: "posts/breed-korat.html" };
+  var russian = { t: "러시안블루 키우기 완벽 가이드", d: "조용한 성격, 건강, 알레르기 특성까지.", e: "🩵", m: "품종 심화", u: "posts/breed-russian-blue.html" };
+  var scottish = { t: "스코티시폴드 키우기 완벽 가이드", d: "접힌 귀의 진실 — 입양 전 꼭 알아야 할 것.", e: "🐈", m: "품종 심화", u: "posts/breed-scottish-fold.html" };
+
   window.BREED_DATA = {
     // 강아지
-    "b-maltese":   { name: "말티즈", articles: [dogGuide("b-maltese"), patella, anxiety] },
-    "b-poodle":    { name: "토이푸들", articles: [dogGuide("b-poodle"), patella, potty] },
+    "b-maltese":   { name: "말티즈", articles: [maltese, patella, anxiety] },
+    "b-poodle":    { name: "토이푸들", articles: [poodle, patella, potty] },
     "b-bichon":    { name: "비숑 프리제", articles: [dogGuide("b-bichon"), anxiety] },
     "b-shihtzu":   { name: "시츄", articles: [dogGuide("b-shihtzu"), heat] },
     "b-cavalier":  { name: "카바리에 킹 찰스 스패니얼", articles: [dogGuide("b-more")] },
     "b-papillon":  { name: "파피용", articles: [dogGuide("b-more")] },
-    "b-pom":       { name: "포메라니안", articles: [dogGuide("b-more"), patella] },
+    "b-pom":       { name: "포메라니안", articles: [pom, patella] },
     "b-schnauzer": { name: "미니어처 슈나우저", articles: [dogGuide("b-more")] },
     "b-golden":    { name: "골든리트리버", articles: [dogGuide("b-more"), walk, foodCalc] },
     "b-lab":       { name: "래브라도 리트리버", articles: [dogGuide("b-more"), walk, foodCalc] },
     // 고양이
-    "c-korat":     { name: "코리안 숏헤어", articles: [catGuide("c-korat"), kitten, catVac] },
-    "c-russian":   { name: "러시안블루", articles: [catGuide("c-russian")] },
+    "c-korat":     { name: "코리안 숏헤어", articles: [korat, kitten, catVac] },
+    "c-russian":   { name: "러시안블루", articles: [russian, catFood] },
     "c-british":   { name: "브리티시 숏헤어", articles: [catGuide("c-british"), catFood] },
     "c-american":  { name: "아메리칸 숏헤어", articles: [catGuide("c-american")] },
     "c-ragdoll":   { name: "랙돌", articles: [catGuide("c-more")] },
     "c-munchkin":  { name: "먼치킨", articles: [catGuide("c-more")] },
-    "c-scottish":  { name: "스코티시폴드", articles: [catGuide("caution")] },
+    "c-scottish":  { name: "스코티시폴드", articles: [scottish, kidney] },
     "c-persian":   { name: "페르시안", articles: [catGuide("c-more"), kidney] }
   };
 })();
