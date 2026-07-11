@@ -79,9 +79,35 @@ a:hover { text-decoration: underline; }
 .page-hero {
   text-align: center;
   padding: 3rem 1rem 2.2rem;
+  background: linear-gradient(180deg, #fff3e4 0%, var(--bg) 100%);
 }
 .page-hero h1 { font-size: 2rem; margin-bottom: 0.6rem; }
 .page-hero p { color: var(--muted); max-width: 640px; margin: 0 auto; }
+
+/* 홈 전용 포털형 히어로 */
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 1.2rem 3.2rem;
+  background: linear-gradient(180deg, #ffedd5 0%, #fff3e4 55%, var(--bg) 100%);
+}
+.home-hero h1 { font-size: 2.15rem; line-height: 1.35; }
+.home-hero::before,
+.home-hero::after {
+  content: "🐾";
+  position: absolute;
+  font-size: 7rem;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.home-hero::before { left: 4%; top: 10%; transform: rotate(-18deg); }
+.home-hero::after { right: 4%; bottom: 6%; transform: rotate(15deg); }
+.hero-search {
+  margin: 2rem auto 0;
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
 
 .section-title {
   font-size: 1.4rem;
@@ -108,9 +134,20 @@ a:hover { text-decoration: underline; }
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  border-color: #fdba74;
   text-decoration: none;
 }
-.card .emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.card .emoji {
+  font-size: 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  background: var(--chip, var(--accent-bg));
+  margin-bottom: 0.8rem;
+}
 .card h3 { font-size: 1.08rem; margin-bottom: 0.4rem; }
 .card p { font-size: 0.9rem; color: var(--muted); }
 .card .card-meta {
@@ -376,5 +413,8 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
   .site-nav.open { display: flex; }
   .site-nav a { padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
   .page-hero h1 { font-size: 1.55rem; }
+  .home-hero h1 { font-size: 1.65rem; }
+  .home-hero { padding: 2.8rem 1.2rem 2.4rem; }
+  .home-hero::before, .home-hero::after { font-size: 4.5rem; }
   .article h1 { font-size: 1.5rem; }
 }
