@@ -354,6 +354,74 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
   padding: 2rem 1rem;
 }
 
+/* ---------- 품종 탭 ---------- */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 2rem 0 1.6rem;
+  border-bottom: 2px solid var(--border);
+}
+.tab-btn {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  padding: 0.7rem 1.3rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--primary-dark); border-bottom-color: var(--primary); }
+
+.guide-card { margin-bottom: 1.8rem; }
+
+/* 품종 카드 그리드 */
+.breed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.8rem;
+}
+.breed-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  color: var(--text);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+.breed-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  border-color: #fdba74;
+  text-decoration: none;
+}
+.breed-card strong { font-size: 1.02rem; }
+.breed-card span { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+.breed-card em {
+  align-self: flex-start;
+  margin-top: 0.3rem;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background: var(--accent-bg);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+.breed-note {
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 /* ---------- 발행 예정 ---------- */
 .upcoming-list {
   list-style: none;

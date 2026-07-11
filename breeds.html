@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>품종 백과 — 강아지·고양이 품종별 성격과 관리법 | 댕냥피디아</title>
-  <meta name="description" content="말티즈, 푸들, 코리안 숏헤어 등 인기 품종의 성격, 크기, 털빠짐, 잘 걸리는 질병과 관리 난이도를 정리했습니다.">
+  <meta name="description" content="말티즈, 푸들, 코리안 숏헤어 등 인기 품종의 성격, 크기, 털빠짐, 잘 걸리는 질병과 관리 난이도를 강아지·고양이 탭으로 나눠 정리했습니다.">
   <link rel="canonical" href="https://daengnyangpedia.com/breeds">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -38,28 +38,58 @@
     <div class="card-grid" id="search-results" hidden></div>
 
     <div class="js-hide-on-search">
-    <h2 class="section-title">발행된 글</h2>
-    <div class="card-grid">
-      <a class="card" href="posts/cat-breeds-beginner.html">
-        <span class="emoji">🐱</span>
-        <h3>처음 키우기 좋은 고양이 품종 정리</h3>
-        <p>첫 고양이로 무리 없는 품종 8가지 — 성격·털빠짐·유전 질환 주의점까지.</p>
-        <span class="card-meta">2026.07.11</span>
-      </a>
-      <a class="card" href="posts/beginner-dog-breeds.html">
-        <span class="emoji">🐶</span>
-        <h3>초보자에게 좋은 강아지 품종 TOP 10</h3>
-        <p>첫 반려견을 고민 중이라면 — 성격·털빠짐·활동량 기준 비교표로 정리했습니다.</p>
-        <span class="card-meta">2026.07.08</span>
-      </a>
-    </div>
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="dog" role="tab">🐶 강아지</button>
+        <button class="tab-btn" data-tab="cat" role="tab">🐱 고양이</button>
+      </div>
 
-    <h2 class="section-title">발행 예정 콘텐츠</h2>
-    <ul class="upcoming-list">
-      <li>말티즈 키우기: 성격·수명·주의할 질병</li>
-      <li>푸들 종류와 성격 완벽 정리</li>
-      <li>코리안 숏헤어 특징과 관리법</li>
-    </ul>
+      <!-- 강아지 탭 -->
+      <div class="tab-panel" data-panel="dog">
+        <a class="card guide-card" href="posts/beginner-dog-breeds.html">
+          <span class="emoji">🐶</span>
+          <h3>초보자에게 좋은 강아지 품종 TOP 10</h3>
+          <p>첫 반려견을 고민 중이라면 — 성격·털빠짐·활동량 기준 비교표로 정리했습니다.</p>
+          <span class="card-meta">품종 가이드 · 2026.07.08</span>
+        </a>
+
+        <h2 class="section-title">품종별 살펴보기</h2>
+        <div class="breed-grid">
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-maltese"><strong>말티즈</strong><span>실내 생활 최적, 애교 많음</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-poodle"><strong>토이푸들</strong><span>지능 최상위, 훈련이 쉬움</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-bichon"><strong>비숑 프리제</strong><span>명랑하고 사교적</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-shihtzu"><strong>시츄</strong><span>느긋하고 짖음 적음</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-more"><strong>카바리에</strong><span>온화함의 대명사</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-more"><strong>파피용</strong><span>작지만 지능 최상위급</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-more"><strong>포메라니안</strong><span>명랑하고 활발</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-more"><strong>미니어처 슈나우저</strong><span>충성심이 강함</span><em>소형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-more"><strong>골든리트리버</strong><span>성격 최고, 산책 필수</span><em>대형견</em></a>
+          <a class="breed-card" href="posts/beginner-dog-breeds.html#b-more"><strong>래브라도</strong><span>온순, 안내견 대표 품종</span><em>대형견</em></a>
+        </div>
+        <p class="breed-note">품종을 클릭하면 상세 설명으로 이동합니다. 개별 품종 심화 글은 순차적으로 발행할 예정입니다.</p>
+      </div>
+
+      <!-- 고양이 탭 -->
+      <div class="tab-panel" data-panel="cat" hidden>
+        <a class="card guide-card" href="posts/cat-breeds-beginner.html">
+          <span class="emoji">🐱</span>
+          <h3>처음 키우기 좋은 고양이 품종 정리</h3>
+          <p>첫 고양이로 무리 없는 품종 8가지 — 성격·털빠짐·유전 질환 주의점까지.</p>
+          <span class="card-meta">품종 가이드 · 2026.07.11</span>
+        </a>
+
+        <h2 class="section-title">품종별 살펴보기</h2>
+        <div class="breed-grid">
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#c-korat"><strong>코리안 숏헤어</strong><span>건강함, 국내 최다</span><em>단모</em></a>
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#c-russian"><strong>러시안블루</strong><span>조용하고 온순</span><em>단모</em></a>
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#c-british"><strong>브리티시 숏헤어</strong><span>느긋하고 독립적</span><em>단모</em></a>
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#c-american"><strong>아메리칸 숏헤어</strong><span>활발하고 튼튼함</span><em>단모</em></a>
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#c-more"><strong>랙돌</strong><span>매우 온순한 대형묘</span><em>장모</em></a>
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#c-more"><strong>먼치킨</strong><span>짧은 다리, 호기심 많음</span><em>단모</em></a>
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#caution"><strong>스코티시폴드</strong><span>⚠️ 유전성 관절 질환 주의</span><em>단모</em></a>
+          <a class="breed-card" href="posts/cat-breeds-beginner.html#c-more"><strong>페르시안</strong><span>장모, 매일 빗질 필수</span><em>장모</em></a>
+        </div>
+        <p class="breed-note">품종을 클릭하면 상세 설명으로 이동합니다. 개별 품종 심화 글은 순차적으로 발행할 예정입니다.</p>
+      </div>
     </div><!-- /js-hide-on-search -->
   </div>
 </main>

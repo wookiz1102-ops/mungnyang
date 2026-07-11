@@ -7,4 +7,20 @@ document.addEventListener("DOMContentLoaded", function () {
       nav.classList.toggle("open");
     });
   }
+
+  // 품종 백과 탭 전환 (강아지/고양이)
+  var tabBtns = document.querySelectorAll(".tab-btn");
+  if (tabBtns.length) {
+    tabBtns.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var target = btn.getAttribute("data-tab");
+        document.querySelectorAll(".tab-btn").forEach(function (b) {
+          b.classList.toggle("active", b === btn);
+        });
+        document.querySelectorAll(".tab-panel").forEach(function (p) {
+          p.hidden = p.getAttribute("data-panel") !== target;
+        });
+      });
+    });
+  }
 });
