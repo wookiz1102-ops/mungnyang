@@ -12,6 +12,17 @@
 //   date      : 등록일 (선택)
 window.PRODUCTS = [
   {
+    img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/9fe9/5c7573d157e754f38f454b1d0aa7b5d37a8a9f265c118d65c09a7368977a.jpg",
+    name: "웁쉬 스며들개 고흡수 강아지 배변패드 두툼형 (소형 50매)",
+    desc: "고흡수 두툼형에 피톤치드향까지. 배변훈련의 필수 소모품, 1매당 부담 없는 대용량.",
+    listPrice: "20,900원",
+    salePrice: "13,700원",
+    discount: "34%",
+    url: "https://link.coupang.com/a/fiZzBxm0lw",
+    tag: "배변·위생",
+    date: "2026.07.12"
+  },
+  {
     img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/2025/07/23/12/9/392afbc4-d625-4394-92a7-c61908565650.jpg",
     name: "디클펫 반려동물 자동급식기 AT-210",
     desc: "정해진 시간·양으로 자동 급여. 규칙적인 식사 관리와 공복 구토 예방에 좋은 4L 대용량 급식기.",
