@@ -464,7 +464,7 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
 }
 .price-off { color: #e11d48; font-weight: 800; font-size: 1.05rem; }
 .price-list { color: var(--muted); text-decoration: line-through; font-size: 0.9rem; }
-.price-sale { font-size: 1.35rem; font-weight: 800; color: var(--text); }
+.price-sale { flex-basis: 100%; font-size: 1.35rem; font-weight: 800; color: var(--text); }
 
 /* ---------- 품종 탭 ---------- */
 .tabs {
