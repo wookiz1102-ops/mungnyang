@@ -1,0 +1,345 @@
+/* ==========================================================
+   멍냥백과 — 공통 스타일
+   ========================================================== */
+:root {
+  --primary: #f97316;
+  --primary-dark: #ea580c;
+  --bg: #fffdf9;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e8e2d9;
+  --accent-bg: #fff7ed;
+  --max-w: 1080px;
+  --article-w: 760px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  word-break: keep-all;
+}
+
+img { max-width: 100%; height: auto; }
+a { color: var(--primary-dark); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- 헤더 ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 253, 249, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.logo {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+}
+.logo:hover { text-decoration: none; }
+.site-nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.site-nav a {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+}
+.site-nav a:hover { color: var(--primary-dark); text-decoration: none; }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* ---------- 레이아웃 ---------- */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.2rem; }
+
+.page-hero {
+  text-align: center;
+  padding: 3rem 1rem 2.2rem;
+}
+.page-hero h1 { font-size: 2rem; margin-bottom: 0.6rem; }
+.page-hero p { color: var(--muted); max-width: 640px; margin: 0 auto; }
+
+.section-title {
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1.2rem;
+  padding-left: 0.75rem;
+  border-left: 5px solid var(--primary);
+}
+
+/* ---------- 카드 그리드 ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.4rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: block;
+  color: var(--text);
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  text-decoration: none;
+}
+.card .emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+.card h3 { font-size: 1.08rem; margin-bottom: 0.4rem; }
+.card p { font-size: 0.9rem; color: var(--muted); }
+.card .card-meta {
+  display: block;
+  margin-top: 0.7rem;
+  font-size: 0.8rem;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+/* ---------- 위젯 (계산기) ---------- */
+.widget {
+  background: var(--accent-bg);
+  border: 1px solid #fed7aa;
+  border-radius: 16px;
+  padding: 1.8rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.widget h2, .widget h3 { margin-bottom: 1rem; }
+.widget label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin: 0.9rem 0 0.3rem;
+}
+.widget input, .widget select {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #fff;
+  font-family: inherit;
+}
+.widget button {
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 0.8rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.widget button:hover { background: var(--primary-dark); }
+.widget .result {
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px dashed var(--primary);
+  font-size: 1rem;
+  display: none;
+}
+.widget .result.show { display: block; }
+.widget .result strong { color: var(--primary-dark); font-size: 1.25rem; }
+.widget .note { font-size: 0.8rem; color: var(--muted); margin-top: 0.8rem; }
+
+/* ---------- 본문 (글) ---------- */
+.article {
+  max-width: var(--article-w);
+  margin: 0 auto;
+  padding: 2.2rem 1.2rem 3rem;
+}
+.breadcrumb { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.article h1 { font-size: 1.85rem; line-height: 1.4; margin-bottom: 0.8rem; }
+.post-meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.8rem; }
+.article .lead {
+  background: var(--accent-bg);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1.8rem;
+  font-size: 1.02rem;
+}
+.article h2 {
+  font-size: 1.35rem;
+  margin: 2.4rem 0 1rem;
+  padding-left: 0.7rem;
+  border-left: 5px solid var(--primary);
+}
+.article h3 { font-size: 1.1rem; margin: 1.6rem 0 0.7rem; }
+.article p { margin-bottom: 1rem; }
+.article ul, .article ol { margin: 0 0 1.2rem 1.4rem; }
+.article li { margin-bottom: 0.45rem; }
+
+/* 목차 */
+.toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.toc strong { display: block; margin-bottom: 0.6rem; }
+.toc ol { margin: 0 0 0 1.2rem; }
+.toc li { margin-bottom: 0.3rem; font-size: 0.95rem; }
+
+/* 표 */
+.table-wrap { overflow-x: auto; margin: 1.2rem 0 1.6rem; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  background: var(--card);
+}
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
+
+/* 강조 박스 */
+.box-tip, .box-warn {
+  border-radius: 12px;
+  padding: 1rem 1.3rem;
+  margin: 1.2rem 0;
+  font-size: 0.95rem;
+}
+.box-tip { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.box-warn { background: #fef2f2; border: 1px solid #fecaca; }
+
+/* FAQ */
+.faq details {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 0.7rem;
+}
+.faq summary { font-weight: 700; cursor: pointer; }
+.faq details p { margin: 0.7rem 0 0; font-size: 0.95rem; }
+
+/* 관련 글 */
+.related {
+  background: var(--accent-bg);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin-top: 2.5rem;
+}
+.related strong { display: block; margin-bottom: 0.6rem; }
+.related ul { margin: 0 0 0 1.2rem; }
+
+/* 면책 문구 */
+.disclaimer-box {
+  margin-top: 2rem;
+  padding: 0.9rem 1.2rem;
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* 광고 자리 (애드센스 승인 후 교체) */
+.ad-slot {
+  margin: 2rem auto;
+  padding: 1.6rem;
+  text-align: center;
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  color: #b9b2a7;
+  font-size: 0.85rem;
+  max-width: var(--article-w);
+}
+
+/* ---------- 발행 예정 ---------- */
+.upcoming-list {
+  list-style: none;
+  margin: 0;
+}
+.upcoming-list li {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.upcoming-list li::before { content: "📝 "; }
+
+/* ---------- 정적 페이지 ---------- */
+.static-page {
+  max-width: var(--article-w);
+  margin: 0 auto;
+  padding: 2.5rem 1.2rem 3rem;
+}
+.static-page h1 { font-size: 1.7rem; margin-bottom: 1.4rem; }
+.static-page h2 { font-size: 1.25rem; margin: 2rem 0 0.8rem; }
+.static-page p, .static-page li { margin-bottom: 0.8rem; }
+.static-page ul, .static-page ol { margin-left: 1.4rem; }
+
+/* ---------- 푸터 ---------- */
+.site-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--border);
+  background: #fdf9f3;
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.footer-links { margin-bottom: 0.5rem; }
+.footer-links a { color: var(--muted); margin: 0 0.4rem; }
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 1.2rem 1rem;
+  }
+  .site-nav.open { display: flex; }
+  .site-nav a { padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+  .page-hero h1 { font-size: 1.55rem; }
+  .article h1 { font-size: 1.5rem; }
+}

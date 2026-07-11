@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 배포 후 https://www.example.com 을 실제 도메인으로 전체 치환하세요 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.example.com/</loc><lastmod>2026-07-11</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.example.com/breeds.html</loc><lastmod>2026-07-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.example.com/health.html</loc><lastmod>2026-07-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.example.com/food.html</loc><lastmod>2026-07-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.example.com/training.html</loc><lastmod>2026-07-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.example.com/life.html</loc><lastmod>2026-07-11</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.example.com/posts/beginner-dog-breeds.html</loc><lastmod>2026-07-08</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.example.com/posts/dog-diarrhea.html</loc><lastmod>2026-07-09</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.example.com/posts/dog-food-calculator.html</loc><lastmod>2026-07-10</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.example.com/posts/dog-potty-training.html</loc><lastmod>2026-07-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://www.example.com/about.html</loc><lastmod>2026-07-11</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.example.com/contact.html</loc><lastmod>2026-07-11</lastmod><priority>0.5</priority></url>
+</urlset>
