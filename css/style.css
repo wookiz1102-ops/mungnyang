@@ -422,6 +422,29 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
 .page-btn:hover:not(:disabled) { border-color: var(--primary); }
 .page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 .page-btn:disabled { opacity: 0.4; cursor: default; }
+.product-thumb {
+  display: block;
+  margin: -1.4rem -1.4rem 1rem;
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+  background: #f5f1ea;
+}
+.product-thumb img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  display: block;
+}
+.product-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.4rem 0 0.2rem;
+}
+.price-off { color: #e11d48; font-weight: 800; font-size: 1.05rem; }
+.price-list { color: var(--muted); text-decoration: line-through; font-size: 0.9rem; }
+.price-sale { font-size: 1.35rem; font-weight: 800; color: var(--text); }
 
 /* ---------- 품종 탭 ---------- */
 .tabs {

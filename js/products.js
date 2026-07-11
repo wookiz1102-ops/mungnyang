@@ -17,10 +17,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function cardHTML(p) {
+    var thumb = p.img
+      ? '<a class="product-thumb" href="' + esc(p.url) + '" rel="nofollow sponsored noopener" target="_blank">' +
+        '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy"></a>'
+      : "";
+    var price = "";
+    if (p.salePrice) {
+      price = '<div class="product-price">' +
+        (p.discount ? '<span class="price-off">' + esc(p.discount) + "</span>" : "") +
+        (p.listPrice ? '<span class="price-list">' + esc(p.listPrice) + "</span>" : "") +
+        '<span class="price-sale">' + esc(p.salePrice) + "</span>" +
+        "</div>";
+    }
     return '<div class="card product-card">' +
+      thumb +
       (p.tag ? '<span class="product-tag">' + esc(p.tag) + "</span>" : "") +
       "<h3>" + esc(p.name) + "</h3>" +
-      "<p>" + esc(p.desc) + "</p>" +
+      (p.desc ? "<p>" + esc(p.desc) + "</p>" : "") +
+      price +
       (p.date ? '<span class="card-meta">' + esc(p.date) + "</span>" : "") +
       '<a class="buy-btn" href="' + esc(p.url) + '" rel="nofollow sponsored noopener" target="_blank">쿠팡에서 보기</a>' +
       "</div>";
