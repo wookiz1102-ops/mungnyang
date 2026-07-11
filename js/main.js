@@ -53,4 +53,33 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  // BreadcrumbList 구조화 데이터 자동 생성 (글 페이지)
+  var crumb = document.querySelector(".article .breadcrumb");
+  var h1 = document.querySelector(".article h1");
+  if (crumb && h1) {
+    var BASE = "https://daengnyangpedia.com";
+    var clean = function (href) {
+      var path = new URL(href, location.href).pathname
+        .replace(/index\.html$/, "")
+        .replace(/\.html$/, "");
+      return BASE + path;
+    };
+    var list = [];
+    crumb.querySelectorAll("a").forEach(function (a) {
+      list.push({ name: a.textContent.trim(), item: clean(a.getAttribute("href")) });
+    });
+    list.push({ name: h1.textContent.trim(), item: clean(location.pathname) });
+    var ld = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": list.map(function (it, i) {
+        return { "@type": "ListItem", "position": i + 1, "name": it.name, "item": it.item };
+      })
+    };
+    var s = document.createElement("script");
+    s.type = "application/ld+json";
+    s.textContent = JSON.stringify(ld);
+    document.head.appendChild(s);
+  }
 });

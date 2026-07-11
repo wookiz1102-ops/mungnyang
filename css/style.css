@@ -533,6 +533,17 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
   font-size: 0.9rem;
   color: var(--muted);
 }
+.breed-guides {
+  margin: -0.4rem 0 1.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.breed-guides a {
+  display: inline-block;
+  margin: 0 0.15rem;
+  padding: 0.1rem 0.2rem;
+  font-weight: 600;
+}
 .back-btn {
   appearance: none;
   background: none;
