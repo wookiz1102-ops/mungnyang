@@ -382,6 +382,46 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
   font-size: 0.95rem;
 }
 .buy-btn:hover { background: var(--primary-dark); text-decoration: none; }
+.product-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  background: var(--accent-bg);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+.product-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 3rem 1rem;
+  line-height: 1.8;
+}
+.product-pager {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2.2rem 0 0.5rem;
+}
+.page-btn {
+  min-width: 42px;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+  transition: border-color 0.15s, background 0.15s;
+}
+.page-btn:hover:not(:disabled) { border-color: var(--primary); }
+.page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.page-btn:disabled { opacity: 0.4; cursor: default; }
 
 /* ---------- 품종 탭 ---------- */
 .tabs {
