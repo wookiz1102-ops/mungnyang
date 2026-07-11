@@ -1,3 +1,24 @@
+// ── Google Analytics 4 (방문자 통계) ─────────────────────────────
+// 측정 ID는 아래 GA_ID 한 곳에서 관리합니다. main.js가 전 페이지 공용이라 자동 적용됩니다.
+(function () {
+  var GA_ID = "G-8K7NSBRTPG"; // 댕냥피디아 GA4 측정 ID
+
+  // 미설정(플레이스홀더)·로컬 개발 환경에서는 추적하지 않음
+  if (!GA_ID || GA_ID.indexOf("XXXX") !== -1) return;
+  if (location.protocol === "file:") return;
+  if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;
+
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+  document.head.appendChild(s);
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag("js", new Date());
+  window.gtag("config", GA_ID);
+})();
+
 // 모바일 내비게이션 토글
 document.addEventListener("DOMContentLoaded", function () {
   var toggle = document.querySelector(".nav-toggle");
