@@ -12,6 +12,17 @@
 //   date      : 등록일 (선택)
 window.PRODUCTS = [
   {
+    img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/2025/07/23/12/9/392afbc4-d625-4394-92a7-c61908565650.jpg",
+    name: "디클펫 반려동물 자동급식기 AT-210",
+    desc: "정해진 시간·양으로 자동 급여. 규칙적인 식사 관리와 공복 구토 예방에 좋은 4L 대용량 급식기.",
+    listPrice: "251,000원",
+    salePrice: "52,700원",
+    discount: "79%",
+    url: "https://link.coupang.com/a/fiZiJZd2mi",
+    tag: "급식·물",
+    date: "2026.07.12"
+  },
+  {
     img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/image_audit/stage/manual/ed55581be20858ea2cf996a7ef2cad6a0545a4c0c5c76c99e035c7ddd2e6_1751442474115.png",
     name: "펫그래비티 무선 무필터 물비움 정수기 3L",
     desc: "무선·무필터 순환식, 3L 대용량 스테인리스. 음수량을 늘려 비뇨기·신장 건강 관리에 좋아요.",
