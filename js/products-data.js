@@ -12,6 +12,17 @@
 //   date      : 등록일 (선택)
 window.PRODUCTS = [
   {
+    img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/a2ba/8fcb9d945281707f33e4ad454017ed33de56a75079d90087034527c4b27c.jpg",
+    name: "이리로 강아지 슬개골 예방 미끄럼방지 방수 접이식 타일 매트",
+    desc: "미끄러운 바닥은 슬개골 탈구의 주범. 방수·접이식 타일 매트로 무릎 부담을 덜어주는 소형견 필수템.",
+    listPrice: "232,000원",
+    salePrice: "150,400원",
+    discount: "35%",
+    url: "https://link.coupang.com/a/fi0t205Cvc",
+    tag: "건강·안전",
+    date: "2026.07.12"
+  },
+  {
     img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/ad3a/c5012c0cbd9c346ddb655e1e805435d3c7641df8c81a1efaf63c65c2e4c6.png",
     name: "캣앤코 고양이 오픈형 자동화장실 스마트 프리미엄",
     desc: "UV 살균·자동처리 프리미엄 고양이 자동화장실. 화장실 청소 부담을 크게 덜어주는 저소음 오픈형.",
