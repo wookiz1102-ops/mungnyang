@@ -12,6 +12,17 @@
 //   date      : 등록일 (선택)
 window.PRODUCTS = [
   {
+    img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/ad3a/c5012c0cbd9c346ddb655e1e805435d3c7641df8c81a1efaf63c65c2e4c6.png",
+    name: "캣앤코 고양이 오픈형 자동화장실 스마트 프리미엄",
+    desc: "UV 살균·자동처리 프리미엄 고양이 자동화장실. 화장실 청소 부담을 크게 덜어주는 저소음 오픈형.",
+    listPrice: "500,000원",
+    salePrice: "249,900원",
+    discount: "50%",
+    url: "https://link.coupang.com/a/fi0fkNu1jU",
+    tag: "배변·위생",
+    date: "2026.07.12"
+  },
+  {
     img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/9fe9/5c7573d157e754f38f454b1d0aa7b5d37a8a9f265c118d65c09a7368977a.jpg",
     name: "웁쉬 스며들개 고흡수 강아지 배변패드 두툼형 (소형 50매)",
     desc: "고흡수 두툼형에 피톤치드향까지. 배변훈련의 필수 소모품, 1매당 부담 없는 대용량.",
