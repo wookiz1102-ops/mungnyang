@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mungnyang-2h2.pages.dev/sitemap.xml
+Sitemap: https://daengnyangpedia.com/sitemap.xml
