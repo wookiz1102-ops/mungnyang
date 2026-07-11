@@ -26,27 +26,33 @@
   var korat = { t: "코리안 숏헤어(코숏) 키우기 완벽 가이드", d: "성격·수명·건강 관리와 입양 방법.", e: "🐱", m: "품종 심화", u: "posts/breed-korat.html" };
   var russian = { t: "러시안블루 키우기 완벽 가이드", d: "조용한 성격, 건강, 알레르기 특성까지.", e: "🩵", m: "품종 심화", u: "posts/breed-russian-blue.html" };
   var scottish = { t: "스코티시폴드 키우기 완벽 가이드", d: "접힌 귀의 진실 — 입양 전 꼭 알아야 할 것.", e: "🐈", m: "품종 심화", u: "posts/breed-scottish-fold.html" };
+  var shihtzu = { t: "시츄 키우기 완벽 가이드", d: "느긋하고 짖음 적은 성격, 단두종 관리까지.", e: "🐶", m: "품종 심화", u: "posts/breed-shihtzu.html" };
+  var bichon = { t: "비숑 프리제 키우기 완벽 가이드", d: "사교적인 솜뭉치 — 성격·질병·미용 관리.", e: "🐩", m: "품종 심화", u: "posts/breed-bichon.html" };
+  var golden = { t: "골든리트리버 키우기 완벽 가이드", d: "온순한 대형견 — 성격·질병·산책 관리.", e: "🦮", m: "품종 심화", u: "posts/breed-golden.html" };
+  var persian = { t: "페르시안 고양이 키우기 완벽 가이드", d: "우아한 장모 — 성격·유전병·털 관리.", e: "🐱", m: "품종 심화", u: "posts/breed-persian.html" };
+  var british = { t: "브리티시 숏헤어 키우기 완벽 가이드", d: "독립적이고 느긋 — 1인 가구 추천 품종.", e: "🐱", m: "품종 심화", u: "posts/breed-british.html" };
+  var ragdoll = { t: "랙돌 키우기 완벽 가이드", d: "안기는 순둥이 대형묘 — 성격·질병·털 관리.", e: "🐈", m: "품종 심화", u: "posts/breed-ragdoll.html" };
 
   window.BREED_DATA = {
     // 강아지
     "b-maltese":   { name: "말티즈", articles: [maltese, patella, anxiety] },
     "b-poodle":    { name: "토이푸들", articles: [poodle, patella, potty] },
-    "b-bichon":    { name: "비숑 프리제", articles: [dogGuide("b-bichon"), anxiety] },
-    "b-shihtzu":   { name: "시츄", articles: [dogGuide("b-shihtzu"), heat] },
+    "b-bichon":    { name: "비숑 프리제", articles: [bichon, patella, anxiety] },
+    "b-shihtzu":   { name: "시츄", articles: [shihtzu, heat] },
     "b-cavalier":  { name: "카바리에 킹 찰스 스패니얼", articles: [dogGuide("b-more")] },
     "b-papillon":  { name: "파피용", articles: [dogGuide("b-more")] },
     "b-pom":       { name: "포메라니안", articles: [pom, patella] },
     "b-schnauzer": { name: "미니어처 슈나우저", articles: [dogGuide("b-more")] },
-    "b-golden":    { name: "골든리트리버", articles: [dogGuide("b-more"), walk, foodCalc] },
+    "b-golden":    { name: "골든리트리버", articles: [golden, walk, foodCalc] },
     "b-lab":       { name: "래브라도 리트리버", articles: [dogGuide("b-more"), walk, foodCalc] },
     // 고양이
     "c-korat":     { name: "코리안 숏헤어", articles: [korat, kitten, catVac] },
     "c-russian":   { name: "러시안블루", articles: [russian, catFood] },
-    "c-british":   { name: "브리티시 숏헤어", articles: [catGuide("c-british"), catFood] },
+    "c-british":   { name: "브리티시 숏헤어", articles: [british, catFood] },
     "c-american":  { name: "아메리칸 숏헤어", articles: [catGuide("c-american")] },
-    "c-ragdoll":   { name: "랙돌", articles: [catGuide("c-more")] },
+    "c-ragdoll":   { name: "랙돌", articles: [ragdoll, kitten] },
     "c-munchkin":  { name: "먼치킨", articles: [catGuide("c-more")] },
     "c-scottish":  { name: "스코티시폴드", articles: [scottish, kidney] },
-    "c-persian":   { name: "페르시안", articles: [catGuide("c-more"), kidney] }
+    "c-persian":   { name: "페르시안", articles: [persian, kidney] }
   };
 })();
