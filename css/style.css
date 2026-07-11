@@ -417,9 +417,28 @@ th { background: var(--accent-bg); font-weight: 700; white-space: nowrap; }
   border-radius: 999px;
 }
 .breed-note {
-  margin-top: 1.2rem;
-  font-size: 0.85rem;
+  margin: -0.4rem 0 1.2rem;
+  font-size: 0.9rem;
   color: var(--muted);
+}
+.back-btn {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  margin-bottom: 0.4rem;
+  font-family: inherit;
+}
+.back-btn:hover { text-decoration: underline; }
+.breed-card {
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
 }
 
 /* ---------- 발행 예정 ---------- */

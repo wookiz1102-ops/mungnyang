@@ -23,4 +23,34 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  // 품종 카드 → 해당 품종 관련 글 목록 표시
+  var breedCards = document.querySelectorAll(".breed-card[data-breed]");
+  if (breedCards.length && window.BREED_DATA) {
+    breedCards.forEach(function (card) {
+      card.addEventListener("click", function () {
+        var data = window.BREED_DATA[card.getAttribute("data-breed")];
+        if (!data) return;
+        var panel = card.closest(".tab-panel");
+        var browse = panel.querySelector(".breed-browse");
+        var detail = panel.querySelector(".breed-detail");
+        detail.querySelector(".breed-detail-title").textContent = data.name + " 관련 글";
+        detail.querySelector(".breed-articles").innerHTML = data.articles.map(function (a) {
+          return '<a class="card" href="' + a.u + '">' +
+            '<span class="emoji">' + a.e + '</span>' +
+            '<h3>' + a.t + '</h3><p>' + a.d + '</p>' +
+            '<span class="card-meta">' + a.m + '</span></a>';
+        }).join("");
+        browse.hidden = true;
+        detail.hidden = false;
+      });
+    });
+    document.querySelectorAll(".back-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var panel = btn.closest(".tab-panel");
+        panel.querySelector(".breed-detail").hidden = true;
+        panel.querySelector(".breed-browse").hidden = false;
+      });
+    });
+  }
 });
