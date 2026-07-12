@@ -557,6 +557,8 @@ th {
   font-size: 0.88rem;
   color: #92600a;
   line-height: 1.6;
+  text-align: justify;
+  text-align-last: justify;
 }
 .product-card {
   display: flex;
