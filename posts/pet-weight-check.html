@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>강아지·고양이 비만도 자가진단 — 3가지 질문으로 체크 (BCS)</title>
+  <meta name="description" content="갈비뼈·허리 라인·배 모양 3가지 질문으로 우리 아이 비만도(BCS)를 바로 체크하세요. 단계별 판정과 체중 관리 방법까지 안내합니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="강아지·고양이 비만도 자가진단 (BCS 체크)">
+  <meta property="og:description" content="3가지 질문에 답하면 저체중~비만 단계와 관리 방법을 알려드려요.">
+  <link rel="canonical" href="https://daengnyangpedia.com/posts/pet-weight-check">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "강아지·고양이 비만도 자가진단 — 3가지 질문으로 체크 (BCS)",
+    "description": "신체충실지수(BCS) 기반 반려동물 비만도 자가진단 도구와 체중 관리 방법",
+    "datePublished": "2026-07-16",
+    "author": { "@type": "Organization", "name": "댕냥피디아" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "반려동물 비만은 왜 위험한가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "비만은 관절 질환, 당뇨, 심장·호흡기 부담, 수명 단축과 직결됩니다. 특히 고양이는 급격한 다이어트가 지방간을 일으킬 수 있어 반드시 점진적으로 감량해야 합니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "집에서 비만도를 어떻게 확인하나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "갈비뼈가 만져지는 정도, 위에서 본 허리 라인, 옆에서 본 배 라인 세 가지를 보는 BCS(신체충실지수) 방식이 표준입니다. 갈비뼈가 살짝 눌러 만져지고 허리가 완만하게 들어가 있으면 적정 체형입니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "다이어트는 어떻게 시작하나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "사료 급여량을 한 번에 크게 줄이지 말고 5~10%씩 점진적으로 조절하고, 간식은 하루 열량의 10% 이내로 제한하세요. 감량 속도는 주당 체중의 1~2%가 안전하며, 시작 전 수의사와 목표 체중을 정하는 것이 좋습니다." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">🐾 댕냥피디아</a>
+    <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+    <nav class="site-nav">
+      <a href="../breeds">품종 백과</a>
+      <a href="../health">건강·증상</a>
+      <a href="../food">사료·용품</a>
+      <a href="../training">행동·훈련</a>
+      <a href="../life">생활 정보</a>
+      <a href="../tools">계산기</a>
+      <a href="../recommend">추천 아이템</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<article class="article">
+  <p class="breadcrumb"><a href="/">홈</a> › <a href="../health">건강·증상</a></p>
+  <h1>강아지·고양이 비만도 자가진단 — 3가지 질문이면 충분해요</h1>
+  <p class="post-meta">건강·증상 · 2026년 7월 16일</p>
+
+  <p class="lead">
+    "우리 애가 통통한 건지 비만인 건지 모르겠어요." — 체중계 숫자보다 정확한 방법이 있습니다.
+    수의사들이 쓰는 <strong>BCS(신체충실지수)</strong> 방식 그대로, 아래 3가지 질문에
+    답해 보세요. ⚖️
+  </p>
+
+  <div class="widget">
+    <h3>⚖️ 비만도 자가진단 (강아지·고양이 공용)</h3>
+    <label for="bcs-rib">1. 옆구리를 만지면 갈비뼈가?</label>
+    <select id="bcs-rib">
+      <option value="1">눈으로도 보이고 아주 쉽게 만져져요</option>
+      <option value="2" selected>지방 아래로 살짝 눌러야 만져져요</option>
+      <option value="3">힘을 줘도 잘 만져지지 않아요</option>
+    </select>
+    <label for="bcs-waist">2. 위에서 내려다보면 허리 라인이?</label>
+    <select id="bcs-waist">
+      <option value="1">뼈가 드러날 만큼 확 들어가 있어요</option>
+      <option value="2" selected>갈비뼈 뒤가 완만하게 들어가 있어요</option>
+      <option value="3">일자거나 오히려 볼록해요</option>
+    </select>
+    <label for="bcs-belly">3. 옆에서 보면 배 라인이?</label>
+    <select id="bcs-belly">
+      <option value="1">뒤로 갈수록 가파르게 올라가요</option>
+      <option value="2" selected>완만하게 올라가요</option>
+      <option value="3">수평이거나 아래로 처져 있어요</option>
+    </select>
+    <button id="bcs-btn" type="button">비만도 확인하기</button>
+    <div class="result" id="bcs-result"></div>
+    <p class="note">※ BCS 기준의 자가진단 참고용입니다. 정확한 판정과 감량 계획은 병원에서 받아보세요.</p>
+  </div>
+
+  <div class="ad-slot">광고 영역 (애드센스 승인 후 코드 삽입)</div>
+
+  <h2 id="bcs">BCS가 뭔가요?</h2>
+  <p>
+    <strong>BCS(Body Condition Score, 신체충실지수)</strong>는 체중 숫자 대신 <strong>체형</strong>으로
+    비만도를 평가하는 방식입니다. 같은 5kg이라도 품종·골격에 따라 적정일 수도, 비만일 수도
+    있어서 수의사들은 갈비뼈·허리·배 세 부위를 보고 판단합니다. 보통 9단계로 나누며
+    <strong>4~5가 이상적</strong>입니다.
+  </p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>단계</th><th>BCS</th><th>특징</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>저체중</td><td>1~3</td><td>갈비뼈·골반이 눈에 보임, 지방이 거의 없음</td></tr>
+        <tr><td>적정</td><td>4~5</td><td>갈비뼈가 살짝 눌러 만져짐, 허리 라인 뚜렷</td></tr>
+        <tr><td>과체중</td><td>6~7</td><td>갈비뼈를 찾으려면 힘을 줘야 함, 허리 라인 희미</td></tr>
+        <tr><td>비만</td><td>8~9</td><td>갈비뼈가 안 만져짐, 배가 처지고 허리 없음</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="risk">과체중, 생각보다 위험합니다</h2>
+  <ul>
+    <li><strong>관절</strong> — 슬개골 탈구·관절염이 악화됩니다. (<a href="dog-patella-luxation">슬개골 탈구 가이드</a>)</li>
+    <li><strong>당뇨·심장</strong> — 특히 고양이 비만은 당뇨 위험을 크게 높입니다.</li>
+    <li><strong>수명</strong> — 적정 체형을 유지한 개는 평균 수명이 더 길다는 연구가 있습니다.</li>
+  </ul>
+
+  <h2 id="diet">체중 관리, 이렇게 시작하세요</h2>
+  <ul>
+    <li><strong>급여량 5~10%씩 점진 감량</strong> — 한 번에 확 줄이면 안 됩니다.
+      현재 적정량은 <a href="dog-food-calculator">사료 급여량 계산기</a>로 확인하세요.</li>
+    <li><strong>간식은 하루 열량의 10% 이내</strong> — 간식을 줄이는 게 가장 빠른 감량입니다.</li>
+    <li><strong>감량 속도는 주당 체중의 1~2%</strong> — 그 이상은 무리입니다.</li>
+    <li><strong>운동 병행</strong> — 강아지는 산책 시간을 조금씩 늘리고(<a href="dog-walking-guide">산책 가이드</a>),
+      고양이는 사냥 놀이 5~10분씩 하루 2~3회.</li>
+  </ul>
+
+  <div class="box-warn">
+    ⚠️ <strong>고양이 보호자 주의</strong> — 고양이는 급격히 굶기면 <strong>지방간(간지질증)</strong>이라는
+    치명적인 병이 올 수 있습니다. 고양이 다이어트는 반드시 천천히, 병원과 함께 진행하세요.
+  </div>
+
+  <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
+  <div class="faq">
+    <details>
+      <summary>Q. 몸무게가 표준인데도 비만일 수 있나요?</summary>
+      <p>네. 골격이 작은 아이는 표준 체중이어도 체지방이 많을 수 있습니다. 그래서 숫자보다
+      갈비뼈·허리를 보는 BCS가 더 정확합니다.</p>
+    </details>
+    <details>
+      <summary>Q. 다이어트 사료로 바꾸면 되나요?</summary>
+      <p>도움이 되지만 양 조절이 우선입니다. 사료를 바꿀 때는 1~2주에 걸쳐 서서히 섞어가며
+      교체하고, 감량 목표는 병원과 정하는 것이 안전합니다.</p>
+    </details>
+    <details>
+      <summary>Q. 살이 갑자기 빠졌는데 다이어트 덕분일까요?</summary>
+      <p>의도하지 않은 급격한 체중 감소는 질병 신호일 수 있습니다(당뇨·신부전·갑상선 등).
+      식욕이 그대로인데 살이 빠진다면 병원 검진을 받아보세요.</p>
+    </details>
+  </div>
+
+  <div class="related">
+    <strong>📎 함께 보면 좋은 글</strong>
+    <ul>
+      <li><a href="dog-food-calculator">강아지 사료 급여량 계산하는 법 (+계산기)</a></li>
+      <li><a href="cat-food-guide">고양이 사료 고르는 기준 5가지</a></li>
+      <li><a href="dog-walking-guide">강아지 산책 언제부터, 얼마나 시킬까</a></li>
+    </ul>
+  </div>
+
+  <div class="disclaimer-box">
+    ⚕️ <strong>안내</strong> — 본 자가진단은 참고용이며 수의학적 진단을 대체하지 않습니다.
+    감량 계획은 아이의 건강 상태에 맞춰 수의사와 상담 후 진행하세요.
+  </div>
+
+  <div class="ad-slot">광고 영역 (애드센스 승인 후 코드 삽입)</div>
+</article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-links">
+      <a href="../about">소개</a> ·
+      <a href="../privacy">개인정보처리방침</a> ·
+      <a href="../disclaimer">이용약관·면책</a> ·
+      <a href="../contact">문의하기</a>
+    </p>
+    <p>© 2026 댕냥피디아. 본 사이트의 정보는 일반적인 참고용이며, 수의사의 진단·진료를 대체하지 않습니다.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// BCS 비만도 자가진단
+document.getElementById("bcs-btn").addEventListener("click", function () {
+  var score =
+    parseInt(document.getElementById("bcs-rib").value, 10) +
+    parseInt(document.getElementById("bcs-waist").value, 10) +
+    parseInt(document.getElementById("bcs-belly").value, 10);
+  var box = document.getElementById("bcs-result");
+
+  var grade, bcs, advice;
+  if (score <= 3) {
+    grade = "저체중 의심"; bcs = "BCS 1~3";
+    advice = "지방이 너무 적을 수 있어요. 급여량을 확인하고, 잘 먹는데도 마른다면 병원 검진을 받아보세요.";
+  } else if (score <= 5) {
+    grade = "적정 체형 👍"; bcs = "BCS 4~5";
+    advice = "이상적인 체형이에요! 지금의 급여량과 운동량을 그대로 유지하세요.";
+  } else if (score <= 7) {
+    grade = "과체중"; bcs = "BCS 6~7";
+    advice = "간식을 하루 열량의 10% 이내로 줄이고, 급여량을 5~10% 조절해 보세요. 산책·놀이 시간을 늘리는 것도 좋아요.";
+  } else {
+    grade = "비만"; bcs = "BCS 8~9";
+    advice = "관절·당뇨 위험이 높은 단계예요. 병원에서 목표 체중을 정하고 감량 계획을 세우는 것을 권해요. 고양이는 급격한 감량 금지!";
+  }
+
+  box.innerHTML = "판정: <strong>" + grade + "</strong> (" + bcs + " 추정)<br>" + advice;
+  box.classList.add("show");
+});
+</script>
+</body>
+</html>
