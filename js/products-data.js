@@ -32,7 +32,7 @@ window.PRODUCTS = [
     listPrice: "500,000원",
     salePrice: "249,900원",
     discount: "50%",
-    url: "https://link.coupang.com/a/fi0fkNu1jU",
+    url: "https://link.coupang.com/a/fq7ujG55ZQ",
     tag: "배변·위생",
     date: "2026.07.12"
   },
