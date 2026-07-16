@@ -20,6 +20,7 @@ window.PRODUCTS = [
     listPrice: "232,000원",
     salePrice: "150,400원",
     discount: "35%",
+    rating: 5.0,
     reviews: 532,
     url: "https://link.coupang.com/a/fi0t205Cvc",
     tag: "건강·안전",
@@ -32,6 +33,8 @@ window.PRODUCTS = [
     listPrice: "500,000원",
     salePrice: "249,900원",
     discount: "50%",
+    rating: 4.5,
+    reviews: 679,
     url: "https://link.coupang.com/a/fq7ujG55ZQ",
     tag: "배변·위생",
     date: "2026.07.12"
@@ -43,6 +46,8 @@ window.PRODUCTS = [
     listPrice: "20,900원",
     salePrice: "13,700원",
     discount: "34%",
+    rating: 5.0,
+    reviews: 2734,
     url: "https://link.coupang.com/a/fiZzBxm0lw",
     tag: "배변·위생",
     date: "2026.07.12"
@@ -65,6 +70,8 @@ window.PRODUCTS = [
     listPrice: "190,000원",
     salePrice: "48,900원",
     discount: "74%",
+    rating: 5.0,
+    reviews: 343,
     url: "https://link.coupang.com/a/fiXomXbxeK",
     tag: "급식·물",
     date: "2026.07.12"
