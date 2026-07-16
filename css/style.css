@@ -720,6 +720,15 @@ th {
   object-fit: contain;
   display: block;
 }
+.product-rating {
+  margin: 0.15rem 0 0.1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  font-feature-settings: "tnum";
+}
+.product-rating .rating-star { color: var(--orange); }
+.product-rating .rating-count { color: var(--muted); font-weight: 500; font-size: 0.85rem; }
 .product-price {
   display: flex;
   align-items: baseline;
