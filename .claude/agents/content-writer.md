@@ -13,6 +13,7 @@ model: sonnet
 - 한국어, `word-break: keep-all`에 맞춰 자연스러운 줄바꿈. 문장은 짧고 명확하게.
 - **디자인 파일(css/style.css)은 절대 건드리지 않는다.** 클래스명만 그대로 사용.
 - 파일명·경로는 기존 규칙을 따른다(예: `posts/dog-<주제>.html`).
+- **본문 내부 링크는 확장자 없이** 쓴다: `dog-potty-training` (O), `dog-potty-training.html` (X). 홈·상위 페이지는 `/`, `../breeds` 형식.
 
 ## 건강 관련
 - 의학적 단정·용량 지시는 피하고, "병원에 가야 할 기준"과 `.disclaimer-box`를 반드시 포함한다.

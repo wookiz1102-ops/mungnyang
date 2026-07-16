@@ -20,4 +20,4 @@ description: UI/CSS·레이아웃·디자인 일관성 작업. "Finn 방향" 디
 - `:focus-visible` 링, `prefers-reduced-motion` 존중, 대비 4.5:1, 44px 터치 타깃, 모바일 375px 가로 스크롤 0.
 
 ## 검증
-- 미리보기(파이썬 http.server, `.claude/launch.json`의 8642)로 확인. **CSS/JS는 캐시가 남으므로** 강력 새로고침(Ctrl+Shift+R)이나 `?v=` 쿼리로 최신본을 확인한다.
+- 미리보기(`npx serve`, `.claude/launch.json`의 8642 — 프로덕션처럼 확장자 없는 clean URL 지원)로 확인. **CSS/JS는 캐시가 남으므로** 강력 새로고침(Ctrl+Shift+R)이나 `?v=` 쿼리로 최신본을 확인한다.

@@ -3,35 +3,35 @@
 (function () {
   // 재사용 글 정의
   var dogGuide = function (hash) {
-    return { t: "초보자에게 좋은 강아지 품종 TOP 10", d: "성격·털빠짐·활동량 비교표와 이 품종의 상세 설명.", e: "🐶", m: "품종 가이드", u: "posts/beginner-dog-breeds.html#" + hash };
+    return { t: "초보자에게 좋은 강아지 품종 TOP 10", d: "성격·털빠짐·활동량 비교표와 이 품종의 상세 설명.", e: "🐶", m: "품종 가이드", u: "posts/beginner-dog-breeds#" + hash };
   };
   var catGuide = function (hash) {
-    return { t: "처음 키우기 좋은 고양이 품종 정리", d: "성격·털빠짐·유전 질환 비교와 이 품종의 상세 설명.", e: "🐱", m: "품종 가이드", u: "posts/cat-breeds-beginner.html#" + hash };
+    return { t: "처음 키우기 좋은 고양이 품종 정리", d: "성격·털빠짐·유전 질환 비교와 이 품종의 상세 설명.", e: "🐱", m: "품종 가이드", u: "posts/cat-breeds-beginner#" + hash };
   };
-  var patella = { t: "강아지 슬개골 탈구, 증상과 단계별 대처", d: "소형견이 특히 취약한 무릎 질환 — 단계별 대처와 예방법.", e: "🦴", m: "건강·증상", u: "posts/dog-patella-luxation.html" };
-  var anxiety = { t: "강아지 분리불안 증상과 완화 방법", d: "애착이 강한 품종에 흔한 분리불안 — 자가진단과 둔감화 훈련.", e: "🏠", m: "행동·훈련", u: "posts/dog-separation-anxiety.html" };
-  var potty = { t: "강아지 배변훈련 실패 없이 하는 법 (5단계)", d: "칭찬 기반 5단계 배변훈련.", e: "🚽", m: "행동·훈련", u: "posts/dog-potty-training.html" };
-  var walk = { t: "강아지 산책 언제부터, 얼마나 시킬까", d: "크기별 산책량과 여름·겨울 주의사항.", e: "🚶", m: "생활 정보", u: "posts/dog-walking-guide.html" };
-  var foodCalc = { t: "강아지 사료 급여량 계산하는 법 (+계산기)", d: "체중·나이·중성화 여부로 하루 급여량 계산.", e: "🧮", m: "사료·용품", u: "posts/dog-food-calculator.html" };
-  var heat = { t: "강아지 여름철 더위·열사병 관리법", d: "코가 짧은 단두종이 특히 취약 — 응급 신호와 처치.", e: "☀️", m: "건강·증상", u: "posts/dog-summer-heatstroke.html" };
-  var kitten = { t: "새끼 고양이 키우기 첫 주 체크리스트", d: "준비물, 첫날 적응, 나이별 먹이기, 첫 병원 방문.", e: "🍼", m: "생활 정보", u: "posts/kitten-first-week.html" };
-  var catVac = { t: "고양이 예방접종, 언제 무엇을 맞출까", d: "종합백신(FVRCP) 일정표와 실내묘 접종의 필요성.", e: "🩺", m: "생활 정보", u: "posts/cat-vaccination.html" };
-  var catFood = { t: "고양이 사료 고르는 기준 5가지", d: "비만·비뇨기 관리에 중요한 사료 선택 기준.", e: "🐟", m: "사료·용품", u: "posts/cat-food-guide.html" };
-  var kidney = { t: "고양이 신부전 초기 증상 알아보기", d: "노령묘 최다 질환 — 초기 신호와 조기 발견법.", e: "💧", m: "건강·증상", u: "posts/cat-kidney-disease.html" };
+  var patella = { t: "강아지 슬개골 탈구, 증상과 단계별 대처", d: "소형견이 특히 취약한 무릎 질환 — 단계별 대처와 예방법.", e: "🦴", m: "건강·증상", u: "posts/dog-patella-luxation" };
+  var anxiety = { t: "강아지 분리불안 증상과 완화 방법", d: "애착이 강한 품종에 흔한 분리불안 — 자가진단과 둔감화 훈련.", e: "🏠", m: "행동·훈련", u: "posts/dog-separation-anxiety" };
+  var potty = { t: "강아지 배변훈련 실패 없이 하는 법 (5단계)", d: "칭찬 기반 5단계 배변훈련.", e: "🚽", m: "행동·훈련", u: "posts/dog-potty-training" };
+  var walk = { t: "강아지 산책 언제부터, 얼마나 시킬까", d: "크기별 산책량과 여름·겨울 주의사항.", e: "🚶", m: "생활 정보", u: "posts/dog-walking-guide" };
+  var foodCalc = { t: "강아지 사료 급여량 계산하는 법 (+계산기)", d: "체중·나이·중성화 여부로 하루 급여량 계산.", e: "🧮", m: "사료·용품", u: "posts/dog-food-calculator" };
+  var heat = { t: "강아지 여름철 더위·열사병 관리법", d: "코가 짧은 단두종이 특히 취약 — 응급 신호와 처치.", e: "☀️", m: "건강·증상", u: "posts/dog-summer-heatstroke" };
+  var kitten = { t: "새끼 고양이 키우기 첫 주 체크리스트", d: "준비물, 첫날 적응, 나이별 먹이기, 첫 병원 방문.", e: "🍼", m: "생활 정보", u: "posts/kitten-first-week" };
+  var catVac = { t: "고양이 예방접종, 언제 무엇을 맞출까", d: "종합백신(FVRCP) 일정표와 실내묘 접종의 필요성.", e: "🩺", m: "생활 정보", u: "posts/cat-vaccination" };
+  var catFood = { t: "고양이 사료 고르는 기준 5가지", d: "비만·비뇨기 관리에 중요한 사료 선택 기준.", e: "🐟", m: "사료·용품", u: "posts/cat-food-guide" };
+  var kidney = { t: "고양이 신부전 초기 증상 알아보기", d: "노령묘 최다 질환 — 초기 신호와 조기 발견법.", e: "💧", m: "건강·증상", u: "posts/cat-kidney-disease" };
 
   // 개별 품종 심화 글
-  var maltese = { t: "말티즈 키우기 완벽 가이드", d: "성격·수명·주의할 질병·관리법을 한 번에.", e: "🐶", m: "품종 심화", u: "posts/breed-maltese.html" };
-  var poodle = { t: "토이푸들 키우기 완벽 가이드", d: "지능·훈련·미용·질병까지 완벽 정리.", e: "🐩", m: "품종 심화", u: "posts/breed-poodle.html" };
-  var pom = { t: "포메라니안 키우기 완벽 가이드", d: "기관허탈·슬개골·털 관리 등 필수 정보.", e: "🦊", m: "품종 심화", u: "posts/breed-pomeranian.html" };
-  var korat = { t: "코리안 숏헤어(코숏) 키우기 완벽 가이드", d: "성격·수명·건강 관리와 입양 방법.", e: "🐱", m: "품종 심화", u: "posts/breed-korat.html" };
-  var russian = { t: "러시안블루 키우기 완벽 가이드", d: "조용한 성격, 건강, 알레르기 특성까지.", e: "🩵", m: "품종 심화", u: "posts/breed-russian-blue.html" };
-  var scottish = { t: "스코티시폴드 키우기 완벽 가이드", d: "접힌 귀의 진실 — 입양 전 꼭 알아야 할 것.", e: "🐈", m: "품종 심화", u: "posts/breed-scottish-fold.html" };
-  var shihtzu = { t: "시츄 키우기 완벽 가이드", d: "느긋하고 짖음 적은 성격, 단두종 관리까지.", e: "🐶", m: "품종 심화", u: "posts/breed-shihtzu.html" };
-  var bichon = { t: "비숑 프리제 키우기 완벽 가이드", d: "사교적인 솜뭉치 — 성격·질병·미용 관리.", e: "🐩", m: "품종 심화", u: "posts/breed-bichon.html" };
-  var golden = { t: "골든리트리버 키우기 완벽 가이드", d: "온순한 대형견 — 성격·질병·산책 관리.", e: "🦮", m: "품종 심화", u: "posts/breed-golden.html" };
-  var persian = { t: "페르시안 고양이 키우기 완벽 가이드", d: "우아한 장모 — 성격·유전병·털 관리.", e: "🐱", m: "품종 심화", u: "posts/breed-persian.html" };
-  var british = { t: "브리티시 숏헤어 키우기 완벽 가이드", d: "독립적이고 느긋 — 1인 가구 추천 품종.", e: "🐱", m: "품종 심화", u: "posts/breed-british.html" };
-  var ragdoll = { t: "랙돌 키우기 완벽 가이드", d: "안기는 순둥이 대형묘 — 성격·질병·털 관리.", e: "🐈", m: "품종 심화", u: "posts/breed-ragdoll.html" };
+  var maltese = { t: "말티즈 키우기 완벽 가이드", d: "성격·수명·주의할 질병·관리법을 한 번에.", e: "🐶", m: "품종 심화", u: "posts/breed-maltese" };
+  var poodle = { t: "토이푸들 키우기 완벽 가이드", d: "지능·훈련·미용·질병까지 완벽 정리.", e: "🐩", m: "품종 심화", u: "posts/breed-poodle" };
+  var pom = { t: "포메라니안 키우기 완벽 가이드", d: "기관허탈·슬개골·털 관리 등 필수 정보.", e: "🦊", m: "품종 심화", u: "posts/breed-pomeranian" };
+  var korat = { t: "코리안 숏헤어(코숏) 키우기 완벽 가이드", d: "성격·수명·건강 관리와 입양 방법.", e: "🐱", m: "품종 심화", u: "posts/breed-korat" };
+  var russian = { t: "러시안블루 키우기 완벽 가이드", d: "조용한 성격, 건강, 알레르기 특성까지.", e: "🩵", m: "품종 심화", u: "posts/breed-russian-blue" };
+  var scottish = { t: "스코티시폴드 키우기 완벽 가이드", d: "접힌 귀의 진실 — 입양 전 꼭 알아야 할 것.", e: "🐈", m: "품종 심화", u: "posts/breed-scottish-fold" };
+  var shihtzu = { t: "시츄 키우기 완벽 가이드", d: "느긋하고 짖음 적은 성격, 단두종 관리까지.", e: "🐶", m: "품종 심화", u: "posts/breed-shihtzu" };
+  var bichon = { t: "비숑 프리제 키우기 완벽 가이드", d: "사교적인 솜뭉치 — 성격·질병·미용 관리.", e: "🐩", m: "품종 심화", u: "posts/breed-bichon" };
+  var golden = { t: "골든리트리버 키우기 완벽 가이드", d: "온순한 대형견 — 성격·질병·산책 관리.", e: "🦮", m: "품종 심화", u: "posts/breed-golden" };
+  var persian = { t: "페르시안 고양이 키우기 완벽 가이드", d: "우아한 장모 — 성격·유전병·털 관리.", e: "🐱", m: "품종 심화", u: "posts/breed-persian" };
+  var british = { t: "브리티시 숏헤어 키우기 완벽 가이드", d: "독립적이고 느긋 — 1인 가구 추천 품종.", e: "🐱", m: "품종 심화", u: "posts/breed-british" };
+  var ragdoll = { t: "랙돌 키우기 완벽 가이드", d: "안기는 순둥이 대형묘 — 성격·질병·털 관리.", e: "🐈", m: "품종 심화", u: "posts/breed-ragdoll" };
 
   window.BREED_DATA = {
     // 강아지
