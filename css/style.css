@@ -197,6 +197,62 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   position: relative;
   z-index: 1;
 }
+.hero-chips {
+  margin-top: 1.1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-chips a {
+  background: #fff;
+  border: 1.5px solid var(--line);
+  border-radius: var(--pill);
+  padding: 0.4rem 0.95rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: border-color .15s var(--ease), background .15s var(--ease);
+}
+.hero-chips a:hover { border-color: var(--orange); text-decoration: none; background: #fffdfa; }
+
+/* ---------- 홈: 전면 색 밴드 (Finn 리듬) ---------- */
+.band { padding: 2.6rem 0 3rem; }
+.band .section-title { margin-top: 0; }
+.band-white { background: var(--card); }
+.band-blush { background: #fceef1; }
+.band-sky   { background: #edf4fd; }
+.band-navy  { background: var(--navy); }
+.band-sub { margin: -0.8rem 0 1.4rem; color: var(--muted); }
+.band-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.3rem;
+}
+.band-head .section-title { margin: 0; }
+.more-link { font-weight: 700; white-space: nowrap; }
+.more-cats {
+  margin-top: 1.8rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.more-cats a { font-weight: 600; }
+.band-navy .section-title { color: #fff; }
+.band-navy .widget { border-color: transparent; }
+.navy-cta {
+  margin-top: 1.6rem;
+  text-align: center;
+  color: #b9b4e0;
+  font-size: 0.95rem;
+}
+.navy-cta a { color: #ded9ff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.navy-cta a:hover { color: #fff; }
+.home .site-footer { margin-top: 0; }
 
 /* 앵커 점프 시 고정 헤더에 제목이 가리지 않도록 */
 .section-title[id], .article h2[id] { scroll-margin-top: 4.5rem; }
@@ -852,6 +908,8 @@ th {
   .home-hero::before, .home-hero::after { font-size: 4.5rem; }
   .article h1 { font-size: 1.55rem; }
   .section-title { font-size: 1.3rem; }
+  .band { padding: 2rem 0 2.4rem; }
+  .hero-chips a { font-size: 0.85rem; padding: 0.35rem 0.8rem; }
 }
 
 /* ---------- 모션 최소화 존중 ---------- */
