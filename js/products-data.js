@@ -59,7 +59,9 @@ window.PRODUCTS = [
     listPrice: "251,000원",
     salePrice: "52,700원",
     discount: "79%",
-    url: "https://link.coupang.com/a/fiZiJZd2mi",
+    rating: 5.0,
+    reviews: 1047,
+    url: "https://link.coupang.com/a/fq7V44Ma7M",
     tag: "급식·물",
     date: "2026.07.12"
   },
