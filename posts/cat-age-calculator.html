@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>고양이 나이 계산기 — 사람 나이로 몇 살일까? (변환표 포함)</title>
+  <meta name="description" content="고양이 나이를 사람 나이로 바로 변환해 보세요. 첫 1년=15살 공식과 나이 변환표, 생애 단계별(새끼~노령묘) 관리 포인트까지 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="고양이 나이 계산기 — 사람 나이로 몇 살일까?">
+  <meta property="og:description" content="고양이 나이 → 사람 나이 자동 변환기와 변환표, 생애 단계별 관리 포인트.">
+  <link rel="canonical" href="https://daengnyangpedia.com/posts/cat-age-calculator">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "고양이 나이 계산기 — 사람 나이로 몇 살일까? (변환표 포함)",
+    "description": "고양이 나이를 사람 나이로 변환하는 공식과 자동 계산기, 생애 단계별 관리 포인트",
+    "datePublished": "2026-07-16",
+    "author": { "@type": "Organization", "name": "댕냥피디아" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "고양이 1살은 사람 나이로 몇 살인가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "고양이는 첫 1년 동안 매우 빠르게 성장해, 1살이면 사람 나이 약 15살에 해당합니다. 2살이 되면 약 24살이 되고, 이후에는 1년에 사람 나이로 약 4살씩 늘어납니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "고양이는 몇 살부터 노령묘인가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "일반적으로 11살(사람 나이 약 60살)부터 노령묘로 봅니다. 7~10살은 성숙기로, 이때부터 신장·치아 등 건강검진 주기를 늘려주는 것이 좋습니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "실내 고양이의 평균 수명은 얼마나 되나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "실내에서 생활하는 고양이는 평균 12~18년 정도 살며, 20년 이상 사는 경우도 드물지 않습니다. 정기 검진과 체중 관리가 수명에 큰 영향을 줍니다." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">🐾 댕냥피디아</a>
+    <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+    <nav class="site-nav">
+      <a href="../breeds">품종 백과</a>
+      <a href="../health">건강·증상</a>
+      <a href="../food">사료·용품</a>
+      <a href="../training">행동·훈련</a>
+      <a href="../life">생활 정보</a>
+      <a href="../recommend">추천 아이템</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<article class="article">
+  <p class="breadcrumb"><a href="/">홈</a> › <a href="../life">생활 정보</a></p>
+  <h1>고양이 나이 계산기 — 사람 나이로 몇 살일까?</h1>
+  <p class="post-meta">생활 정보 · 2026년 7월 16일</p>
+
+  <p class="lead">
+    고양이는 첫 1~2년 동안 사람보다 훨씬 빠르게 자라고, 그 뒤로는 1년에 사람 나이로
+    약 4살씩 나이를 먹습니다. 아래 계산기에 나이만 입력하면 <strong>사람 나이와 생애 단계</strong>를
+    바로 확인할 수 있어요. 즐겨찾기해 두고 매년 확인해 보세요. 🐱
+  </p>
+
+  <div class="widget">
+    <h3>🧮 고양이 나이 변환기</h3>
+    <label for="cat-age">고양이 나이 (년)</label>
+    <input type="number" id="cat-age" min="0" max="30" step="0.5" placeholder="예: 3">
+    <button id="cat-age-btn" type="button">사람 나이로 변환하기</button>
+    <div class="result" id="cat-age-result"></div>
+    <p class="note">※ 일반적인 환산 공식 기준의 근사치이며, 품종·건강 상태에 따라 다를 수 있습니다.</p>
+  </div>
+
+  <div class="ad-slot">광고 영역 (애드센스 승인 후 코드 삽입)</div>
+
+  <h2 id="formula">계산 공식 — 첫 1년이 15살</h2>
+  <p>
+    고양이 나이 환산에 가장 널리 쓰이는 공식은 다음과 같습니다.
+  </p>
+  <ul>
+    <li><strong>첫 1년</strong> = 사람 나이 약 <strong>15살</strong> (급성장기)</li>
+    <li><strong>두 번째 해</strong> = +9살 → 2살이면 약 <strong>24살</strong></li>
+    <li><strong>이후 매년</strong> = 약 <strong>+4살씩</strong></li>
+  </ul>
+  <p>
+    강아지와 달리 고양이는 체구 차이가 크지 않아, 품종·크기에 관계없이 대체로 같은
+    공식을 사용합니다.
+  </p>
+
+  <h2 id="table">고양이 나이 변환표</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>고양이 나이</th><th>사람 나이</th><th>생애 단계</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>6개월</td><td>약 8살</td><td>새끼 (Kitten)</td></tr>
+        <tr><td>1살</td><td>약 15살</td><td>청소년기 (Junior)</td></tr>
+        <tr><td>2살</td><td>약 24살</td><td>청년기 (Junior)</td></tr>
+        <tr><td>3살</td><td>약 28살</td><td>한창때 (Prime)</td></tr>
+        <tr><td>5살</td><td>약 36살</td><td>한창때 (Prime)</td></tr>
+        <tr><td>7살</td><td>약 44살</td><td>성숙기 (Mature)</td></tr>
+        <tr><td>10살</td><td>약 56살</td><td>성숙기 (Mature)</td></tr>
+        <tr><td>12살</td><td>약 64살</td><td>노령기 (Senior)</td></tr>
+        <tr><td>15살</td><td>약 76살</td><td>초고령기 (Geriatric)</td></tr>
+        <tr><td>20살</td><td>약 96살</td><td>초고령기 (Geriatric)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="stage">생애 단계별 관리 포인트</h2>
+  <h3>새끼~청년기 (0~2살)</h3>
+  <p>
+    성장이 빠른 시기라 <strong>예방접종과 중성화, 사회화</strong>가 핵심입니다.
+    접종 일정은 <a href="cat-vaccination">고양이 예방접종 가이드</a>를 참고하세요.
+  </p>
+  <h3>한창때~성숙기 (3~10살)</h3>
+  <p>
+    활동량이 줄면서 <strong>비만</strong>이 오기 쉬운 시기입니다. 사료량을 점검하고
+    (<a href="cat-food-guide">사료 고르는 기준</a>), 7살부터는 건강검진을 <strong>연 1~2회</strong>로
+    늘려주세요.
+  </p>
+  <h3>노령기 이후 (11살~)</h3>
+  <p>
+    사람 나이로 60살을 넘어서는 시기입니다. 특히 <strong>신장 질환</strong>이 흔해지므로
+    물 마시는 양과 소변량 변화를 눈여겨보세요. (<a href="cat-kidney-disease">신부전 초기 증상</a>)
+  </p>
+
+  <div class="box-tip">
+    💡 <strong>팁</strong> — 고양이는 아픈 티를 잘 내지 않습니다. 나이가 들수록 "행동 변화"
+    (숨는 시간 증가, 점프 회피, 식욕 변화)가 건강 이상의 첫 신호인 경우가 많아요.
+  </div>
+
+  <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
+  <div class="faq">
+    <details>
+      <summary>Q. 고양이 1살은 사람 나이로 몇 살인가요?</summary>
+      <p>약 15살입니다. 2살이면 약 24살이 되고, 이후로는 1년에 약 4살씩 늘어납니다.</p>
+    </details>
+    <details>
+      <summary>Q. 몇 살부터 노령묘로 봐야 하나요?</summary>
+      <p>일반적으로 11살(사람 나이 약 60살)부터 노령기로 봅니다. 7살부터는 성숙기로
+      검진 주기를 늘리는 것이 좋습니다.</p>
+    </details>
+    <details>
+      <summary>Q. 실내 고양이는 보통 몇 년을 사나요?</summary>
+      <p>평균 12~18년이며, 관리에 따라 20년 이상 사는 경우도 드물지 않습니다.
+      정기 검진과 체중 관리가 가장 큰 변수입니다.</p>
+    </details>
+  </div>
+
+  <div class="related">
+    <strong>📎 함께 보면 좋은 글</strong>
+    <ul>
+      <li><a href="cat-vaccination">고양이 예방접종, 언제 무엇을 맞출까</a></li>
+      <li><a href="cat-kidney-disease">고양이 신부전 초기 증상 알아보기</a></li>
+      <li><a href="kitten-first-week">새끼 고양이 키우기 첫 주 체크리스트</a></li>
+    </ul>
+  </div>
+
+  <div class="disclaimer-box">
+    ⚕️ <strong>안내</strong> — 본 계산기는 일반적인 환산 공식 기준의 참고용이며, 수의학적
+    진단을 대체하지 않습니다. 건강 이상이 의심되면 수의사의 진료를 받으세요.
+  </div>
+
+  <div class="ad-slot">광고 영역 (애드센스 승인 후 코드 삽입)</div>
+</article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-links">
+      <a href="../about">소개</a> ·
+      <a href="../privacy">개인정보처리방침</a> ·
+      <a href="../disclaimer">이용약관·면책</a> ·
+      <a href="../contact">문의하기</a>
+    </p>
+    <p>© 2026 댕냥피디아. 본 사이트의 정보는 일반적인 참고용이며, 수의사의 진단·진료를 대체하지 않습니다.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// 고양이 나이 → 사람 나이 변환기
+document.getElementById("cat-age-btn").addEventListener("click", function () {
+  var age = parseFloat(document.getElementById("cat-age").value);
+  var box = document.getElementById("cat-age-result");
+
+  if (isNaN(age) || age <= 0 || age > 30) {
+    box.textContent = "고양이 나이를 0.5~30 사이로 입력해 주세요.";
+    box.classList.add("show");
+    return;
+  }
+
+  var human;
+  if (age <= 1) {
+    human = 15 * age;
+  } else if (age <= 2) {
+    human = 15 + 9 * (age - 1);
+  } else {
+    human = 24 + 4 * (age - 2);
+  }
+
+  var stage =
+    age < 1 ? "새끼 (Kitten)" :
+    age < 3 ? "청년기 (Junior)" :
+    age < 7 ? "한창때 (Prime)" :
+    age < 11 ? "성숙기 (Mature)" :
+    age < 15 ? "노령기 (Senior)" : "초고령기 (Geriatric)";
+
+  box.innerHTML = "사람 나이로 약 <strong>" + Math.round(human) + "세</strong> — " + stage + "에 해당해요.";
+  box.classList.add("show");
+});
+</script>
+</body>
+</html>
