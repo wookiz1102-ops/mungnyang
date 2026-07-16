@@ -14,6 +14,19 @@
 //   date      : 등록일 (선택)
 window.PRODUCTS = [
   {
+    img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/946481448222160-136d9fb0-a5ed-4bd1-a427-5d730c7060c4.jpg",
+    name: "딩동펫 반려동물 썬베드 쿨방석",
+    desc: "바닥 열기를 피하는 통풍 썬베드형 쿨방석. 땀을 못 흘리는 아이들의 여름나기 필수템, 열사병 예방의 기본.",
+    listPrice: "15,140원",
+    salePrice: "13,320원",
+    discount: "12%",
+    rating: 4.5,
+    reviews: 5404,
+    url: "https://link.coupang.com/a/fq800ih1bM",
+    tag: "하우스·외출",
+    date: "2026.07.17"
+  },
+  {
     img: "https://thumbnail.coupangcdn.com/thumbnails/remote/492x492ex/image/vendor_inventory/a2ba/8fcb9d945281707f33e4ad454017ed33de56a75079d90087034527c4b27c.jpg",
     name: "이리로 강아지 슬개골 예방 미끄럼방지 방수 접이식 타일 매트",
     desc: "미끄러운 바닥은 슬개골 탈구의 주범. 방수·접이식 타일 매트로 무릎 부담을 덜어주는 소형견 필수템.",
