@@ -1,0 +1,5 @@
+# 자동 생성 초안 (검토 전 — 배포 제외)
+drafts/
+
+# Claude Code 로컬 개인 설정 (공유 안 함)
+.claude/settings.local.json

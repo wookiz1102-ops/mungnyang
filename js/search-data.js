@@ -5,211 +5,211 @@ window.SEARCH_DATA = [
   {
     t: "강아지 양치질 하는 법 — 치석·치주염 예방 (칫솔·치약 고르기)",
     d: "입냄새는 치주 질환 신호 — 사람 치약 금지 이유와 거부하는 아이 단계별 양치법.",
-    c: "health", u: "posts/dog-dental-care.html", e: "🦷", m: "2026.07.13",
+    c: "health", u: "posts/dog-dental-care", e: "🦷", m: "2026.07.13",
     k: "양치 양치질 이빨 치아 치석 치태 플라크 치주염 잇몸 잇몸병 입냄새 구취 강아지치약 강아지칫솔 덴탈껌 스케일링 무마취 자일리톨 불소"
   },
   {
     t: "고양이 방광염·요로결석 증상과 응급 신호 (수컷 요도폐색 주의)",
     d: "화장실을 자주 가는데 소변이 안 나온다면 응급 — FLUTD 신호와 예방법.",
-    c: "health", u: "posts/cat-cystitis.html", e: "🚻", m: "2026.07.12",
+    c: "health", u: "posts/cat-cystitis", e: "🚻", m: "2026.07.12",
     k: "방광염 요로결석 FLUTD 하부요로계 요도폐색 혈뇨 소변 배뇨 오줌 화장실 특발성방광염 FIC 결석 수컷 응급 신부전"
   },
   {
     t: "강아지 심장사상충 예방, 언제부터 어떻게",
     d: "모기 한 마리로 감염 — 예방약 종류 비교와 연중 예방이 필요한 이유.",
-    c: "health", u: "posts/dog-heartworm.html", e: "🦟", m: "2026.07.12",
+    c: "health", u: "posts/dog-heartworm", e: "🦟", m: "2026.07.12",
     k: "심장사상충 하트웜 모기 예방약 하트가드 넥스가드 레볼루션 애드보킷 먹는약 바르는약 주사 구충 실내견 연중예방"
   },
   {
     t: "초보자에게 좋은 강아지 품종 TOP 10",
     d: "첫 반려견, 어떤 품종이 좋을까? 성격·털빠짐·활동량 기준으로 비교했습니다.",
-    c: "breeds", u: "posts/beginner-dog-breeds.html", e: "🐾", m: "2026.07.08",
+    c: "breeds", u: "posts/beginner-dog-breeds", e: "🐾", m: "2026.07.08",
     k: "말티즈 푸들 비숑 시츄 포메라니안 리트리버 슈나우저 파피용 첫 반려견 입양 아파트 털빠짐"
   },
   {
     t: "처음 키우기 좋은 고양이 품종 정리",
     d: "첫 고양이로 무리 없는 품종 8가지 — 성격·털빠짐·유전 질환 주의점까지.",
-    c: "breeds", u: "posts/cat-breeds-beginner.html", e: "🐱", m: "2026.07.11",
+    c: "breeds", u: "posts/cat-breeds-beginner", e: "🐱", m: "2026.07.11",
     k: "코숏 코리안숏헤어 러시안블루 브리티시 랙돌 먼치킨 스코티시폴드 페르시안 입양 분양"
   },
   {
     t: "강아지 설사, 원인과 집에서 대처하는 법",
     d: "당장 병원에 가야 할 위험 신호와 집에서 지켜봐도 되는 경우를 구분해 드립니다.",
-    c: "health", u: "posts/dog-diarrhea.html", e: "💩", m: "2026.07.09",
+    c: "health", u: "posts/dog-diarrhea", e: "💩", m: "2026.07.09",
     k: "묽은 변 혈변 금식 장염 파보 물설사 배탈"
   },
   {
     t: "고양이가 구토할 때 확인해야 할 것",
     d: "헤어볼인지 질병인지 — 구토물 상태별 구분법과 병원에 가야 할 기준.",
-    c: "health", u: "posts/cat-vomiting.html", e: "🤢", m: "2026.07.11",
+    c: "health", u: "posts/cat-vomiting", e: "🤢", m: "2026.07.11",
     k: "토 헤어볼 노란 거품 공복 게워냄 신부전"
   },
   {
     t: "강아지가 먹으면 안 되는 음식 총정리",
     d: "초콜릿, 포도, 자일리톨 — 위험도별 목록과 실수로 먹었을 때 대처법.",
-    c: "health", u: "posts/dog-forbidden-foods.html", e: "🚫", m: "2026.07.11",
+    c: "health", u: "posts/dog-forbidden-foods", e: "🚫", m: "2026.07.11",
     k: "초콜릿 포도 양파 마늘 자일리톨 마카다미아 중독 금지음식 위험한 음식 사람음식"
   },
   {
     t: "고양이에게 위험한 음식·식물 정리",
     d: "백합은 꽃병 물만으로도 응급 — 집사가 반드시 알아야 할 위험 목록.",
-    c: "health", u: "posts/cat-toxic-foods.html", e: "🌷", m: "2026.07.11",
+    c: "health", u: "posts/cat-toxic-foods", e: "🌷", m: "2026.07.11",
     k: "백합 튤립 몬스테라 포토스 식물 독성 꽃 참치 우유 중독"
   },
   {
     t: "강아지 사료 급여량 계산하는 법 (+자동 계산기)",
     d: "체중·나이·중성화 여부로 하루 급여량을 바로 계산해 보세요.",
-    c: "food", u: "posts/dog-food-calculator.html", e: "🧮", m: "2026.07.10",
+    c: "food", u: "posts/dog-food-calculator", e: "🧮", m: "2026.07.10",
     k: "급여량 계산기 칼로리 몇그램 사료량 밥양 비만 다이어트"
   },
   {
     t: "고양이 사료 고르는 기준 5가지",
     d: "단백질·원료·습식 비율·AAFCO — 성분표 보는 법부터 사료 교체 방법까지.",
-    c: "food", u: "posts/cat-food-guide.html", e: "🐟", m: "2026.07.11",
+    c: "food", u: "posts/cat-food-guide", e: "🐟", m: "2026.07.11",
     k: "습식 건식 단백질 키튼 사료 추천 고르기 교체 타우린"
   },
   {
     t: "강아지 배변훈련 실패 없이 하는 법 (5단계)",
     d: "혼내지 않고 칭찬으로 완성하는 배변훈련. 실패하는 집의 공통점과 단계별 해결법.",
-    c: "training", u: "posts/dog-potty-training.html", e: "🚽", m: "2026.07.11",
+    c: "training", u: "posts/dog-potty-training", e: "🚽", m: "2026.07.11",
     k: "배변판 패드 대소변 화장실 훈련 실수 오줌"
   },
   {
     t: "고양이 화장실 안 가릴 때 해결법",
     d: "건강 문제부터 화장실 환경까지 — 원인별 체크리스트로 해결하는 법.",
-    c: "training", u: "posts/cat-litter-training.html", e: "🐈", m: "2026.07.11",
+    c: "training", u: "posts/cat-litter-training", e: "🐈", m: "2026.07.11",
     k: "모래 배뇨 마킹 스프레이 소변 이불 방광염"
   },
   {
     t: "강아지 분리불안 증상과 완화 방법",
     d: "자가진단 체크리스트와 둔감화 훈련 — 혼자 있어도 편안한 강아지 만들기.",
-    c: "training", u: "posts/dog-separation-anxiety.html", e: "🏠", m: "2026.07.11",
+    c: "training", u: "posts/dog-separation-anxiety", e: "🏠", m: "2026.07.11",
     k: "짖음 하울링 혼자 외출 불안 문제행동 파괴"
   },
   {
     t: "강아지 예방접종 시기와 종류 총정리",
     d: "생후 6주부터 시작하는 접종 일정표와 접종 후 주의사항, 비용까지.",
-    c: "life", u: "posts/dog-vaccination.html", e: "💉", m: "2026.07.11",
+    c: "life", u: "posts/dog-vaccination", e: "💉", m: "2026.07.11",
     k: "접종 백신 종합백신 광견병 켄넬코프 5차 항체 병원"
   },
   {
     t: "고양이 예방접종, 언제 무엇을 맞출까",
     d: "종합백신(FVRCP) 일정표와 실내묘에게도 접종이 필요한 이유.",
-    c: "life", u: "posts/cat-vaccination.html", e: "🩺", m: "2026.07.11",
+    c: "life", u: "posts/cat-vaccination", e: "🩺", m: "2026.07.11",
     k: "접종 백신 종합백신 범백 백혈병 광견병 실내묘"
   },
   {
     t: "새끼 고양이 키우기 첫 주 체크리스트",
     d: "준비물, 첫날 적응, 나이별 먹이기, 첫 병원 방문까지 — 입양 첫 주 가이드.",
-    c: "life", u: "posts/kitten-first-week.html", e: "🍼", m: "2026.07.11",
+    c: "life", u: "posts/kitten-first-week", e: "🍼", m: "2026.07.11",
     k: "아기 고양이 입양 준비물 분유 이유식 적응 사회화"
   },
   {
     t: "강아지 산책 언제부터, 얼마나 시킬까",
     d: "접종과 산책 시작 시기, 크기별 산책량, 산책 예절과 법규.",
-    c: "life", u: "posts/dog-walking-guide.html", e: "🚶", m: "2026.07.11",
+    c: "life", u: "posts/dog-walking-guide", e: "🚶", m: "2026.07.11",
     k: "산책 시간 목줄 인식표 여름 겨울 열사병 운동량"
   },
   {
     t: "강아지 펫보험 필요할까? 가입 전 체크리스트 7가지",
     d: "보장 내용과 보험료 수준, 가입 전 확인할 7가지 — 유리한 경우와 아닌 경우.",
-    c: "life", u: "posts/dog-pet-insurance.html", e: "🛡️", m: "2026.07.12",
+    c: "life", u: "posts/dog-pet-insurance", e: "🛡️", m: "2026.07.12",
     k: "보험 보험료 보장 자기부담금 면책 펫적금 가입"
   },
   {
     t: "강아지 중성화 수술, 시기와 비용 총정리",
     d: "수컷·암컷별 적정 시기와 비용 범위, 수술 전후 관리까지.",
-    c: "health", u: "posts/dog-neutering.html", e: "✂️", m: "2026.07.12",
+    c: "health", u: "posts/dog-neutering", e: "✂️", m: "2026.07.12",
     k: "중성화 수술 비용 시기 넥카라 발정 마킹"
   },
   {
     t: "강아지 슬개골 탈구, 증상과 단계별 대처",
     d: "깽깽이걸음은 신호 — 1~4기 단계, 수술 기준과 비용, 예방법.",
-    c: "health", u: "posts/dog-patella-luxation.html", e: "🦴", m: "2026.07.12",
+    c: "health", u: "posts/dog-patella-luxation", e: "🦴", m: "2026.07.12",
     k: "슬개골 탈구 무릎 깽깽이 파행 수술 관절 미끄럼"
   },
   {
     t: "고양이 신부전 초기 증상 알아보기",
     d: "물을 많이 마신다면 신호일 수 있습니다 — 초기 증상과 조기 발견법.",
-    c: "health", u: "posts/cat-kidney-disease.html", e: "💧", m: "2026.07.12",
+    c: "health", u: "posts/cat-kidney-disease", e: "💧", m: "2026.07.12",
     k: "신부전 신장 다음다뇨 크레아티닌 처방식 노령묘 검진"
   },
   {
     t: "강아지 여름철 더위·열사병 관리법",
     d: "강아지는 땀을 못 흘립니다 — 응급 신호, 처치 순서, 여름 관리 팁.",
-    c: "health", u: "posts/dog-summer-heatstroke.html", e: "☀️", m: "2026.07.12",
+    c: "health", u: "posts/dog-summer-heatstroke", e: "☀️", m: "2026.07.12",
     k: "여름 더위 열사병 헐떡임 아스팔트 차 단두종 쿨매트"
   },
   {
     t: "말티즈 키우기 완벽 가이드",
     d: "성격·수명·주의할 질병·관리법을 한 번에 정리했습니다.",
-    c: "breeds", u: "posts/breed-maltese.html", e: "🐶", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-maltese", e: "🐶", m: "2026.07.12",
     k: "말티즈 성격 수명 눈물자국 슬개골 분리불안 미용 흰 강아지"
   },
   {
     t: "토이푸들 키우기 완벽 가이드",
     d: "지능·훈련·미용·질병까지 완벽 정리.",
-    c: "breeds", u: "posts/breed-poodle.html", e: "🐩", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-poodle", e: "🐩", m: "2026.07.12",
     k: "토이푸들 푸들 지능 훈련 미용 외이염 슬개골 털"
   },
   {
     t: "포메라니안 키우기 완벽 가이드",
     d: "기관허탈·슬개골·털 관리 등 필수 정보.",
-    c: "breeds", u: "posts/breed-pomeranian.html", e: "🦊", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-pomeranian", e: "🦊", m: "2026.07.12",
     k: "포메라니안 포메 기관허탈 슬개골 이중모 짖음 탈모 여우"
   },
   {
     t: "코리안 숏헤어(코숏) 키우기 완벽 가이드",
     d: "성격·수명·건강 관리와 입양 방법.",
-    c: "breeds", u: "posts/breed-korat.html", e: "🐱", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-korat", e: "🐱", m: "2026.07.12",
     k: "코숏 코리안숏헤어 치즈 고등어 삼색 입양 보호소 건강"
   },
   {
     t: "러시안블루 키우기 완벽 가이드",
     d: "조용한 성격, 건강, 알레르기 특성까지.",
-    c: "breeds", u: "posts/breed-russian-blue.html", e: "🩵", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-russian-blue", e: "🩵", m: "2026.07.12",
     k: "러시안블루 은회색 조용 알레르기 저알레르기 요로결석 장수"
   },
   {
     t: "스코티시폴드 키우기 완벽 가이드",
     d: "접힌 귀의 진실 — 입양 전 꼭 알아야 할 유전 질환.",
-    c: "breeds", u: "posts/breed-scottish-fold.html", e: "🐈", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-scottish-fold", e: "🐈", m: "2026.07.12",
     k: "스코티시폴드 접힌귀 골연골이형성증 관절 유전병 스코티쉬"
   },
   {
     t: "시츄 키우기 완벽 가이드",
     d: "느긋하고 짖음 적은 성격, 단두종 관리까지.",
-    c: "breeds", u: "posts/breed-shihtzu.html", e: "🐶", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-shihtzu", e: "🐶", m: "2026.07.12",
     k: "시츄 단두종 안구 눈 슬개골 더위 짖음 아파트 느긋"
   },
   {
     t: "비숑 프리제 키우기 완벽 가이드",
     d: "사교적인 솜뭉치 — 성격·질병·미용 관리.",
-    c: "breeds", u: "posts/breed-bichon.html", e: "🐩", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-bichon", e: "🐩", m: "2026.07.12",
     k: "비숑 프리제 눈물자국 슬개골 방광결석 미용 곱슬 사교적 솜사탕"
   },
   {
     t: "골든리트리버 키우기 완벽 가이드",
     d: "온순한 대형견 — 성격·질병·산책 관리.",
-    c: "breeds", u: "posts/breed-golden.html", e: "🦮", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-golden", e: "🦮", m: "2026.07.12",
     k: "골든리트리버 대형견 고관절 이형성증 산책 온순 안내견 털빠짐"
   },
   {
     t: "페르시안 고양이 키우기 완벽 가이드",
     d: "우아한 장모 — 성격·유전병·털 관리.",
-    c: "breeds", u: "posts/breed-persian.html", e: "🐱", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-persian", e: "🐱", m: "2026.07.12",
     k: "페르시안 장모 다낭신 PKD 단두종 눈물 빗질 헤어볼 조용"
   },
   {
     t: "브리티시 숏헤어 키우기 완벽 가이드",
     d: "독립적이고 느긋 — 1인 가구 추천 품종.",
-    c: "breeds", u: "posts/breed-british.html", e: "🐱", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-british", e: "🐱", m: "2026.07.12",
     k: "브리티시 숏헤어 브숏 독립적 비만 HCM 심근병증 다낭신 1인가구"
   },
   {
     t: "랙돌 키우기 완벽 가이드",
     d: "안기는 순둥이 대형묘 — 성격·질병·털 관리.",
-    c: "breeds", u: "posts/breed-ragdoll.html", e: "🐈", m: "2026.07.12",
+    c: "breeds", u: "posts/breed-ragdoll", e: "🐈", m: "2026.07.12",
     k: "랙돌 대형묘 순둥이 HCM 심근병증 장모 헤어볼 인형"
   }
 ];
