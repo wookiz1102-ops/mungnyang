@@ -153,7 +153,11 @@ function publishedSection() {
       ["log", "--since=7 days ago", "--diff-filter=A", "--name-only", "--pretty=format:", "--", "posts/"],
       { cwd: cfg.repo, encoding: "utf8" },
     );
-    const files = [...new Set(outText.split("\n").filter((l) => l.trim().endsWith(".html")))];
+    const files = [...new Set(
+      outText.split("\n")
+        .map((l) => l.trim())
+        .filter((l) => l.endsWith(".html") && !/(^|\/)_[^/]*$/.test(l)),
+    )];
     let out = `## ✍️ 이번 주 발행 (${files.length}편)\n`;
     for (const f of files)
       out += `- https://daengnyangpedia.com/${f.replace(/\.html$/, "")}\n`;
