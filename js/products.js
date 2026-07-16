@@ -33,6 +33,16 @@ document.addEventListener("DOMContentLoaded", function () {
       ? '<a class="product-thumb" href="' + esc(p.url) + '" rel="nofollow sponsored noopener" target="_blank">' +
         '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" loading="lazy"></a>'
       : "";
+    var rating = "";
+    var r = Number(p.rating);
+    var rv = Number(p.reviews);
+    if (r > 0) {
+      rating = '<div class="product-rating"><span class="rating-star">★</span> ' + r.toFixed(1) +
+        (rv > 0 ? ' <span class="rating-count">· 리뷰 ' + rv.toLocaleString("ko-KR") + "</span>" : "") +
+        "</div>";
+    } else if (rv > 0) {
+      rating = '<div class="product-rating"><span class="rating-count">리뷰 ' + rv.toLocaleString("ko-KR") + "개</span></div>";
+    }
     var price = "";
     if (p.salePrice) {
       price = '<div class="product-price">' +
@@ -46,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       (p.tag ? '<span class="product-tag">' + esc(p.tag) + "</span>" : "") +
       "<h3>" + esc(p.name) + "</h3>" +
       (p.desc ? "<p>" + esc(p.desc) + "</p>" : "") +
+      rating +
       price +
       (p.date ? '<span class="card-meta">' + esc(p.date) + "</span>" : "") +
       '<a class="buy-btn" href="' + esc(p.url) + '" rel="nofollow sponsored noopener" target="_blank">쿠팡에서 보기</a>' +
