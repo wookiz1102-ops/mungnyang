@@ -198,6 +198,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   z-index: 1;
 }
 
+/* 앵커 점프 시 고정 헤더에 제목이 가리지 않도록 */
+.section-title[id], .article h2[id] { scroll-margin-top: 4.5rem; }
+
 .section-title {
   font-size: 1.45rem;
   font-weight: 800;
