@@ -2,12 +2,6 @@
 // 개별 품종 심화 글을 발행하면 해당 품종 배열 맨 앞에 추가하세요.
 (function () {
   // 재사용 글 정의
-  var dogGuide = function (hash) {
-    return { t: "초보자에게 좋은 강아지 품종 TOP 10", d: "성격·털빠짐·활동량 비교표와 이 품종의 상세 설명.", e: "🐶", m: "품종 가이드", u: "posts/beginner-dog-breeds#" + hash };
-  };
-  var catGuide = function (hash) {
-    return { t: "처음 키우기 좋은 고양이 품종 정리", d: "성격·털빠짐·유전 질환 비교와 이 품종의 상세 설명.", e: "🐱", m: "품종 가이드", u: "posts/cat-breeds-beginner#" + hash };
-  };
   var patella = { t: "강아지 슬개골 탈구, 증상과 단계별 대처", d: "소형견이 특히 취약한 무릎 질환 — 단계별 대처와 예방법.", e: "🦴", m: "건강·증상", u: "posts/dog-patella-luxation" };
   var anxiety = { t: "강아지 분리불안 증상과 완화 방법", d: "애착이 강한 품종에 흔한 분리불안 — 자가진단과 둔감화 훈련.", e: "🏠", m: "행동·훈련", u: "posts/dog-separation-anxiety" };
   var potty = { t: "강아지 배변훈련 실패 없이 하는 법 (5단계)", d: "칭찬 기반 5단계 배변훈련.", e: "🚽", m: "행동·훈련", u: "posts/dog-potty-training" };
@@ -32,6 +26,12 @@
   var persian = { t: "페르시안 고양이 키우기 완벽 가이드", d: "우아한 장모 — 성격·유전병·털 관리.", e: "🐱", m: "품종 심화", u: "posts/breed-persian" };
   var british = { t: "브리티시 숏헤어 키우기 완벽 가이드", d: "독립적이고 느긋 — 1인 가구 추천 품종.", e: "🐱", m: "품종 심화", u: "posts/breed-british" };
   var ragdoll = { t: "랙돌 키우기 완벽 가이드", d: "안기는 순둥이 대형묘 — 성격·질병·털 관리.", e: "🐈", m: "품종 심화", u: "posts/breed-ragdoll" };
+  var cavalier = { t: "카바리에 킹 찰스 스패니얼 키우기 완벽 가이드", d: "온화함의 대명사 — 성격·수명·심장병 관리.", e: "🐶", m: "품종 심화", u: "posts/breed-cavalier" };
+  var papillon = { t: "파피용 키우기 완벽 가이드", d: "작지만 지능 최상위 — 성격·훈련·질병 관리.", e: "🦋", m: "품종 심화", u: "posts/breed-papillon" };
+  var schnauzer = { t: "미니어처 슈나우저 키우기 완벽 가이드", d: "수염 신사 — 성격·저지방 식이·췌장염 주의.", e: "🐶", m: "품종 심화", u: "posts/breed-schnauzer" };
+  var labrador = { t: "래브라도 리트리버 키우기 완벽 가이드", d: "온순한 대형견 — 운동·식탐·고관절 관리.", e: "🦮", m: "품종 심화", u: "posts/breed-labrador" };
+  var american = { t: "아메리칸 숏헤어 키우기 완벽 가이드", d: "튼튼하고 활발 — 심장병·비만 관리 포인트.", e: "🐱", m: "품종 심화", u: "posts/breed-american" };
+  var munchkin = { t: "먼치킨 고양이 키우기 완벽 가이드", d: "짧은 다리의 진실 — 관절·환경 관리.", e: "🐈", m: "품종 심화", u: "posts/breed-munchkin" };
 
   window.BREED_DATA = {
     // 강아지
@@ -39,19 +39,19 @@
     "b-poodle":    { name: "토이푸들", articles: [poodle, patella, potty] },
     "b-bichon":    { name: "비숑 프리제", articles: [bichon, patella, anxiety] },
     "b-shihtzu":   { name: "시츄", articles: [shihtzu, heat] },
-    "b-cavalier":  { name: "카바리에 킹 찰스 스패니얼", articles: [dogGuide("b-more")] },
-    "b-papillon":  { name: "파피용", articles: [dogGuide("b-more")] },
+    "b-cavalier":  { name: "카바리에 킹 찰스 스패니얼", articles: [cavalier, anxiety] },
+    "b-papillon":  { name: "파피용", articles: [papillon, patella, potty] },
     "b-pom":       { name: "포메라니안", articles: [pom, patella] },
-    "b-schnauzer": { name: "미니어처 슈나우저", articles: [dogGuide("b-more")] },
+    "b-schnauzer": { name: "미니어처 슈나우저", articles: [schnauzer, foodCalc] },
     "b-golden":    { name: "골든리트리버", articles: [golden, walk, foodCalc] },
-    "b-lab":       { name: "래브라도 리트리버", articles: [dogGuide("b-more"), walk, foodCalc] },
+    "b-lab":       { name: "래브라도 리트리버", articles: [labrador, walk, foodCalc] },
     // 고양이
     "c-korat":     { name: "코리안 숏헤어", articles: [korat, kitten, catVac] },
     "c-russian":   { name: "러시안블루", articles: [russian, catFood] },
     "c-british":   { name: "브리티시 숏헤어", articles: [british, catFood] },
-    "c-american":  { name: "아메리칸 숏헤어", articles: [catGuide("c-american")] },
+    "c-american":  { name: "아메리칸 숏헤어", articles: [american, catFood] },
     "c-ragdoll":   { name: "랙돌", articles: [ragdoll, kitten] },
-    "c-munchkin":  { name: "먼치킨", articles: [catGuide("c-more")] },
+    "c-munchkin":  { name: "먼치킨", articles: [munchkin, kitten] },
     "c-scottish":  { name: "스코티시폴드", articles: [scottish, kidney] },
     "c-persian":   { name: "페르시안", articles: [persian, kidney] }
   };
