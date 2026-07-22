@@ -420,6 +420,23 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   margin-bottom: 1.8rem;
   font-feature-settings: "tnum";
 }
+.breed-photo {
+  margin: 0 0 1.8rem;
+}
+.breed-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--r);
+  border: 1px solid var(--line);
+}
+.breed-photo figcaption {
+  margin-top: 0.5rem;
+  text-align: right;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
 .article .lead {
   background: var(--accent-bg);
   border: 1px solid var(--line);
