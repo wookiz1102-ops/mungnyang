@@ -5,6 +5,7 @@
   var patella = { t: "강아지 슬개골 탈구, 증상과 단계별 대처", d: "소형견이 특히 취약한 무릎 질환 — 단계별 대처와 예방법.", e: "🦴", m: "건강·증상", u: "posts/dog-patella-luxation" };
   var anxiety = { t: "강아지 분리불안 증상과 완화 방법", d: "애착이 강한 품종에 흔한 분리불안 — 자가진단과 둔감화 훈련.", e: "🏠", m: "행동·훈련", u: "posts/dog-separation-anxiety" };
   var potty = { t: "강아지 배변훈련 실패 없이 하는 법 (5단계)", d: "칭찬 기반 5단계 배변훈련.", e: "🚽", m: "행동·훈련", u: "posts/dog-potty-training" };
+  var barking = { t: "강아지 짖음 교정 완벽 가이드", d: "원인별로 다른 강아지 짖음, 혼내지 않고 고치는 실전 훈련법.", e: "📢", m: "행동·훈련", u: "posts/dog-barking-training" };
   var walk = { t: "강아지 산책 언제부터, 얼마나 시킬까", d: "크기별 산책량과 여름·겨울 주의사항.", e: "🚶", m: "생활 정보", u: "posts/dog-walking-guide" };
   var foodCalc = { t: "강아지 사료 급여량 계산하는 법 (+계산기)", d: "체중·나이·중성화 여부로 하루 급여량 계산.", e: "🧮", m: "사료·용품", u: "posts/dog-food-calculator" };
   var heat = { t: "강아지 여름철 더위·열사병 관리법", d: "코가 짧은 단두종이 특히 취약 — 응급 신호와 처치.", e: "☀️", m: "건강·증상", u: "posts/dog-summer-heatstroke" };
@@ -41,7 +42,7 @@
     "b-shihtzu":   { name: "시츄", articles: [shihtzu, heat] },
     "b-cavalier":  { name: "카바리에 킹 찰스 스패니얼", articles: [cavalier, anxiety] },
     "b-papillon":  { name: "파피용", articles: [papillon, patella, potty] },
-    "b-pom":       { name: "포메라니안", articles: [pom, patella] },
+    "b-pom":       { name: "포메라니안", articles: [pom, patella, barking] },
     "b-schnauzer": { name: "미니어처 슈나우저", articles: [schnauzer, foodCalc] },
     "b-golden":    { name: "골든리트리버", articles: [golden, walk, foodCalc] },
     "b-lab":       { name: "래브라도 리트리버", articles: [labrador, walk, foodCalc] },
