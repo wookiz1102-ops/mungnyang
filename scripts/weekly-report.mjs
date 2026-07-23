@@ -133,7 +133,7 @@ async function ga4Section(token) {
       out += `- ${ch}: ${fmt(r.metricValues[0].value)}세션${tag}\n`;
     }
   }
-  return out;
+  return { md: out, hi: `👀 참여세션 ${fmt(engCur)} · 🔍 검색유입 ${fmt(organicCur)}세션` };
 }
 
 // ── Search Console ────────────────────────────────────────────
@@ -159,7 +159,7 @@ async function gscSection(token) {
   } else if (t(cur, "impressions") === 0) {
     out += `\n_아직 검색 노출 데이터가 없어요. 색인이 붙는 중입니다 — 정상이에요._\n`;
   }
-  return out;
+  return { md: out, hi: `🔍 검색 클릭 ${fmt(t(cur, "clicks"))} · 노출 ${fmt(t(cur, "impressions"))}` };
 }
 
 // ── 이번 주 발행 글 ───────────────────────────────────────────
@@ -179,35 +179,86 @@ function publishedSection() {
     for (const f of files)
       out += `- https://daengnyangpedia.com/${f.replace(/\.html$/, "")}\n`;
     if (!files.length) out += `_이번 주 새 글이 없습니다._\n`;
-    return out;
+    return { md: out, hi: `✍️ 발행 ${files.length}편` };
   } catch (e) {
-    return `## ✍️ 이번 주 발행\n_확인 실패: ${e.message}_\n`;
+    return { md: `## ✍️ 이번 주 발행\n_확인 실패: ${e.message}_\n`, hi: null };
+  }
+}
+
+// ── 카카오톡 "나에게 보내기" (선택: kakao-token.json 있을 때만 동작) ──
+async function sendKakao(title, highlights, issueUrl) {
+  const tokenFile = cfg.kakaoToken || "C:\\srv\\kakao-token.json";
+  let tok;
+  try { tok = JSON.parse(readFileSync(tokenFile, "utf8")); }
+  catch { return; } // 토큰 파일 없으면 조용히 건너뜀 (카톡 미설정 상태)
+  try {
+    // 1) 리프레시 토큰으로 액세스 토큰 갱신 (주간 실행이라 항상 만료 상태)
+    const r = await fetch("https://kauth.kakao.com/oauth/token", {
+      method: "POST",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "refresh_token",
+        client_id: tok.restApiKey,
+        refresh_token: tok.refreshToken,
+      }),
+    });
+    const j = await r.json();
+    if (!j.access_token) throw new Error("토큰 갱신 실패: " + JSON.stringify(j));
+    if (j.refresh_token) { // 카카오가 새 리프레시 토큰을 주면 저장(만료 방지)
+      tok.refreshToken = j.refresh_token;
+      writeFileSync(tokenFile, JSON.stringify(tok, null, 2), "utf8");
+    }
+    // 2) 나에게 보내기 (텍스트 템플릿 200자 제한 → 요약 + 전체 링크 버튼)
+    const text = `📊 ${title}\n${highlights.join("\n")}\n\n전체 리포트 보기 ↓`.slice(0, 195);
+    const send = await fetch("https://kapi.kakao.com/v2/api/talk/memo/default/send", {
+      method: "POST",
+      headers: {
+        authorization: "Bearer " + j.access_token,
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        template_object: JSON.stringify({
+          object_type: "text",
+          text,
+          link: { web_url: issueUrl, mobile_web_url: issueUrl },
+          button_title: "전체 보기",
+        }),
+      }),
+    });
+    if (!send.ok) throw new Error("카카오 전송 실패: " + (await send.text()));
+    console.log("카카오톡 전송 완료");
+  } catch (e) {
+    console.log("카카오톡 전송 건너뜀:", e.message); // 실패해도 리포트는 이미 등록됨
   }
 }
 
 // ── 실행 ──────────────────────────────────────────────────────
-const sections = [];
+const sections = [], highlights = [];
+const add = (r) => { sections.push(typeof r === "string" ? r : r.md); if (r && r.hi) highlights.push(r.hi); };
 let token = null;
 try {
   token = await accessToken();
 } catch (e) {
-  sections.push(`> ⚠️ 구글 API 인증 실패 — 키 파일/권한을 확인하세요.\n> ${e.message}`);
+  add(`> ⚠️ 구글 API 인증 실패 — 키 파일/권한을 확인하세요.\n> ${e.message}`);
 }
 if (token) {
-  try { sections.push(await ga4Section(token)); }
-  catch (e) { sections.push(`## 🌐 방문 (GA4)\n_조회 실패: ${e.message}_`); }
-  try { sections.push(await gscSection(token)); }
-  catch (e) { sections.push(`## 🔍 구글 검색 (서치콘솔)\n_조회 실패: ${e.message}_`); }
+  try { add(await ga4Section(token)); }
+  catch (e) { add(`## 🌐 방문 (GA4)\n_조회 실패: ${e.message}_`); }
+  try { add(await gscSection(token)); }
+  catch (e) { add(`## 🔍 구글 검색 (서치콘솔)\n_조회 실패: ${e.message}_`); }
 }
-sections.push(publishedSection());
+add(publishedSection());
 sections.push(`---\n_자동 생성 리포트 · GA4 기준 ${ga.curStart} ~ ${ga.curEnd} (서치콘솔은 집계 지연으로 3일 전까지)_`);
 
 const title = `📊 주간 리포트 (${label(ga.curStart)} ~ ${label(ga.curEnd)})`;
 const bodyFile = join(tmpdir(), "daengnyang-weekly-report.md");
 writeFileSync(bodyFile, sections.join("\n\n"), "utf8");
 
-execFileSync("gh", ["issue", "create", "--title", title, "--body-file", bodyFile, "--label", "report"], {
-  cwd: cfg.repo,
-  stdio: "inherit",
-});
-console.log("리포트 이슈 등록 완료:", title);
+const issueUrl = execFileSync(
+  "gh",
+  ["issue", "create", "--title", title, "--body-file", bodyFile, "--label", "report"],
+  { cwd: cfg.repo, encoding: "utf8" },
+).trim();
+console.log("리포트 이슈 등록 완료:", title, issueUrl);
+
+await sendKakao(title, highlights, issueUrl);
