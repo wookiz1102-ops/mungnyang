@@ -185,6 +185,32 @@ function publishedSection() {
   }
 }
 
+// ── 텔레그램 (선택: report-config.json에 telegram 설정 있을 때만 동작) ──
+async function sendTelegram(title, highlights, issueUrl) {
+  const tg = cfg.telegram; // { botToken, chatId }
+  if (!tg || !tg.botToken || !tg.chatId) return; // 미설정이면 조용히 건너뜀
+  try {
+    const text =
+      `📊 *${title}*\n` +
+      highlights.map((h) => "• " + h).join("\n") +
+      `\n\n[전체 리포트 보기](${issueUrl})`;
+    const r = await fetch(`https://api.telegram.org/bot${tg.botToken}/sendMessage`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        chat_id: tg.chatId,
+        text,
+        parse_mode: "Markdown",
+        disable_web_page_preview: true,
+      }),
+    });
+    if (!r.ok) throw new Error("텔레그램 전송 실패: " + (await r.text()));
+    console.log("텔레그램 전송 완료");
+  } catch (e) {
+    console.log("텔레그램 전송 건너뜀:", e.message); // 실패해도 리포트는 이미 등록됨
+  }
+}
+
 // ── 카카오톡 "나에게 보내기" (선택: kakao-token.json 있을 때만 동작) ──
 async function sendKakao(title, highlights, issueUrl) {
   const tokenFile = cfg.kakaoToken || "C:\\srv\\kakao-token.json";
@@ -261,4 +287,5 @@ const issueUrl = execFileSync(
 ).trim();
 console.log("리포트 이슈 등록 완료:", title, issueUrl);
 
+await sendTelegram(title, highlights, issueUrl);
 await sendKakao(title, highlights, issueUrl);
