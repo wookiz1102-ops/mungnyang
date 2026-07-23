@@ -186,26 +186,75 @@ function publishedSection() {
 }
 
 // ── 텔레그램 (선택: report-config.json에 telegram 설정 있을 때만 동작) ──
-async function sendTelegram(title, highlights, issueUrl) {
+const escHtml = (s) =>
+  String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+// 리포트 마크다운 → 텔레그램 HTML (지원 태그가 제한적이라 b/i/code/a만 사용)
+function mdToTelegramHtml(md) {
+  const inline = (s) =>
+    s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>')
+      .replace(/\*\*([^*\n]+)\*\*/g, "<b>$1</b>")
+      .replace(/`([^`\n]+)`/g, "<code>$1</code>")
+      // 앞이 공백/줄시작일 때만 기울임 처리 → URL 속 밑줄은 건드리지 않음
+      .replace(/(^|\s)_([^_\n]+)_(?=[\s.,)]|$)/g, "$1<i>$2</i>");
+  return md.split("\n").map((raw) => {
+    let l = raw.trimEnd();
+    if (/^-{3,}$/.test(l.trim())) return "──────────";
+    l = l.replace(/^>\s?/, "");                    // 인용 표시 제거
+    const h = l.match(/^#{1,6}\s*(.+)$/);          // 헤더 → 굵게
+    if (h) return "\n<b>" + inline(escHtml(h[1])) + "</b>";
+    const it = l.match(/^_(.+)_$/);                // 한 줄 전체 기울임
+    if (it) return "<i>" + inline(escHtml(it[1])) + "</i>";
+    l = l.replace(/^-\s+/, "• ");                  // 목록 기호
+    return inline(escHtml(l));
+  }).join("\n");
+}
+
+// 텔레그램 메시지 길이 제한(4096) 대응 — 줄 단위로 잘라 태그가 끊기지 않게
+function chunkText(text, max = 3800) {
+  const out = [];
+  let buf = "";
+  for (let line of text.split("\n")) {
+    while (line.length > max) { // 극단적으로 긴 한 줄 방어
+      if (buf) { out.push(buf); buf = ""; }
+      out.push(line.slice(0, max));
+      line = line.slice(max);
+    }
+    if ((buf + "\n" + line).length > max) { if (buf) out.push(buf); buf = line; }
+    else buf = buf ? buf + "\n" + line : line;
+  }
+  if (buf.trim()) out.push(buf);
+  return out;
+}
+
+async function sendTelegram(title, fullMarkdown, issueUrl) {
   const tg = cfg.telegram; // { botToken, chatId }
   if (!tg || !tg.botToken || !tg.chatId) return; // 미설정이면 조용히 건너뜀
-  try {
-    const text =
-      `📊 *${title}*\n` +
-      highlights.map((h) => "• " + h).join("\n") +
-      `\n\n[전체 리포트 보기](${issueUrl})`;
-    const r = await fetch(`https://api.telegram.org/bot${tg.botToken}/sendMessage`, {
+  const api = `https://api.telegram.org/bot${tg.botToken}/sendMessage`;
+  const post = async (text, useHtml) => {
+    const body = { chat_id: tg.chatId, text, disable_web_page_preview: true };
+    if (useHtml) body.parse_mode = "HTML";
+    const r = await fetch(api, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        chat_id: tg.chatId,
-        text,
-        parse_mode: "Markdown",
-        disable_web_page_preview: true,
-      }),
+      body: JSON.stringify(body),
     });
-    if (!r.ok) throw new Error("텔레그램 전송 실패: " + (await r.text()));
-    console.log("텔레그램 전송 완료");
+    return r.ok ? null : await r.text();
+  };
+  try {
+    const doc =
+      `<b>${escHtml(title)}</b>\n` +
+      mdToTelegramHtml(fullMarkdown) +
+      `\n\n<a href="${issueUrl}">GitHub에서 보기</a>`;
+    const parts = chunkText(doc);
+    for (const part of parts) {
+      const err = await post(part, true);
+      if (err) { // 서식 오류로 실패하면 평문으로 재시도 (전송 자체는 보장)
+        const err2 = await post(part.replace(/<[^>]+>/g, ""), false);
+        if (err2) throw new Error(err2);
+      }
+    }
+    console.log(`텔레그램 전송 완료 (메시지 ${parts.length}개)`);
   } catch (e) {
     console.log("텔레그램 전송 건너뜀:", e.message); // 실패해도 리포트는 이미 등록됨
   }
@@ -277,8 +326,9 @@ add(publishedSection());
 sections.push(`---\n_자동 생성 리포트 · GA4 기준 ${ga.curStart} ~ ${ga.curEnd} (서치콘솔은 집계 지연으로 3일 전까지)_`);
 
 const title = `📊 주간 리포트 (${label(ga.curStart)} ~ ${label(ga.curEnd)})`;
+const reportBody = sections.join("\n\n");
 const bodyFile = join(tmpdir(), "daengnyang-weekly-report.md");
-writeFileSync(bodyFile, sections.join("\n\n"), "utf8");
+writeFileSync(bodyFile, reportBody, "utf8");
 
 const issueUrl = execFileSync(
   "gh",
@@ -287,5 +337,5 @@ const issueUrl = execFileSync(
 ).trim();
 console.log("리포트 이슈 등록 완료:", title, issueUrl);
 
-await sendTelegram(title, highlights, issueUrl);
+await sendTelegram(title, reportBody, issueUrl);
 await sendKakao(title, highlights, issueUrl);
