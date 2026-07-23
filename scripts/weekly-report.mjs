@@ -80,7 +80,10 @@ async function ga4Section(token) {
       { startDate: ga.curStart, endDate: ga.curEnd },
       { startDate: ga.prevStart, endDate: ga.prevEnd },
     ],
-    metrics: [{ name: "activeUsers" }, { name: "sessions" }, { name: "screenPageViews" }],
+    metrics: [
+      { name: "activeUsers" }, { name: "sessions" }, { name: "screenPageViews" },
+      { name: "engagedSessions" }, { name: "userEngagementDuration" },
+    ],
   });
   const cur = totals.rows?.find((r) => r.dimensionValues?.[0]?.value === "date_range_0")?.metricValues
     ?? totals.rows?.[0]?.metricValues ?? [];
@@ -102,10 +105,21 @@ async function ga4Section(token) {
     limit: 5,
   });
 
+  // 봇에 강한 지표: 참여 세션(봇은 참여 0) + 검색 유입(위조 어려움)
+  const engCur = num(m(cur, 3)), engPrev = num(m(prev, 3));
+  const avgEngCur = num(m(cur, 0)) ? Math.round(num(m(cur, 4)) / num(m(cur, 0))) : 0;
+  const organicRow = channels.rows?.find((r) => r.dimensionValues[0].value === "Organic Search");
+  const organicCur = organicRow ? num(organicRow.metricValues[0].value) : 0;
+
   let out = `## 🌐 방문 (GA4, ${label(ga.curStart)}~${label(ga.curEnd)})\n`;
-  out += `- 방문자: **${fmt(m(cur, 0))}명** ${delta(m(cur, 0), m(prev, 0))}\n`;
-  out += `- 세션: **${fmt(m(cur, 1))}회** ${delta(m(cur, 1), m(prev, 1))}\n`;
-  out += `- 페이지뷰: **${fmt(m(cur, 2))}회** ${delta(m(cur, 2), m(prev, 2))}\n`;
+  out += `> ⚠️ 전체 수치엔 해외 봇/스팸이 섞여 있습니다. **아래 '실제 유입'을 신뢰하세요.**\n\n`;
+  out += `**🎯 실제 유입 (봇에 강한 지표)**\n`;
+  out += `- 참여 세션(실제로 읽은 방문): **${fmt(engCur)}회** ${delta(engCur, engPrev)}\n`;
+  out += `- 검색 유입(구글·네이버): **${fmt(organicCur)}세션** — 봇이 위조하기 가장 어려운 신호\n`;
+  out += `- 평균 참여 시간: **${avgEngCur}초/명**\n\n`;
+  out += `**전체 (봇 포함 · 참고용)**\n`;
+  out += `- 방문자: ${fmt(m(cur, 0))}명 ${delta(m(cur, 0), m(prev, 0))}\n`;
+  out += `- 세션: ${fmt(m(cur, 1))}회 · 페이지뷰: ${fmt(m(cur, 2))}회\n`;
   if (pages.rows?.length) {
     out += `\n**많이 본 페이지**\n`;
     for (const r of pages.rows)
@@ -113,8 +127,11 @@ async function ga4Section(token) {
   }
   if (channels.rows?.length) {
     out += `\n**유입 경로**\n`;
-    for (const r of channels.rows)
-      out += `- ${r.dimensionValues[0].value}: ${fmt(r.metricValues[0].value)}세션\n`;
+    for (const r of channels.rows) {
+      const ch = r.dimensionValues[0].value;
+      const tag = ch === "Direct" ? " _(대부분 봇/스팸 추정)_" : ch === "Organic Search" ? " ✅" : "";
+      out += `- ${ch}: ${fmt(r.metricValues[0].value)}세션${tag}\n`;
+    }
   }
   return out;
 }
