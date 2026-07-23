@@ -8,6 +8,7 @@
   var barking = { t: "강아지 짖음 교정 완벽 가이드", d: "원인별로 다른 강아지 짖음, 혼내지 않고 고치는 실전 훈련법.", e: "📢", m: "행동·훈련", u: "posts/dog-barking-training" };
   var walk = { t: "강아지 산책 언제부터, 얼마나 시킬까", d: "크기별 산책량과 여름·겨울 주의사항.", e: "🚶", m: "생활 정보", u: "posts/dog-walking-guide" };
   var foodCalc = { t: "강아지 사료 급여량 계산하는 법 (+계산기)", d: "체중·나이·중성화 여부로 하루 급여량 계산.", e: "🧮", m: "사료·용품", u: "posts/dog-food-calculator" };
+  var skin = { t: "강아지 장마철 피부병 총정리", d: "습한 여름에 급증하는 핫스팟·말라세치아·곰팡이 구분과 관리.", e: "🌧️", m: "건강·증상", u: "posts/dog-summer-skin" };
   var heat = { t: "강아지 여름철 더위·열사병 관리법", d: "코가 짧은 단두종이 특히 취약 — 응급 신호와 처치.", e: "☀️", m: "건강·증상", u: "posts/dog-summer-heatstroke" };
   var kitten = { t: "새끼 고양이 키우기 첫 주 체크리스트", d: "준비물, 첫날 적응, 나이별 먹이기, 첫 병원 방문.", e: "🍼", m: "생활 정보", u: "posts/kitten-first-week" };
   var catVac = { t: "고양이 예방접종, 언제 무엇을 맞출까", d: "종합백신(FVRCP) 일정표와 실내묘 접종의 필요성.", e: "🩺", m: "생활 정보", u: "posts/cat-vaccination" };
@@ -39,11 +40,11 @@
     "b-maltese":   { name: "말티즈", articles: [maltese, patella, anxiety] },
     "b-poodle":    { name: "토이푸들", articles: [poodle, patella, potty] },
     "b-bichon":    { name: "비숑 프리제", articles: [bichon, patella, anxiety] },
-    "b-shihtzu":   { name: "시츄", articles: [shihtzu, heat] },
+    "b-shihtzu":   { name: "시츄", articles: [shihtzu, heat, skin] },
     "b-cavalier":  { name: "카바리에 킹 찰스 스패니얼", articles: [cavalier, anxiety] },
     "b-papillon":  { name: "파피용", articles: [papillon, patella, potty] },
     "b-pom":       { name: "포메라니안", articles: [pom, patella, barking] },
-    "b-schnauzer": { name: "미니어처 슈나우저", articles: [schnauzer, foodCalc] },
+    "b-schnauzer": { name: "미니어처 슈나우저", articles: [schnauzer, foodCalc, skin] },
     "b-golden":    { name: "골든리트리버", articles: [golden, walk, foodCalc] },
     "b-lab":       { name: "래브라도 리트리버", articles: [labrador, walk, foodCalc] },
     // 고양이
