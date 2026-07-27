@@ -564,6 +564,7 @@ th {
 .related strong { display: block; margin-bottom: 0.6rem; font-weight: 800; }
 .related ul { margin: 0 0 0 1.2rem; }
 .related li { margin-bottom: 0.35rem; }
+.related p { font-size: 0.82rem; color: var(--muted); margin: 0.9rem 0 0; }
 
 /* 면책 문구 */
 .disclaimer-box {
@@ -576,15 +577,14 @@ th {
   color: var(--muted);
 }
 
-/* 광고 자리 */
+/* 광고 자리 — 실제 광고 유닛을 넣기 전까지는 숨긴다.
+   (플레이스홀더 문구가 노출되면 "제작 중인 사이트"로 보임) */
 .ad-slot {
+  display: none;
   margin: 2rem auto;
   padding: 1.6rem;
   text-align: center;
-  border: 2px dashed var(--line);
   border-radius: var(--r);
-  color: #c3b8a9;
-  font-size: 0.85rem;
   max-width: var(--article-w);
 }
 

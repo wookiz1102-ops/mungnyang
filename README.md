@@ -17,7 +17,6 @@ mungnyang/
 │   ├── dog-diarrhea.html           # 글: 강아지 설사 대처법
 │   ├── dog-food-calculator.html    # 글: 사료 급여량 (+계산기)
 │   ├── dog-potty-training.html     # 글: 배변훈련 5단계
-│   └── _template.html              # 새 글 작성용 템플릿
 ├── about.html              # 소개 (애드센스 필수)
 ├── privacy.html            # 개인정보처리방침 (애드센스 필수)
 ├── contact.html            # 문의하기 (애드센스 필수)
@@ -76,7 +75,7 @@ python -m http.server 8000
 
 ## 📝 새 글 추가하는 법
 
-1. `posts/_template.html` 복사 → `posts/새글이름.html` (영문 소문자+하이픈)
+1. `.claude/templates/post-template.html` 복사 → `posts/새글이름.html` (영문 소문자+하이픈)
 2. `[대괄호]` 표시된 부분을 채우기 (제목, 메타설명, 날짜, 본문)
 3. 해당 카테고리 페이지와 `index.html` 최신 글 목록에 카드 추가
 4. `sitemap.xml`에 URL 추가

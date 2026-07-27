@@ -10,7 +10,7 @@ argument-hint: <주제 또는 타깃 키워드>
 
 1. **keyword-researcher** — "$ARGUMENTS"의 타깃 키워드·검색의도·제목안·카테고리를 확정한다.
    `posts/`와 `sitemap.xml`을 확인해 **이미 다룬 주제면 중단하고 보고**한다.
-2. **content-writer** — `posts/_template.html` 구조로 본문을 작성하되, 저장 위치는 **`drafts/<slug>.html`**
+2. **content-writer** — `.claude/templates/post-template.html` 구조로 본문을 작성하되, 저장 위치는 **`drafts/<slug>.html`**
    (slug는 기존 글처럼 영문 케밥, 예: `dog-summer-skin`). `<head>`에 반드시
    `<meta name="robots" content="noindex, nofollow">` 를 넣어 색인을 막는다.
 3. **vet-fact-checker** — 건강·의학 내용의 정확성/안전성을 검수하고 필요한 부분을 수정한다.
