@@ -42,7 +42,7 @@ $prompt = @'
   그 명령들은 결과물을 git이 무시하는 drafts/ 폴더에 저장하고 noindex를 붙여 발행을 막는다(그래서 이 작업이 조용히 실패한다).
   반드시 아래 단계를 서브에이전트로 직접 수행하고, 완성본은 git이 추적하는 posts/<slug>.html 에 써라(drafts/ 아님, noindex 넣지 마라).
 1) keyword-researcher 서브에이전트로 posts/ 와 sitemap.xml 을 확인해 아직 안 다룬 강아지·고양이 주제 하나를 고른다.
-2) content-writer 로 posts/_template.html 구조에 맞춰 posts/<slug>.html 로 본문을 쓴다.
+2) content-writer 로 .claude/templates/post-template.html 구조에 맞춰 posts/<slug>.html 로 본문을 쓴다.
 3) vet-fact-checker 로 건강 내용을 검수·수정한다(YMYL: 단정·용량지시 금지, 병원 방문 기준과 면책 포함).
 4) seo-optimizer 로 제목·메타·JSON-LD를 최적화한다.
 5) internal-linker 로 sitemap.xml·해당 카테고리 목록·index.html 최신글·js/search-data.js·(관련시)js/breed-data.js·본문 .related 에 반영한다(품종=엄선링크, 카테고리=본진 원칙 유지).
