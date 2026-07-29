@@ -16,6 +16,29 @@ function Get-Verdict {
   return $verdict
 }
 
+# 실패를 로그에만 남기면 아무도 모른 채 그날 글이 사라진다(2026-07-24·07-29 사례) — 이슈로 알린다.
+# 이슈는 .github/workflows/draft-watchdog.yml 의 일일 점검이 복구 확인 후 자동으로 닫는다.
+function New-FailureIssue {
+  param([string]$Stamp, [string]$Reason)
+  $tmp = Join-Path $env:TEMP "draft-fail-$Stamp.md"
+  Set-Content -Path $tmp -Encoding utf8 -Value @(
+    "## 🚨 자동 초안 실패 — $Stamp",
+    "",
+    $Reason,
+    "",
+    "PR 이 만들어지지 않았으므로 오늘 글은 발행되지 않았습니다.",
+    "",
+    "확인할 곳",
+    "- 미니PC ``C:\srv\draft-log.txt`` 의 ``$Stamp`` 구간",
+    "- Claude Code 자동 업데이트 충돌 (``claude --version`` 이 바로 응답하는지)",
+    "- 클로드 사용량 한도 / ``gh auth status``"
+  )
+  # 알림 실패가 본 작업을 죽이지 않도록 감싼다.
+  try { gh issue create --title "🚨 자동 초안 실패 ($Stamp)" --body-file $tmp --label "auto-draft-alert" }
+  catch { Write-Host "이슈 생성 실패: $($_.Exception.Message)" }
+  Remove-Item $tmp -ErrorAction SilentlyContinue
+}
+
 # 이 스크립트는 저장소의 scripts\ 안에 있으므로, 부모 폴더가 곧 저장소 루트다.
 $repo = Split-Path -Parent $PSScriptRoot
 Set-Location $repo
@@ -39,6 +62,7 @@ git pull --ff-only origin main
 # "'claude.exe' 프로그램을 실행하지 못했습니다 / 인덱스가 배열 범위를 벗어났습니다"로 즉시 실패했다.
 # ① 이 작업 동안은 claude 자동 업데이트를 끄고(충돌 방지),
 # ② 준비될 때까지 재시도한 뒤에야 브랜치를 만든다(실패 시 dangling 브랜치·헛 PR 방지).
+$stamp = Get-Date -Format "yyyyMMdd-HHmm"   # 실패 알림에서도 쓰므로 준비 확인보다 먼저 잡는다
 $env:DISABLE_AUTOUPDATER = "1"
 $claudeReady = $false
 for ($i = 1; $i -le 5; $i++) {
@@ -48,10 +72,11 @@ for ($i = 1; $i -le 5; $i++) {
 }
 if (-not $claudeReady) {
   Write-Host "claude 실행기를 5회 재시도 후에도 실행 불가 — 자동 업데이트 충돌 가능. 브랜치/PR 생성 없이 중단(다음 스케줄에 재시도)."
+  New-FailureIssue -Stamp $stamp -Reason ("``claude --version`` 이 5회(약 5분) 재시도 후에도 응답하지 않아 초안 생성을 시작하지 못했습니다. " +
+    "자동 업데이트가 실행기를 교체 중이었을 가능성이 큽니다.")
   return
 }
 
-$stamp  = Get-Date -Format "yyyyMMdd-HHmm"
 $branch = "draft/$stamp"
 git checkout -b $branch
 $prompt = @'
@@ -163,24 +188,9 @@ git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처�
     Get-ChildItem "$repo\drafts" | ForEach-Object { Write-Host ("  - {0} ({1} bytes, {2})" -f $_.Name, $_.Length, $_.LastWriteTime) }
   }
 
-  # 로그에만 남기면 아무도 모른 채 그날 글이 사라진다 — 이슈로 알린다.
   $why = if ($claudeFailed) { "``claude -p`` 가 비정상 종료했습니다 — $claudeError" }
          else { "``claude -p`` 는 끝났지만 커밋할 변경이 없습니다. 초안이 ``drafts/`` 로 샜거나 주제 선정 단계에서 중단된 경우입니다." }
-  $tmp = Join-Path $env:TEMP "draft-fail-$stamp.md"
-  Set-Content -Path $tmp -Encoding utf8 -Value @(
-    "## 🚨 자동 초안 실패 — $stamp",
-    "",
-    $why,
-    "",
-    "브랜치도 PR 도 만들어지지 않았으므로 오늘 글은 발행되지 않았습니다.",
-    "",
-    "확인할 곳",
-    "- 미니PC ``C:\srv\draft-log.txt`` 의 ``$stamp`` 구간",
-    "- 클로드 사용량 한도 (미니PC와 데스크톱이 같은 구독 공유)",
-    "- ``gh auth status`` / ``claude`` 인증 만료 여부"
-  )
-  gh issue create --title "🚨 자동 초안 실패 ($stamp)" --body-file $tmp --label "auto-draft-alert"
-  Remove-Item $tmp -ErrorAction SilentlyContinue
+  New-FailureIssue -Stamp $stamp -Reason $why
 
   # 커밋 없는 빈 브랜치 정리. 실패해도 다음 실행의 checkout -f main 이 회복하므로 무시한다.
   # ($ErrorActionPreference="Stop" 에서 네이티브 stderr 리다이렉트는 NativeCommandError 를 유발할 수 있어 쓰지 않는다)
