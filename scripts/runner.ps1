@@ -48,7 +48,17 @@ $prompt = @'
 5) internal-linker 로 sitemap.xml·해당 카테고리 목록·index.html 최신글·js/search-data.js·(관련시)js/breed-data.js·본문 .related 에 반영한다(품종=엄선링크, 카테고리=본진 원칙 유지).
 파일 편집만 하고 git 커밋/푸시는 하지 마라(스크립트가 처리한다).
 '@
-claude -p $prompt --permission-mode acceptEdits --disallowedTools "Bash(git:*)" "Skill"
+# claude 가 비정상 종료해도 스크립트가 여기서 죽지 않게 잡는다.
+# (죽어 버리면 아래 실패 알림조차 못 보내고 조용히 끝난다 — 2026-07-29 사례)
+$claudeFailed = $false
+$claudeError  = ""
+try {
+  claude -p $prompt --permission-mode acceptEdits --disallowedTools "Bash(git:*)" "Skill"
+  if ($LASTEXITCODE -ne 0) { $claudeFailed = $true; $claudeError = "종료 코드 $LASTEXITCODE" }
+} catch {
+  $claudeFailed = $true
+  $claudeError  = $_.Exception.Message
+}
 if (git status --porcelain) {
   git add -A
   git commit -m "자동 초안 ($stamp)`n`nCo-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>"
@@ -134,4 +144,26 @@ git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처�
     Write-Host "drafts/ (git 무시 폴더) 내용:"
     Get-ChildItem "$repo\drafts" | ForEach-Object { Write-Host ("  - {0} ({1} bytes, {2})" -f $_.Name, $_.Length, $_.LastWriteTime) }
   }
+
+  # 로그에만 남기면 아무도 모른 채 그날 글이 사라진다 — 이슈로 알린다.
+  $why = if ($claudeFailed) { "``claude -p`` 가 비정상 종료했습니다 — $claudeError" }
+         else { "``claude -p`` 는 끝났지만 커밋할 변경이 없습니다. 초안이 ``drafts/`` 로 샜거나 주제 선정 단계에서 중단된 경우입니다." }
+  $tmp = Join-Path $env:TEMP "draft-fail-$stamp.md"
+  Set-Content -Path $tmp -Encoding utf8 -Value @(
+    "## 🚨 자동 초안 실패 — $stamp",
+    "",
+    $why,
+    "",
+    "브랜치도 PR 도 만들어지지 않았으므로 오늘 글은 발행되지 않았습니다.",
+    "",
+    "확인할 곳",
+    "- 미니PC ``C:\srv\draft-log.txt`` 의 ``$stamp`` 구간",
+    "- 클로드 사용량 한도 (미니PC와 데스크톱이 같은 구독 공유)",
+    "- ``gh auth status`` / ``claude`` 인증 만료 여부"
+  )
+  gh issue create --title "🚨 자동 초안 실패 ($stamp)" --body-file $tmp --label "auto-draft-alert"
+  Remove-Item $tmp -ErrorAction SilentlyContinue
+
+  git checkout main
+  git branch -D $branch 2>$null   # 커밋 없는 빈 브랜치 정리
 }
