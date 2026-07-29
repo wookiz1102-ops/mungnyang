@@ -33,6 +33,24 @@ if ($DryRun) {
 
 git checkout main
 git pull --ff-only origin main
+
+# ── claude 실행기 준비 확인 (재발 방지) ──────────────────────────────
+# 2026-07-29: 자동 업데이트가 265MB claude.exe 를 교체하는 중에 09:00 작업이 실행돼
+# "'claude.exe' 프로그램을 실행하지 못했습니다 / 인덱스가 배열 범위를 벗어났습니다"로 즉시 실패했다.
+# ① 이 작업 동안은 claude 자동 업데이트를 끄고(충돌 방지),
+# ② 준비될 때까지 재시도한 뒤에야 브랜치를 만든다(실패 시 dangling 브랜치·헛 PR 방지).
+$env:DISABLE_AUTOUPDATER = "1"
+$claudeReady = $false
+for ($i = 1; $i -le 5; $i++) {
+  try { $null = & claude --version 2>&1; if ($LASTEXITCODE -eq 0) { $claudeReady = $true; break } } catch { }
+  Write-Host "claude 실행기 준비 안 됨(시도 $i/5) — 업데이트 중일 수 있음. 60초 후 재시도."
+  Start-Sleep -Seconds 60
+}
+if (-not $claudeReady) {
+  Write-Host "claude 실행기를 5회 재시도 후에도 실행 불가 — 자동 업데이트 충돌 가능. 브랜치/PR 생성 없이 중단(다음 스케줄에 재시도)."
+  return
+}
+
 $stamp  = Get-Date -Format "yyyyMMdd-HHmm"
 $branch = "draft/$stamp"
 git checkout -b $branch
