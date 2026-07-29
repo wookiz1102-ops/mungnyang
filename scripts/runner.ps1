@@ -164,6 +164,8 @@ git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처�
   gh issue create --title "🚨 자동 초안 실패 ($stamp)" --body-file $tmp --label "auto-draft-alert"
   Remove-Item $tmp -ErrorAction SilentlyContinue
 
+  # 커밋 없는 빈 브랜치 정리. 실패해도 다음 실행의 checkout -f main 이 회복하므로 무시한다.
+  # ($ErrorActionPreference="Stop" 에서 네이티브 stderr 리다이렉트는 NativeCommandError 를 유발할 수 있어 쓰지 않는다)
   git checkout main
-  git branch -D $branch 2>$null   # 커밋 없는 빈 브랜치 정리
+  try { git branch -D $branch } catch { }
 }
