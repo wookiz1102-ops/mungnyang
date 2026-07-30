@@ -12,8 +12,6 @@ $ErrorActionPreference = "Stop"
 try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
-# 검토 출력에서 마지막 VERDICT 줄을 찾아 PASS/FAIL 을 돌려준다.
-# 찾지 못하거나 PASS/FAIL 이 아니면 $null (호출부에서 FAIL 로 처리 — 안전 우선).
 # PS 5.1 의 Set-Content -Encoding utf8 은 BOM(EF BB BF)을 붙인다. 그 파일을 gh --body-file 로
 # 넘기면 첫 줄이 "﻿## 제목" 이 되어 마크다운 heading 으로 렌더되지 않는다. BOM 없이 쓴다.
 function Write-Utf8NoBom {
@@ -21,6 +19,8 @@ function Write-Utf8NoBom {
   [System.IO.File]::WriteAllText($Path, ($Lines -join "`r`n"), (New-Object System.Text.UTF8Encoding $false))
 }
 
+# 검토 출력에서 마지막 VERDICT 줄을 찾아 PASS/FAIL 을 돌려준다.
+# 찾지 못하거나 PASS/FAIL 이 아니면 $null (호출부에서 FAIL 로 처리 — 안전 우선).
 function Get-Verdict {
   param([string[]]$Lines)
   $verdict = $null
