@@ -18,23 +18,32 @@ TODAY=$(TZ=Asia/Seoul date +%Y%m%d)
 NOW=$(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M')
 LABEL=auto-draft-alert
 FIELDS=number,state,headRefName,url,createdAt,title
+GRACE=${GRACE:-7200}   # 초안 생성~검토가 끝날 때까지 봐주는 시간(2시간). 이 안쪽은 "진행 중"으로 본다.
 
-# ── A. 오늘 초안은 발행됐는가 ──────────────────────────────────────────
-TODAY_STATE=$(gh pr list --repo "$REPO" --state all --limit 60 --json "$FIELDS" \
-  --jq 'map(select(.headRefName | startswith("draft/'"$TODAY"'"))) | (.[0].state // "NONE")')
-TODAY_URL=$(gh pr list --repo "$REPO" --state all --limit 60 --json "$FIELDS" \
-  --jq 'map(select(.headRefName | startswith("draft/'"$TODAY"'"))) | (.[0].url // "")')
+# 하루에 여러 번 돌 수 있으므로(수동 재실행·놓친 스케줄 보충) 최신 PR 하나만 보면
+# 먼저 성공한 발행이 나중 실패에 가려진다. 세 가지를 따로 센다.
 
-# ── B. 머지되지 않고 방치된 초안 PR (2시간 이상 열려 있는 것, 오늘 것 제외) ──
+# ① 오늘 발행 성공 — 오늘자 draft PR 중 머지된 것이 하나라도 있는가
+TODAY_MERGED=$(gh pr list --repo "$REPO" --state merged --limit 60 --json "$FIELDS" \
+  --jq 'map(select(.headRefName | startswith("draft/'"$TODAY"'"))) | length')
+
+# ② 진행 중 — 오늘자 draft PR 중 아직 유예 시간 안쪽인 것 (검토가 안 끝났을 수 있음)
+INFLIGHT=$(gh pr list --repo "$REPO" --state open --limit 60 --json "$FIELDS" \
+  --jq 'map(select((.headRefName | startswith("draft/'"$TODAY"'"))
+                   and ((now - (.createdAt | fromdateiso8601)) <= '"$GRACE"'))) | length')
+
+# ③ 사람 손이 필요한 것 — 유예 시간을 넘겨 열려 있는 draft PR (날짜 무관)
 STALE=$(gh pr list --repo "$REPO" --state open --limit 60 --json "$FIELDS" \
   --jq 'map(select((.headRefName | startswith("draft/"))
-                   and ((.headRefName | startswith("draft/'"$TODAY"'")) | not)
-                   and ((now - (.createdAt | fromdateiso8601)) > 7200)))
-        | map("- [#\(.number) \(.title)](\(.url)) — \(((now - (.createdAt | fromdateiso8601)) / 86400) | floor)일째 열려 있음")
+                   and ((now - (.createdAt | fromdateiso8601)) > '"$GRACE"')))
+        | map((now - (.createdAt | fromdateiso8601)) as $s
+              | "- [#\(.number) \(.title)](\(.url)) — "
+                + (if $s < 86400 then "\(($s / 3600) | floor)시간째" else "\(($s / 86400) | floor)일째" end)
+                + " 열려 있음")
         | join("\n")')
 
-echo "오늘($TODAY) 초안 상태: $TODAY_STATE"
-echo "방치된 초안 PR: ${STALE:-없음}"
+echo "오늘($TODAY) 머지된 초안: ${TODAY_MERGED}건 / 진행 중: ${INFLIGHT}건"
+echo "손이 필요한 초안 PR: ${STALE:-없음}"
 
 BODY=$(mktemp)
 trap 'rm -f "$BODY"' EXIT
@@ -47,12 +56,10 @@ trap 'rm -f "$BODY"' EXIT
 
 PROBLEM=0
 
-case "$TODAY_STATE" in
-  MERGED)
-    ;;
-  NONE)
-    PROBLEM=1
-    cat >> "$BODY" <<EOF
+# 오늘 발행이 없고, 진행 중도 아니고, 열린 초안도 없다 → 파이프라인이 아무것도 못 했다.
+if [ "$TODAY_MERGED" = "0" ] && [ "$INFLIGHT" = "0" ] && [ -z "$STALE" ]; then
+  PROBLEM=1
+  cat >> "$BODY" <<EOF
 ### 🚨 오늘($TODAY) 초안이 아예 만들어지지 않았습니다
 
 \`draft/$TODAY-*\` 브랜치도 PR도 없습니다. 글을 쓰기 전 단계에서 멈춘 것입니다.
@@ -60,44 +67,28 @@ case "$TODAY_STATE" in
 확인 순서
 1. 미니PC 전원·절전 상태, 작업 스케줄러의 \`LastRunTime\` / \`LastTaskResult\`
 2. \`C:\srv\draft-log.txt\` 의 오늘 구간 — \`claude -p\` 오류 메시지
-3. 클로드 사용량 한도 (미니PC와 데스크톱이 같은 구독을 공유합니다)
-4. \`gh auth status\` — 토큰 만료 여부
+3. Claude Code 자동 업데이트 충돌 (\`claude --version\` 이 바로 응답하는지)
+4. 클로드 사용량 한도 / \`gh auth status\`
 
 EOF
-    ;;
-  OPEN)
-    PROBLEM=1
-    cat >> "$BODY" <<EOF
-### ⚠️ 오늘($TODAY) 초안이 머지되지 않았습니다
+fi
 
-초안은 만들어졌지만 자동 발행이 보류됐습니다 — publish-reviewer FAIL 판정이거나 머지 충돌입니다.
-사유는 PR 코멘트에 있습니다: $TODAY_URL
-
-검토해서 고친 뒤 머지하거나, 폐기할 거면 PR 을 닫아 주세요.
-
-EOF
-    ;;
-  *)
-    PROBLEM=1
-    cat >> "$BODY" <<EOF
-### ⚠️ 오늘($TODAY) 초안 PR 이 머지되지 않고 닫혔습니다
-
-$TODAY_URL — 의도한 것이면 무시하세요.
-
-EOF
-    ;;
-esac
-
+# 유예 시간을 넘겨 열려 있는 초안 — 검토 FAIL 이거나 머지 충돌이다. 방치하면 그날 글이 사라진다.
 if [ -n "$STALE" ]; then
   PROBLEM=1
   cat >> "$BODY" <<EOF
-### 📌 방치된 초안 PR
+### 📌 사람 확인이 필요한 초안 PR
 
-자동 머지되지 않고 열린 채 남아 있습니다. 이대로 두면 그날 글이 조용히 사라집니다.
+자동 머지되지 않고 열려 있습니다. publish-reviewer FAIL 판정이거나 머지 충돌입니다 —
+사유는 각 PR 코멘트에 있습니다. 고쳐서 머지하거나, 폐기할 거면 닫아 주세요.
 
 $STALE
 
 EOF
+  if [ "$TODAY_MERGED" != "0" ]; then
+    echo "참고: 오늘자 글은 별도로 ${TODAY_MERGED}건 정상 발행됐습니다." >> "$BODY"
+    echo >> "$BODY"
+  fi
 fi
 
 cat >> "$BODY" <<EOF
@@ -129,9 +120,9 @@ if [ "$PROBLEM" = "1" ]; then
       --title "⚠️ 자동 초안 이상 ($TODAY)" --body-file "$BODY"
   fi
 else
-  echo "이상 없음 — 오늘 초안 머지 완료, 방치된 초안 PR 없음"
+  echo "이상 없음 — 오늘 초안 발행 완료, 손이 필요한 초안 PR 없음"
   if [ -n "$EXISTING" ]; then
     gh issue close "$EXISTING" --repo "$REPO" \
-      --comment "✅ 복구 확인 ($NOW KST) — 오늘 초안이 정상 발행됐고 방치된 초안 PR 도 없습니다."
+      --comment "✅ 복구 확인 ($NOW KST) — 오늘 초안이 정상 발행됐고, 열린 채 방치된 초안 PR 도 없습니다."
   fi
 fi
