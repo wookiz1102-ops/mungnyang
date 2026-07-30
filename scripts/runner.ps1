@@ -130,7 +130,10 @@ publish-reviewer 의 검토 결과를 요약하거나 가공하지 말고 그대
 마지막 줄은 반드시 "VERDICT: PASS" 또는 "VERDICT: FAIL" 이어야 한다.
 git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처리한다.
 '@
+  # publish-reviewer 가 필수 게이트(중복/분량/앵커 검사)를 비대화식에서 실행할 수 있게 명시 허용한다.
+  # (리포 .claude/settings.json 의 allow 는 "workspace 미신뢰" 상태에선 무시되므로, CLI 플래그로 직접 허용 — 2026-07-30 확인)
   $reviewOut = claude -p $reviewPrompt --permission-mode acceptEdits `
+                 --allowedTools "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" `
                  --disallowedTools "Bash(git commit:*)" "Bash(git push:*)" "Bash(git merge:*)" "Bash(gh:*)" "Skill"
   $reviewText = ($reviewOut | Out-String).Trim()
   Write-Host $reviewText
