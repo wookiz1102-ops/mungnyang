@@ -5,8 +5,22 @@
 #   - -DryRun: 생성/PR/머지 없이 "제대로 호출돼 돌아가는지"만 확인하고 즉시 종료.
 $ErrorActionPreference = "Stop"
 
+# claude 는 UTF-8 로 출력하는데 PowerShell 은 콘솔 코드페이지(한국어 Windows 기본 cp949)로
+# 디코딩해, 검토 출력의 한글이 "## 諛쒗뻾 ??理쒖쥌" 처럼 깨진 채 PR 코멘트에 올라갔다.
+# 읽을 수 없는 FAIL 사유는 게이트를 무력화하므로 캡처 인코딩을 UTF-8 로 고정한다.
+# (콘솔이 없는 환경에서는 setter 가 예외를 던질 수 있어 감싼다)
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
+$OutputEncoding = [System.Text.Encoding]::UTF8
+
 # 검토 출력에서 마지막 VERDICT 줄을 찾아 PASS/FAIL 을 돌려준다.
 # 찾지 못하거나 PASS/FAIL 이 아니면 $null (호출부에서 FAIL 로 처리 — 안전 우선).
+# PS 5.1 의 Set-Content -Encoding utf8 은 BOM(EF BB BF)을 붙인다. 그 파일을 gh --body-file 로
+# 넘기면 첫 줄이 "﻿## 제목" 이 되어 마크다운 heading 으로 렌더되지 않는다. BOM 없이 쓴다.
+function Write-Utf8NoBom {
+  param([string]$Path, [string[]]$Lines)
+  [System.IO.File]::WriteAllText($Path, ($Lines -join "`r`n"), (New-Object System.Text.UTF8Encoding $false))
+}
+
 function Get-Verdict {
   param([string[]]$Lines)
   $verdict = $null
@@ -21,7 +35,7 @@ function Get-Verdict {
 function New-FailureIssue {
   param([string]$Stamp, [string]$Reason)
   $tmp = Join-Path $env:TEMP "draft-fail-$Stamp.md"
-  Set-Content -Path $tmp -Encoding utf8 -Value @(
+  Write-Utf8NoBom -Path $tmp -Lines @(
     "## 🚨 자동 초안 실패 — $Stamp",
     "",
     $Reason,
@@ -133,7 +147,7 @@ git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처�
 
   if ($verdict -eq "PASS") {
     # 머지 후에도 PR 에 검토 기록이 남도록, 머지 전에 검토 출력 전체를 코멘트로 남긴다.
-    Set-Content -Path $tmp -Encoding utf8 -Value @(
+    Write-Utf8NoBom -Path $tmp -Lines @(
       "## 자동 발행 승인 — publish-reviewer 가 PASS 판정",
       "",
       "<details><summary>publish-reviewer 검토 출력 전체</summary>",
@@ -149,7 +163,7 @@ git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처�
     git checkout main   # --delete-branch 가 로컬 브랜치도 지울 수 있도록 벗어난다
     gh pr merge $branch --merge --delete-branch
     if ($LASTEXITCODE -ne 0) {
-      Set-Content -Path $tmp -Encoding utf8 -Value @(
+      Write-Utf8NoBom -Path $tmp -Lines @(
         "## 자동 머지 실패 — 수동 확인 필요",
         "",
         "publish-reviewer 는 ``VERDICT: PASS`` 를 냈지만 자동 머지가 실패했습니다(충돌 등).",
@@ -163,7 +177,7 @@ git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처�
   } else {
     $reason = if ($verdict -eq "FAIL") { "publish-reviewer 가 FAIL 판정" }
               else { "VERDICT 줄을 찾지 못함 (안전 우선 FAIL 처리)" }
-    Set-Content -Path $tmp -Encoding utf8 -Value @(
+    Write-Utf8NoBom -Path $tmp -Lines @(
       "## 자동 발행 보류 — $reason",
       "",
       "사람 검토 후 수동 머지가 필요합니다.",
