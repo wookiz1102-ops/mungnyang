@@ -25,3 +25,12 @@ jobs:
           OWNER: ${{ github.repository_owner }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: bash .github/scripts/draft-watchdog.sh
+
+      # 초안 점검과 별개의 관심사라 스텝을 나눈다. always() 로 감시가 실패해도 리마인더는 돈다.
+      - name: 애드센스 재검토 요청 리마인더
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          OWNER: ${{ github.repository_owner }}
+        run: bash .github/scripts/adsense-reminder.sh
