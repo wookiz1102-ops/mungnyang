@@ -33,20 +33,29 @@ function Get-Verdict {
 # 실패를 로그에만 남기면 아무도 모른 채 그날 글이 사라진다(2026-07-24·07-29 사례) — 이슈로 알린다.
 # 이슈는 .github/workflows/draft-watchdog.yml 의 일일 점검이 복구 확인 후 자동으로 닫는다.
 function New-FailureIssue {
-  param([string]$Stamp, [string]$Reason)
+  param([string]$Stamp, [string]$Reason, [string]$Detail = "")
   $tmp = Join-Path $env:TEMP "draft-fail-$Stamp.md"
-  Write-Utf8NoBom -Path $tmp -Lines @(
+  $lines = @(
     "## 🚨 자동 초안 실패 — $Stamp",
     "",
     $Reason,
     "",
-    "PR 이 만들어지지 않았으므로 오늘 글은 발행되지 않았습니다.",
+    "PR 이 만들어지지 않았으므로 오늘 글은 발행되지 않았습니다."
+  )
+  # 실제 오류 출력을 함께 싣는다. 이게 없으면 미니PC 로그를 직접 열어야만
+  # 원인을 알 수 있어, 알림을 받고도 사람이 그 기계 앞에 가야 한다.
+  if ($Detail) {
+    $tail = ($Detail -split "`r?`n" | Select-Object -Last 60) -join "`n"
+    $lines += @("", "<details><summary>claude 출력 (마지막 60줄)</summary>", "", '```', $tail, '```', "", "</details>")
+  }
+  $lines += @(
     "",
     "확인할 곳",
-    "- 미니PC ``C:\srv\draft-log.txt`` 의 ``$Stamp`` 구간",
+    "- 미니PC ``C:\srv\draft-log.txt`` 의 ``$Stamp`` 구간 (전체 출력)",
     "- Claude Code 자동 업데이트 충돌 (``claude --version`` 이 바로 응답하는지)",
     "- 클로드 사용량 한도 / ``gh auth status``"
   )
+  Write-Utf8NoBom -Path $tmp -Lines $lines
   # 알림 실패가 본 작업을 죽이지 않도록 감싼다.
   try { gh issue create --title "🚨 자동 초안 실패 ($Stamp)" --body-file $tmp --label "auto-draft-alert" }
   catch { Write-Host "이슈 생성 실패: $($_.Exception.Message)" }
@@ -105,16 +114,46 @@ $prompt = @'
 5) internal-linker 로 sitemap.xml·해당 카테고리 목록·index.html 최신글·js/search-data.js·(관련시)js/breed-data.js·본문 .related 에 반영한다(품종=엄선링크, 카테고리=본진 원칙 유지).
 파일 편집만 하고 git 커밋/푸시는 하지 마라(스크립트가 처리한다).
 '@
-# claude 가 비정상 종료해도 스크립트가 여기서 죽지 않게 잡는다.
-# (죽어 버리면 아래 실패 알림조차 못 보내고 조용히 끝난다 — 2026-07-29 사례)
+# 초안 생성. 실패해도 스크립트가 여기서 죽지 않게 잡는다
+# (죽으면 실패 알림조차 못 보내고 조용히 끝난다 — 2026-07-29 사례).
+#
+# 한 번 실패했다고 그날을 버리지 않는다. 종료 코드 1 의 흔한 원인(사용량 한도,
+# 일시적 오류)은 몇 시간이면 풀리므로 같은 날 안에서 다시 시도한다
+# — 09:00 → 12:00 → 15:00. 사람을 부르는 건 세 번 다 실패한 뒤다(2026-08-09 사례).
+$maxAttempts = 3
+$retryDelay  = 10800   # 3시간
 $claudeFailed = $false
 $claudeError  = ""
-try {
-  claude -p $prompt --permission-mode acceptEdits --disallowedTools "Bash(git:*)" "Skill"
-  if ($LASTEXITCODE -ne 0) { $claudeFailed = $true; $claudeError = "종료 코드 $LASTEXITCODE" }
-} catch {
-  $claudeFailed = $true
-  $claudeError  = $_.Exception.Message
+$claudeOutput = ""
+
+for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
+  $claudeFailed = $false
+  # 네이티브 stderr 를 받으려면 Stop 을 잠시 풀어야 한다
+  # ($ErrorActionPreference="Stop" 에서는 stderr 한 줄에 NativeCommandError 가 난다).
+  $prevEAP = $ErrorActionPreference
+  $ErrorActionPreference = "Continue"
+  try {
+    $raw = claude -p $prompt --permission-mode acceptEdits --disallowedTools "Bash(git:*)" "Skill" 2>&1
+    $claudeOutput = ($raw | Out-String)
+    Write-Host $claudeOutput
+    if ($LASTEXITCODE -ne 0) { $claudeFailed = $true; $claudeError = "종료 코드 $LASTEXITCODE" }
+  } catch {
+    $claudeFailed = $true
+    $claudeError  = $_.Exception.Message
+    $claudeOutput = ($_ | Out-String)
+  } finally {
+    $ErrorActionPreference = $prevEAP
+  }
+
+  # 뭐라도 만들었으면 검토 단계로 넘긴다 — 완성도 판단은 publish-reviewer 몫이다.
+  if (git status --porcelain) { break }
+
+  if ($attempt -lt $maxAttempts) {
+    Write-Host "초안 생성 실패($attempt/$maxAttempts) — $claudeError. $($retryDelay/3600)시간 후 재시도."
+    Start-Sleep -Seconds $retryDelay
+  } else {
+    Write-Host "초안 생성 $maxAttempts 회 모두 실패 — $claudeError"
+  }
 }
 if (git status --porcelain) {
   git add -A
@@ -207,7 +246,8 @@ git 커밋/푸시/머지와 PR 조작은 하지 마라 — 스크립트가 처�
 
   $why = if ($claudeFailed) { "``claude -p`` 가 비정상 종료했습니다 — $claudeError" }
          else { "``claude -p`` 는 끝났지만 커밋할 변경이 없습니다. 초안이 ``drafts/`` 로 샜거나 주제 선정 단계에서 중단된 경우입니다." }
-  New-FailureIssue -Stamp $stamp -Reason $why
+  $why = "$why`n`n$maxAttempts 회 시도(약 $(($maxAttempts - 1) * $retryDelay / 3600)시간 간격) 모두 실패했습니다."
+  New-FailureIssue -Stamp $stamp -Reason $why -Detail $claudeOutput
 
   # 커밋 없는 빈 브랜치 정리. 실패해도 다음 실행의 checkout -f main 이 회복하므로 무시한다.
   # ($ErrorActionPreference="Stop" 에서 네이티브 stderr 리다이렉트는 NativeCommandError 를 유발할 수 있어 쓰지 않는다)
