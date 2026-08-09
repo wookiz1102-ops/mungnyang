@@ -330,12 +330,34 @@ const reportBody = sections.join("\n\n");
 const bodyFile = join(tmpdir(), "daengnyang-weekly-report.md");
 writeFileSync(bodyFile, reportBody, "utf8");
 
-const issueUrl = execFileSync(
-  "gh",
+const gh = (args) => execFileSync("gh", args, { cwd: cfg.repo, encoding: "utf8" }).trim();
+
+// 새 리포트를 만들기 "전에" 열려 있는 이전 리포트를 잡아 둔다(새 것까지 닫지 않도록).
+// 주간 리포트는 읽고 나면 할 일이 남지 않는 알림이라, 닫지 않으면 계속 쌓여
+// 자동 초안 실패 같은 진짜 알림이 묻힌다(2026-08-09 기준 4건 누적됐었다).
+let prevReports = [];
+try {
+  const out = gh(["issue", "list", "--state", "open", "--label", "report",
+                  "--limit", "50", "--json", "number", "--jq", ".[].number"]);
+  prevReports = out ? out.split(/\r?\n/).filter(Boolean) : [];
+} catch (e) {
+  console.warn("이전 리포트 조회 실패 — 정리 건너뜀:", e.message);
+}
+
+const issueUrl = gh(
   ["issue", "create", "--title", title, "--body-file", bodyFile, "--label", "report"],
-  { cwd: cfg.repo, encoding: "utf8" },
-).trim();
+);
 console.log("리포트 이슈 등록 완료:", title, issueUrl);
+
+// 정리 실패가 리포트 전달을 막지 않도록 건별로 감싼다.
+for (const n of prevReports) {
+  try {
+    gh(["issue", "close", n, "--comment", `새 리포트로 대체되었습니다 → ${issueUrl}`]);
+    console.log(`이전 리포트 #${n} 닫음`);
+  } catch (e) {
+    console.warn(`이전 리포트 #${n} 닫기 실패(무시):`, e.message);
+  }
+}
 
 await sendTelegram(title, reportBody, issueUrl);
 await sendKakao(title, highlights, issueUrl);
