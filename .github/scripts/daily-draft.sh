@@ -155,7 +155,7 @@ EOF
 )
 # publish-reviewer 가 필수 게이트(중복/분량/앵커 검사)를 비대화식에서 실행할 수 있게 명시 허용한다.
 REVIEW_OUT=$(claude -p "$REVIEW_PROMPT" --permission-mode acceptEdits \
-  --allowedTools "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" \
+  --allowedTools "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" "Bash(node scripts/verify-faq-match.mjs:*)" \
   --disallowedTools "Bash(git commit:*)" "Bash(git push:*)" "Bash(git merge:*)" "Bash(gh:*)" "Skill" 2>&1)
 echo "$REVIEW_OUT"
 
