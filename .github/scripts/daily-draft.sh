@@ -66,6 +66,18 @@ if [ "$DRY_RUN" = "1" ]; then
   echo "DRY RUN — 플러밍 확인만 하고 종료합니다."
   git --version; gh --version | head -1; node --version
   echo "현재 브랜치: $(git rev-parse --abbrev-ref HEAD)"
+  # 토큰 자체는 GitHub 이 로그에서 가리므로, 값 대신 형태만 확인한다.
+  # 401 이 날 때 "잘렸는가 / 공백이 섞였는가 / 아예 비었는가"를 가리는 용도.
+  tok=${CLAUDE_CODE_OAUTH_TOKEN:-}
+  if [ -z "$tok" ]; then
+    echo "토큰: ❌ 비어 있음 — 시크릿이 전달되지 않았습니다"
+  else
+    echo "토큰: 길이 ${#tok}자"
+    case "$tok" in
+      *[[:space:]]*) echo "       ⚠️ 공백 또는 줄바꿈이 포함돼 있습니다 (복사 중 딸려온 경우)" ;;
+      *)             echo "       공백 없음" ;;
+    esac
+  fi
   exit 0
 fi
 
