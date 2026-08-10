@@ -48,17 +48,38 @@ function New-FailureIssue {
     $tail = ($Detail -split "`r?`n" | Select-Object -Last 60) -join "`n"
     $lines += @("", "<details><summary>claude 출력 (마지막 60줄)</summary>", "", '```', $tail, '```', "", "</details>")
   }
+  # 복구 방법을 맨 앞에 둔다. 미니PC 로그 위치를 먼저 보여주면 그 기계로 가야 하는
+  # 것처럼 읽히는데, 실제로는 데스크톱에서 대신 글을 써서 채우는 편이 훨씬 빠르다.
   $lines += @(
     "",
-    "확인할 곳",
-    "- 미니PC ``C:\srv\draft-log.txt`` 의 ``$Stamp`` 구간 (전체 출력)",
+    "### 복구 방법",
+    "",
+    "데스크톱 클로드에 **""자동 초안 실패했어""** 라고만 알려주세요.",
+    "위 오류 출력으로 원인을 판별하고, 필요하면 그날 글을 대신 작성해 발행합니다.",
+    "**미니PC 를 직접 열 필요는 없습니다.**",
+    "",
+    "<details><summary>미니PC 에서 확인할 곳 (설정 변경이 필요할 때만)</summary>",
+    "",
+    "- ``C:\srv\draft-log.txt`` 의 ``$Stamp`` 구간 (전체 출력)",
     "- Claude Code 자동 업데이트 충돌 (``claude --version`` 이 바로 응답하는지)",
-    "- 클로드 사용량 한도 / ``gh auth status``"
+    "- 클로드 사용량 한도 / ``gh auth status``",
+    "",
+    "</details>"
   )
   Write-Utf8NoBom -Path $tmp -Lines $lines
-  # 알림 실패가 본 작업을 죽이지 않도록 감싼다.
-  try { gh issue create --title "🚨 자동 초안 실패 ($Stamp)" --body-file $tmp --label "auto-draft-alert" }
-  catch { Write-Host "이슈 생성 실패: $($_.Exception.Message)" }
+  # 같은 사고에 이슈가 두 개 열리지 않게 한다. 감시 워크플로가 12:00 에 먼저 이슈를 열고
+  # 러너가 15:00 에 또 여는 일이 있었다(2026-08-10, #77·#78). 감시 쪽에 있는 중복 방지가
+  # 여기에는 없었다. 열려 있는 알림 이슈가 있으면 코멘트로 붙인다.
+  # 알림 실패가 본 작업을 죽이지 않도록 전체를 감싼다.
+  try {
+    $existing = gh issue list --state open --label "auto-draft-alert" --limit 1 --json number --jq ".[0].number // empty"
+    if ($existing) {
+      gh issue comment $existing --body-file $tmp
+      Write-Host "기존 알림 이슈 #$existing 에 코멘트 추가"
+    } else {
+      gh issue create --title "🚨 자동 초안 실패 ($Stamp)" --body-file $tmp --label "auto-draft-alert"
+    }
+  } catch { Write-Host "이슈 알림 실패: $($_.Exception.Message)" }
   Remove-Item $tmp -ErrorAction SilentlyContinue
 }
 
