@@ -78,6 +78,15 @@ if [ "$DRY_RUN" = "1" ]; then
       *)             echo "       공백 없음" ;;
     esac
   fi
+  # 인증만 따로 시험한다. 초안 생성까지 돌리면 5분 넘게 걸리는데,
+  # 401 인지 아닌지는 한 줄이면 판가름난다.
+  echo "--- 인증 시험 (claude -p) ---"
+  if out=$(claude -p "핑 이라고 하면 퐁 이라고만 답해라" 2>&1); then
+    echo "✅ 인증 성공 — 응답: $out"
+  else
+    echo "❌ 인증 실패 (종료 코드 $?)"
+    echo "$out"
+  fi
   exit 0
 fi
 
