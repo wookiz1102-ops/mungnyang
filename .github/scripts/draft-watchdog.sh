@@ -105,8 +105,11 @@ fi
 gh label create "$LABEL" --repo "$REPO" --color B60205 \
   --description "자동 초안 파이프라인 이상" >/dev/null 2>&1 || true
 
-EXISTING=$(gh issue list --repo "$REPO" --state open --label "$LABEL" \
-             --limit 1 --json number --jq '.[0].number // empty')
+# 중복이 생길 수 있으므로(감시와 러너가 각각 열던 시기가 있었다) 전부 받아 둔다.
+# 코멘트는 가장 최근 하나에만 달고, 복구 시에는 열린 것을 모두 닫는다.
+OPEN_ALERTS=$(gh issue list --repo "$REPO" --state open --label "$LABEL" \
+                --limit 20 --json number --jq '.[].number')
+EXISTING=$(echo "$OPEN_ALERTS" | head -1)
 
 if [ "$PROBLEM" = "1" ]; then
   if [ -n "$EXISTING" ]; then
@@ -121,8 +124,9 @@ if [ "$PROBLEM" = "1" ]; then
   fi
 else
   echo "이상 없음 — 오늘 초안 발행 완료, 손이 필요한 초안 PR 없음"
-  if [ -n "$EXISTING" ]; then
-    gh issue close "$EXISTING" --repo "$REPO" \
+  for n in $OPEN_ALERTS; do
+    gh issue close "$n" --repo "$REPO" \
       --comment "✅ 복구 확인 ($NOW KST) — 오늘 초안이 정상 발행됐고, 열린 채 방치된 초안 PR 도 없습니다."
-  fi
+    echo "알림 이슈 #$n 닫음"
+  done
 fi
