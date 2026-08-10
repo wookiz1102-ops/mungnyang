@@ -77,6 +77,15 @@ if [ "$DRY_RUN" = "1" ]; then
       *[[:space:]]*) echo "       ⚠️ 공백 또는 줄바꿈이 포함돼 있습니다 (복사 중 딸려온 경우)" ;;
       *)             echo "       공백 없음" ;;
     esac
+    # 값은 찍지 않고 "알려진 자격증명 중 무엇인가"만 판별한다.
+    # 자리를 잘못 넣은 경우(예: Console API 키)를 값 노출 없이 가리기 위한 것.
+    case "$tok" in
+      sk-ant-oat*)        echo "       종류: setup-token OAuth 토큰 — 이 자리에 맞음" ;;
+      sk-ant-api*)        echo "       종류: ⚠️ Console API 키 — ANTHROPIC_API_KEY 자리에 넣어야 함 (별도 과금)" ;;
+      sk-ant-*)           echo "       종류: ⚠️ 기타 sk-ant- 자격증명" ;;
+      ghp_*|github_pat_*) echo "       종류: ⚠️ GitHub 토큰 — 전혀 다른 자격증명" ;;
+      *)                  echo "       종류: ⚠️ sk-ant- 로 시작하지 않음 (setup-token 출력이 아닐 수 있음)" ;;
+    esac
   fi
   # 인증만 따로 시험한다. 초안 생성까지 돌리면 5분 넘게 걸리는데,
   # 401 인지 아닌지는 한 줄이면 판가름난다.
