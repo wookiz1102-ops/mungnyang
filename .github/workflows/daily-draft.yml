@@ -3,9 +3,9 @@ name: 자동 초안
 # 미니PC 의 작업 스케줄러를 대신한다. 로직은 .github/scripts/daily-draft.sh 에 있고,
 # 그건 scripts/runner.ps1 을 그대로 옮긴 것이다.
 #
-# ⚠️ 아직 schedule 을 켜지 않았다. 미니PC 의 기존 작업이 살아 있는 상태에서 둘 다 돌면
-#    하루에 글이 두 편 발행된다. workflow_dispatch 로 검증하고, 미니PC 작업을 끈 뒤
-#    아래 schedule 주석을 해제한다.
+# 미니PC 의 작업(댕냥피디아-주간초안, 매일 09:00)은 2026-08-10 에 비활성화했다.
+# 되돌리려면 미니PC 에서 Enable-ScheduledTask 하고 아래 schedule 을 다시 주석 처리한다
+# — 둘 다 켜져 있으면 하루에 글이 두 편 발행된다.
 on:
   workflow_dispatch:
     inputs:
@@ -13,8 +13,8 @@ on:
         description: '플러밍만 확인 (초안 생성·PR·머지 건너뜀)'
         type: boolean
         default: false
-  # schedule:
-  #   - cron: '0 0 * * *'   # 00:00 UTC = 09:00 KST
+  schedule:
+    - cron: '0 0 * * *'   # 00:00 UTC = 09:00 KST
 
 permissions:
   contents: write
