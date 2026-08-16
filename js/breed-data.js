@@ -15,6 +15,7 @@
   var catFood = { t: "고양이 사료 고르는 기준 5가지", d: "비만·비뇨기 관리에 중요한 사료 선택 기준.", e: "🐟", m: "사료·용품", u: "posts/cat-food-guide" };
   var catHeat = { t: "고양이 여름 더위 관리 — 열사병·탈수 신호", d: "단두종·장모종이 특히 취약 — 개구호흡 신호와 수분 관리.", e: "🌡️", m: "건강·증상", u: "posts/cat-summer-heat" };
   var kidney = { t: "고양이 신부전 초기 증상 알아보기", d: "노령묘 최다 질환 — 초기 신호와 조기 발견법.", e: "💧", m: "건강·증상", u: "posts/cat-kidney-disease" };
+  var hairball = { t: "고양이 헤어볼 관리와 빗질 방법", d: "장모종 필수 — 빗질 주기와 빗 종류, 병원 가야 할 신호까지.", e: "🪮", m: "생활 정보", u: "posts/cat-hairball-brushing" };
 
   // 개별 품종 심화 글
   var maltese = { t: "말티즈 키우기 완벽 가이드", d: "성격·수명·주의할 질병·관리법을 한 번에.", e: "🐶", m: "품종 심화", u: "posts/breed-maltese" };
@@ -53,9 +54,9 @@
     "c-russian":   { name: "러시안블루", articles: [russian, catFood] },
     "c-british":   { name: "브리티시 숏헤어", articles: [british, catFood] },
     "c-american":  { name: "아메리칸 숏헤어", articles: [american, catFood] },
-    "c-ragdoll":   { name: "랙돌", articles: [ragdoll, kitten, catHeat] },
+    "c-ragdoll":   { name: "랙돌", articles: [ragdoll, kitten, hairball] },
     "c-munchkin":  { name: "먼치킨", articles: [munchkin, kitten] },
     "c-scottish":  { name: "스코티시폴드", articles: [scottish, kidney] },
-    "c-persian":   { name: "페르시안", articles: [persian, kidney, catHeat] }
+    "c-persian":   { name: "페르시안", articles: [persian, kidney, hairball] }
   };
 })();
