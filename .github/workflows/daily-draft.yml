@@ -39,7 +39,7 @@ jobs:
           node-version: '22'
 
       - name: Claude Code 설치
-        run: npm install -g @anthropic-ai/claude-code
+        run: bash .github/scripts/install-claude.sh
 
       - name: 자동 초안 생성·검토·발행
         env:
