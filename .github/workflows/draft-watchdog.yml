@@ -12,6 +12,7 @@ permissions:
   issues: write
   pull-requests: read
   contents: read
+  actions: write        # 스케줄이 누락됐을 때 daily-draft 를 직접 재실행한다
 
 jobs:
   watch:

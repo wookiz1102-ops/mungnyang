@@ -154,7 +154,9 @@ for ($attempt = 1; $attempt -le $maxAttempts; $attempt++) {
   $prevEAP = $ErrorActionPreference
   $ErrorActionPreference = "Continue"
   try {
-    $raw = claude -p $prompt --permission-mode acceptEdits --disallowedTools "Bash(git:*)" "Skill" 2>&1
+    $raw = claude -p $prompt --permission-mode acceptEdits `
+             --allowedTools "Bash(node scripts/check-topic.mjs:*)" "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" "Bash(node scripts/verify-faq-match.mjs:*)" `
+             --disallowedTools "Bash(git:*)" "Skill" 2>&1
     $claudeOutput = ($raw | Out-String)
     Write-Host $claudeOutput
     if ($LASTEXITCODE -ne 0) { $claudeFailed = $true; $claudeError = "종료 코드 $LASTEXITCODE" }
