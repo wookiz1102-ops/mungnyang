@@ -109,6 +109,8 @@ DRAFT_PROMPT=$(cat <<'EOF'
   그 명령들은 결과물을 git이 무시하는 drafts/ 폴더에 저장하고 noindex를 붙여 발행을 막는다(그래서 이 작업이 조용히 실패한다).
   반드시 아래 단계를 서브에이전트로 직접 수행하고, 완성본은 git이 추적하는 posts/<slug>.html 에 써라(drafts/ 아님, noindex 넣지 마라).
 1) keyword-researcher 서브에이전트로 posts/ 와 sitemap.xml 을 확인해 아직 안 다룬 강아지·고양이 주제 하나를 고른다.
+   주제를 정했으면 반드시 `node scripts/check-topic.mjs <슬러그>` 를 실행하라.
+   종료 코드 1이면 다른 주제로 바꾸고, 2면 그 종에만 해당하는 각도 3가지를 대지 못하는 한 다른 주제로 바꿔라.
 2) content-writer 로 .claude/templates/post-template.html 구조에 맞춰 posts/<slug>.html 로 본문을 쓴다.
 3) vet-fact-checker 로 건강 내용을 검수·수정한다(YMYL: 단정·용량지시 금지, 병원 방문 기준과 면책 포함).
 4) seo-optimizer 로 제목·메타·JSON-LD를 최적화한다.
@@ -124,6 +126,7 @@ DELAY=300
 DRAFT_OUT=""
 for attempt in $(seq 1 $ATTEMPTS); do
   DRAFT_OUT=$(claude -p "$DRAFT_PROMPT" --permission-mode acceptEdits \
+                --allowedTools "Bash(node scripts/check-topic.mjs:*)" "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" "Bash(node scripts/verify-faq-match.mjs:*)" \
                 --disallowedTools "Bash(git:*)" "Skill" 2>&1) && rc=0 || rc=$?
   echo "$DRAFT_OUT"
   [ -n "$(git status --porcelain)" ] && break

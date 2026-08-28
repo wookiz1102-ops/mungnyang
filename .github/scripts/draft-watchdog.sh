@@ -57,12 +57,28 @@ trap 'rm -f "$BODY"' EXIT
 PROBLEM=0
 
 # 오늘 발행이 없고, 진행 중도 아니고, 열린 초안도 없다 → 파이프라인이 아무것도 못 했다.
+#
+# 이때 흔한 원인이 "스케줄이 아예 안 돈 것"이다. GitHub 예약 실행은 지연·누락이 잦다
+# (2026-08-27 은 00:00 UTC 예정이 08:02 에 돌았고, 08-28 은 아예 돌지 않았다).
+# 사람을 부르기 전에 한 번 직접 돌려본다. 재실행이 실패하면 그때 알린다.
+RETRIGGERED=0
 if [ "$TODAY_MERGED" = "0" ] && [ "$INFLIGHT" = "0" ] && [ -z "$STALE" ]; then
+  echo "오늘 초안이 없습니다 — daily-draft 재실행을 시도합니다"
+  if [ "$DRY_RUN" = "1" ]; then
+    echo "  (DRY RUN — 실제로 실행하지 않습니다)"
+    RETRIGGERED=1
+  elif gh workflow run daily-draft.yml --repo "$REPO" 2>&1; then
+    echo "  ✅ 재실행 요청 완료 — 이 실행이 실패하면 러너가 따로 알립니다"
+    RETRIGGERED=1
+  fi
+fi
+
+if [ "$TODAY_MERGED" = "0" ] && [ "$INFLIGHT" = "0" ] && [ -z "$STALE" ] && [ "$RETRIGGERED" = "0" ]; then
   PROBLEM=1
   cat >> "$BODY" <<EOF
-### 🚨 오늘($TODAY) 초안이 아예 만들어지지 않았습니다
+### 🚨 오늘($TODAY) 초안이 없고 재실행 요청도 실패했습니다
 
-\`draft/$TODAY-*\` 브랜치도 PR도 없습니다. 글을 쓰기 전 단계에서 멈춘 것입니다.
+\`draft/$TODAY-*\` 브랜치도 PR도 없고, 감시가 자동으로 건 재실행마저 실패했습니다.
 
 확인 순서
 1. 미니PC 전원·절전 상태, 작업 스케줄러의 \`LastRunTime\` / \`LastTaskResult\`
