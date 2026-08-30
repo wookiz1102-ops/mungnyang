@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!-- NOVELTY
+  이 글에만 있는 사실 3개를 근거 URL·확인일과 함께 적는다. 형식:
+  1. [웹의 다른 글에는 없는 구체적 사실] | https://근거-URL | 2026-08-30
+  2. ...
+  3. ...
+  scripts/check-external-novelty.mjs 가 검사한다. 3개 미만이거나, 선언한 사실이
+  본문에 실제로 없으면 발행이 막힌다. 채우기 어려우면 주제가 잘못된 것이다.
+-->
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +26,8 @@
     "headline": "[글 제목]",
     "description": "[요약]",
     "datePublished": "[YYYY-MM-DD]",
-    "author": { "@type": "Organization", "name": "댕냥피디아" }
+    "author": { "@type": "Person", "name": "[운영자 실명 또는 일관된 필명]", "url": "https://daengnyangpedia.com/about" },
+    "publisher": { "@type": "Organization", "name": "댕냥피디아" }
   }
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7190991508798677" crossorigin="anonymous"></script>
@@ -36,7 +45,6 @@
       <a href="../training">행동·훈련</a>
       <a href="../life">생활 정보</a>
       <a href="../tools">계산기</a>
-      <a href="../recommend">추천 아이템</a>
     </nav>
   </div>
 </header>
@@ -77,6 +85,14 @@
 
   <div class="ad-slot"></div>
 
+  <!-- 본문 이미지 — 최소 1장. 직접 찍은 사진이나 직접 만든 도표만 쓴다.
+       웹에 널린 스톡 이미지는 정보 이득이 0이라 넣으나 마나다.
+       마크업은 품종 글(posts/breed-*.html)의 figure 관례를 그대로 따른다. -->
+  <figure class="breed-photo">
+    <img src="../img/[경로]" alt="[이미지가 보여주는 내용을 문장으로]">
+    <figcaption>[이 사진/도표가 본문의 어떤 주장을 뒷받침하는지]</figcaption>
+  </figure>
+
   <h2 id="s3">[소제목 3]</h2>
   <p>[본문]</p>
 
@@ -101,6 +117,19 @@
     <ul>
       <li><a href="[관련글1]">[관련 글 제목 1]</a></li>
       <li><a href="[관련글2]">[관련 글 제목 2]</a></li>
+    </ul>
+  </div>
+
+  <!-- 건강 글은 필수. scripts/verify-sources.mjs 가 외부 출처 2개 이상을 요구한다.
+       ‼ WebFetch 로 실제로 열어본 자료만 적는다. 열어보지 않은 URL 은 환각 링크이고,
+         출처가 아예 없는 것보다 나쁘다. -->
+  <div class="related">
+    <strong>📚 참고한 자료</strong>
+    <ul>
+      <li><a href="[1차 출처 URL]" target="_blank" rel="noopener">[기관명 — 문서 제목]</a>
+      ([본문의 어느 대목을 뒷받침하는지]) · 확인 [YYYY-MM-DD]</li>
+      <li><a href="[1차 출처 URL]" target="_blank" rel="noopener">[기관명 — 문서 제목]</a>
+      ([어느 대목]) · 확인 [YYYY-MM-DD]</li>
     </ul>
   </div>
 

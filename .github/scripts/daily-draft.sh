@@ -108,11 +108,23 @@ DRAFT_PROMPT=$(cat <<'EOF'
 ‼ 이 실행은 자동 발행 파이프라인의 일부다. /draft·/publish 같은 슬래시 명령(스킬)을 절대 호출하지 마라 —
   그 명령들은 결과물을 git이 무시하는 drafts/ 폴더에 저장하고 noindex를 붙여 발행을 막는다(그래서 이 작업이 조용히 실패한다).
   반드시 아래 단계를 서브에이전트로 직접 수행하고, 완성본은 git이 추적하는 posts/<slug>.html 에 써라(drafts/ 아님, noindex 넣지 마라).
-1) keyword-researcher 서브에이전트로 posts/ 와 sitemap.xml 을 확인해 아직 안 다룬 강아지·고양이 주제 하나를 고른다.
+1) keyword-researcher 서브에이전트로 주제를 고른다. posts/ 와 sitemap.xml 로 중복을 피하고,
+   **WebSearch 로 그 주제의 현재 한국어 상위 문서를 실제로 읽어라.** 거기 없는 것을 찾는 게 목적이다.
    주제를 정했으면 반드시 `node scripts/check-topic.mjs <슬러그>` 를 실행하라.
    종료 코드 1이면 다른 주제로 바꾸고, 2면 그 종에만 해당하는 각도 3가지를 대지 못하는 한 다른 주제로 바꿔라.
+   ‼ "이 글에만 있을 사실" 3개와 각각의 근거 URL 을 못 대면 **그 주제로 쓰지 말고 다른 주제를 골라라.**
+     그래도 못 찾으면 오늘은 글을 쓰지 않는다 — 빈손으로 끝내는 것이 정상 동작이다.
+     쓸모없는 글 한 편이 사이트 전체 평가를 깎는다(2026-08 애드센스 2차 거절의 원인).
 2) content-writer 로 .claude/templates/post-template.html 구조에 맞춰 posts/<slug>.html 로 본문을 쓴다.
-3) vet-fact-checker 로 건강 내용을 검수·수정한다(YMYL: 단정·용량지시 금지, 병원 방문 기준과 면책 포함).
+   **WebFetch 로 1차 자료를 직접 열어 확인한 것만 인용한다.** 열어보지 않은 URL 을 적으면 환각 링크이고,
+   출처가 없는 것보다 나쁘다. 건강 글은 외부 1차 출처 2개 이상을 본문에 인라인으로 걸고
+   하단 `📚 참고한 자료` 에 확인일과 함께 정리한다(포맷은 posts/cat-diarrhea.html 하단 참조).
+   `<!-- NOVELTY -->` 블록에 1)에서 정한 사실 3개를 근거 URL·확인일과 함께 적는다.
+3) vet-fact-checker 로 건강 내용을 검수·수정한다(YMYL: 자가 투약·용량지시 금지, 병원 방문 기준과 면책 포함).
+   확신이 없으면 지우지 말고 **먼저 1차 출처를 찾아 확인하라.** 확인 실패했을 때만 덜어낸다.
+3-1) 발행 전 자가 점검: `node scripts/verify-sources.mjs posts/<slug>.html` 과
+   `node scripts/check-external-novelty.mjs posts/<slug>.html` 을 실행해 둘 다 통과시켜라.
+   실패한 채로 넘기면 검토관이 어차피 FAIL 한다.
 4) seo-optimizer 로 제목·메타·JSON-LD를 최적화한다.
 5) internal-linker 로 sitemap.xml·해당 카테고리 목록·index.html 최신글·js/search-data.js·(관련시)js/breed-data.js·본문 .related 에 반영한다(품종=엄선링크, 카테고리=본진 원칙 유지).
 파일 편집만 하고 git 커밋/푸시는 하지 마라(스크립트가 처리한다).
@@ -125,8 +137,11 @@ ATTEMPTS=2
 DELAY=300
 DRAFT_OUT=""
 for attempt in $(seq 1 $ATTEMPTS); do
+  # WebSearch/WebFetch 가 여기 없으면 서브에이전트 frontmatter 에 선언해도 실제로 부여되지 않는다.
+  # 2026-08 까지 정확히 그 상태였고(keyword-researcher 는 선언만 하고 못 썼다),
+  # 그래서 88편이 전부 외부 자료를 한 번도 안 열어본 채 쓰였다 — 애드센스 거절의 근본 원인이다.
   DRAFT_OUT=$(claude -p "$DRAFT_PROMPT" --permission-mode acceptEdits \
-                --allowedTools "Bash(node scripts/check-topic.mjs:*)" "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" "Bash(node scripts/verify-faq-match.mjs:*)" \
+                --allowedTools "WebSearch" "WebFetch" "Bash(node scripts/check-topic.mjs:*)" "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" "Bash(node scripts/verify-faq-match.mjs:*)" "Bash(node scripts/verify-sources.mjs:*)" "Bash(node scripts/check-external-novelty.mjs:*)" \
                 --disallowedTools "Bash(git:*)" "Skill" 2>&1) && rc=0 || rc=$?
   echo "$DRAFT_OUT"
   [ -n "$(git status --porcelain)" ] && break
@@ -158,7 +173,7 @@ EOF
 )
 # publish-reviewer 가 필수 게이트(중복/분량/앵커 검사)를 비대화식에서 실행할 수 있게 명시 허용한다.
 REVIEW_OUT=$(claude -p "$REVIEW_PROMPT" --permission-mode acceptEdits \
-  --allowedTools "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" "Bash(node scripts/verify-faq-match.mjs:*)" \
+  --allowedTools "WebFetch" "Bash(node scripts/check-topic.mjs:*)" "Bash(node scripts/check-duplication.mjs:*)" "Bash(node scripts/count-body.mjs:*)" "Bash(node scripts/verify-anchors.mjs:*)" "Bash(node scripts/verify-faq-match.mjs:*)" "Bash(node scripts/verify-sources.mjs:*)" "Bash(node scripts/check-external-novelty.mjs:*)" \
   --disallowedTools "Bash(git commit:*)" "Bash(git push:*)" "Bash(git merge:*)" "Bash(gh:*)" "Skill" 2>&1)
 echo "$REVIEW_OUT"
 

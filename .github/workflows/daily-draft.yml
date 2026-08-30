@@ -13,8 +13,18 @@ on:
         description: '플러밍만 확인 (초안 생성·PR·머지 건너뜀)'
         type: boolean
         default: false
-  schedule:
-    - cron: '0 0 * * *'   # 00:00 UTC = 09:00 KST
+  # 2026-08-30 자동 발행 중단.
+  #
+  # 애드센스 2차 거절(사유: 가치가 별로 없는 콘텐츠) 후 진단한 결과, 초안을 쓰는
+  # content-writer 가 WebSearch/WebFetch 를 못 가진 채로 88편을 썼다. 발행 게이트
+  # 5개도 전부 자기 사이트 내부만 검사한다 — "웹에 이미 있는 답 대비 이 글이 무엇을
+  # 더하는가"를 묻는 검사가 없었다. 그 결과 구글은 7/25 이후 새 글을 크롤링조차
+  # 하지 않는다(GSC "발견됨-현재 색인 생성되지 않음" 22건, 최종 크롤링 "해당사항 없음").
+  #
+  # 이 상태로 계속 돌리면 크롤링되지 않는 페이지만 하루 한 장씩 쌓인다.
+  # 재개 조건은 .claude/RESTART-CHECKLIST.md 에 있다. 재개해도 매일이 아니라 주 2편이다.
+  # schedule:
+  #   - cron: '0 0 * * *'   # 00:00 UTC = 09:00 KST
 
 permissions:
   contents: write
