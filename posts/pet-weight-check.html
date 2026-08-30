@@ -128,6 +128,7 @@
       <option value="2" selected>완만하게 올라가요</option>
       <option value="3">수평이거나 아래로 처져 있어요</option>
     </select>
+    <p class="note">※ 고양이는 아랫배가 늘어져 있어도 정상일 수 있습니다(원시주머니). 얇게 흔들리는 피부막이면 3번 대신 2번을 골라 주세요.</p>
     <button id="bcs-btn" type="button">비만도 확인하기</button>
     <div class="result" id="bcs-result"></div>
     <p class="note">※ BCS 기준의 자가진단 참고용입니다. 정확한 판정과 감량 계획은 병원에서 받아보세요.</p>
@@ -154,7 +155,8 @@
     <strong>BCS(Body Condition Score, 신체충실지수)</strong>는 체중 숫자 대신 <strong>체형</strong>으로
     비만도를 평가하는 방식입니다. 같은 5kg이라도 품종·골격에 따라 적정일 수도, 비만일 수도
     있어서 수의사들은 갈비뼈·허리·배 세 부위를 보고 판단합니다. 보통 9단계로 나누며
-    <strong>4~5가 이상적</strong>입니다.
+    <strong>4~5가 이상적</strong>입니다. <a href="https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/obesity" target="_blank" rel="noopener">코넬대학교 고양이건강센터</a>는
+    9단계 척도에서 4.5~5점을 이상 체중으로 봅니다.
   </p>
 
   <div class="table-wrap">
@@ -199,7 +201,9 @@
 
   <h2 id="interpret">세 항목이 엇갈릴 때 결과 읽는 법</h2>
   <p>
-    위 도구는 세 질문에 각각 1~3점을 매겨 합한 값(3~9점)을 9단계 척도에 대응시킨 것입니다.
+    위 도구는 세 질문에 각각 1~3점을 매겨 합한 값(3~9점)으로 저체중·적정·과체중·비만 네 구간을 나눈 것입니다.
+    합계 자체가 BCS 점수는 아닙니다. 세 항목이 모두 2번(갈비뼈가 살짝 눌러 만져지고, 허리가 완만하게 들어가고,
+    배가 완만하게 올라감)이면 합계 6점이 되는데, 이것이 교과서적인 이상 체형인 BCS 4~5에 해당합니다.
     수의사가 손으로 만져 매기는 척도를 문항 셋으로 압축했기 때문에, 경계에 걸린 아이는
     6점과 7점 사이에서 사람마다 답이 갈릴 수 있습니다.
     <strong>세 항목이 같은 방향을 가리킬수록 결과를 믿을 만하고, 서로 어긋날수록 참고치에 가깝다</strong>고 보시면 됩니다.
@@ -237,8 +241,13 @@
 
   <h2 id="diet">체중 관리, 이렇게 시작하세요</h2>
   <ul>
-    <li><strong>급여량 5~10%씩 점진 감량</strong> — 한 번에 확 줄이면 안 됩니다.
-      현재 적정량은 <a href="dog-food-calculator">사료 급여량 계산기</a>로 확인하세요.</li>
+    <li><strong>급여량은 지금 양이 아니라 목표 체중 기준으로 다시 계산</strong> — 지금 주는 양에서
+      몇 퍼센트 덜어내는 정도로는 체중이 잘 움직이지 않습니다.
+      <a href="https://www.merckvetmanual.com/management-and-nutrition/nutrition-small-animals/nutrition-in-disease-management-in-small-animals" target="_blank" rel="noopener">MSD 수의 매뉴얼</a>은
+      감량 시작 열량을 유지에너지요구량(MER)의 <strong>개 60%, 고양이 70%</strong>로 잡는 방법을 제시합니다.
+      다만 첫날부터 그 수준으로 떨어뜨리지는 말고 5~10%씩 단계적으로 줄여 도달하세요.
+      정확한 kcal는 병원에서 목표 체중을 정한 뒤 산출하는 것이 맞고,
+      현재 급여량은 <a href="dog-food-calculator">사료 급여량 계산기</a>로 확인할 수 있습니다.</li>
     <li><strong>간식은 하루 열량의 10% 이내</strong> — 간식을 줄이는 게 가장 빠른 감량입니다.</li>
     <li><strong>감량 속도는 주당 체중의 1~2%</strong> — 그 이상은 무리입니다.</li>
     <li><strong>운동 병행</strong> — 강아지는 산책 시간을 조금씩 늘리고(<a href="dog-walking-guide">산책 가이드</a>),
@@ -363,6 +372,22 @@
     </ul>
   </div>
 
+  <div class="related">
+    <strong>📚 참고한 자료</strong>
+    <ul>
+      <li><a href="https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/obesity" target="_blank" rel="noopener">코넬대학교 수의과대학 고양이건강센터 — Obesity</a>
+      (9단계 BCS 척도에서 4.5~5점이 이상 체중, 감량 속도는 주당 체중의 1~2%)</li>
+      <li><a href="https://www.merckvetmanual.com/management-and-nutrition/nutrition-small-animals/nutrition-in-disease-management-in-small-animals" target="_blank" rel="noopener">MSD(머크) 수의 매뉴얼 — Nutrition in Disease Management in Small Animals</a>
+      (감량 시작 열량을 유지에너지요구량의 개 60%·고양이 70%로 계산, 굶기는 방식은 안전하지도 인도적이지도 않음)</li>
+    </ul>
+    <p>
+      위 자료는 모두 영문이며, 수의학 기관이 공개한 정보입니다.
+      본문은 이를 참고해 국내 보호자가 집에서 확인할 수 있는 형태로 정리한 것으로,
+      우리 아이의 목표 체중과 감량 계획은 진료한 수의사의 판단을 따라야 합니다.
+      (링크 확인일: 2026년 8월 30일)
+    </p>
+  </div>
+
   <div class="disclaimer-box">
     ⚕️ <strong>안내</strong> — 본 자가진단은 참고용이며 수의학적 진단을 대체하지 않습니다.
     감량 계획은 아이의 건강 상태에 맞춰 수의사와 상담 후 진행하세요.
@@ -394,16 +419,18 @@ document.getElementById("bcs-btn").addEventListener("click", function () {
     parseInt(document.getElementById("bcs-belly").value, 10);
   var box = document.getElementById("bcs-result");
 
+  // 합계 3=세 항목 모두 마름, 6=세 항목 모두 이상적, 9=세 항목 모두 비만.
+  // 합계는 BCS 점수가 아니라 네 구간에 대응시킨 값이다.
   var grade, bcs, advice;
-  if (score <= 3) {
+  if (score <= 4) {
     grade = "저체중 의심"; bcs = "BCS 1~3";
     advice = "지방이 너무 적을 수 있어요. 급여량을 확인하고, 잘 먹는데도 마른다면 병원 검진을 받아보세요.";
-  } else if (score <= 5) {
+  } else if (score <= 6) {
     grade = "적정 체형 👍"; bcs = "BCS 4~5";
     advice = "이상적인 체형이에요! 지금의 급여량과 운동량을 그대로 유지하세요.";
-  } else if (score <= 7) {
+  } else if (score <= 8) {
     grade = "과체중"; bcs = "BCS 6~7";
-    advice = "간식을 하루 열량의 10% 이내로 줄이고, 급여량을 5~10% 조절해 보세요. 산책·놀이 시간을 늘리는 것도 좋아요.";
+    advice = "간식을 하루 열량의 10% 이내로 줄이고, 급여량은 지금 양에서 조금 덜기보다 목표 체중 기준으로 다시 계산하세요(수의학 기준은 유지에너지요구량의 개 60%·고양이 70%에서 시작). 산책·놀이 시간을 늘리는 것도 좋아요.";
   } else {
     grade = "비만"; bcs = "BCS 8~9";
     advice = "관절·당뇨 위험이 높은 단계예요. 병원에서 목표 체중을 정하고 감량 계획을 세우는 것을 권해요. 고양이는 급격한 감량 금지!";
