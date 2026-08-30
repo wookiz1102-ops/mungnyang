@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>반려동물 계산기·도구 모음 — 나이 변환·사료량·접종 일정 | 댕냥피디아</title>
-  <meta name="description" content="강아지·고양이 나이 변환기, 사료 급여량 계산기, 예방접종 일정 계산기까지. 초보 반려인에게 필요한 계산 도구를 한곳에 모았습니다. 즐겨찾기해 두고 쓰세요.">
+  <meta name="description" content="강아지·고양이 나이 변환기, 사료 급여량 계산기, 예방접종 일정 계산기, 비만도 자가진단을 한 페이지에서 바로 쓰세요. 결과를 어떻게 읽어야 하는지도 함께 정리했습니다.">
   <link rel="canonical" href="https://daengnyangpedia.com/tools">
   <meta property="og:image" content="https://daengnyangpedia.com/img/breeds/og-default.jpg">
   <link rel="stylesheet" href="css/style.css">
@@ -23,7 +23,6 @@
       <a href="training">행동·훈련</a>
       <a href="life">생활 정보</a>
       <a href="tools">계산기</a>
-      <a href="recommend">추천 아이템</a>
     </nav>
   </div>
 </header>
@@ -32,49 +31,189 @@
   <section class="page-hero">
     <h1>🧮 계산기·도구</h1>
     <p>나이 변환부터 사료량, 접종 일정까지 — 반려생활에 필요한 계산을
-    입력 한 번으로 해결하세요. 즐겨찾기(Ctrl+D)해 두면 필요할 때 바로 꺼내 쓸 수 있어요.</p>
+    이 페이지에서 바로 해보세요. 즐겨찾기(Ctrl+D)해 두면 필요할 때 꺼내 쓸 수 있어요.</p>
   </section>
 
   <div class="container">
+    <section class="article">
+      <div class="lead">
+        시작하기 전에 손에 있으면 좋은 것은 <strong>나이·체중·생일, 그리고 사료 봉지 뒷면의
+        100g당 kcal</strong> 정도입니다. 앞의 셋은 대부분 알고 계실 테고, 마지막 하나만
+        봉지를 한 번 뒤집어 보면 됩니다. 입력한 값은 브라우저 안에서만 계산되며 어디에도
+        전송되거나 저장되지 않으니, 편하게 여러 번 바꿔 넣어 보세요.
+      </div>
 
-    <h2 class="section-title">전체 도구</h2>
-    <div class="card-grid">
-      <a class="card" href="/#dog-age-calc" style="--chip:#fef3c7">
-        <span class="emoji">🐶</span>
-        <h3>강아지 나이 변환기</h3>
-        <p>우리 강아지, 사람 나이로 몇 살? 소형견·중형견·대형견 체구별로 바로 계산해 보세요.</p>
-        <span class="card-meta">나이 · 홈 화면에서 바로 사용</span>
-      </a>
-      <a class="card" href="posts/cat-age-calculator" style="--chip:#ece0ff">
-        <span class="emoji">🐱</span>
-        <h3>고양이 나이 계산기</h3>
-        <p>사람 나이와 생애 단계(새끼~초고령기)를 한 번에. 단계별 관리 포인트와 변환표 포함.</p>
-        <span class="card-meta">나이 · 변환표 포함</span>
-      </a>
-      <a class="card" href="posts/dog-food-calculator" style="--chip:#dcfce7">
-        <span class="emoji">🍚</span>
-        <h3>사료 급여량 계산기</h3>
-        <p>체중·나이·중성화 여부로 하루 급여량을 자동 계산. 포장지 권장량이 안 맞는 이유까지.</p>
-        <span class="card-meta">사료 · 급여량</span>
-      </a>
-      <a class="card" href="posts/vaccination-calculator" style="--chip:#ffdfe4">
-        <span class="emoji">💉</span>
-        <h3>예방접종 일정 계산기</h3>
-        <p>생일만 입력하면 접종 차수별 예정 날짜표 생성. 다음 접종일을 놓치지 마세요.</p>
-        <span class="card-meta">건강 · 접종 일정</span>
-      </a>
-      <a class="card" href="posts/pet-weight-check" style="--chip:#fef3c7">
-        <span class="emoji">⚖️</span>
-        <h3>비만도 자가진단 (BCS)</h3>
-        <p>갈비뼈·허리·배 3가지 질문으로 저체중~비만 판정과 관리 방법 안내.</p>
-        <span class="card-meta">건강 · 체중 관리</span>
-      </a>
-    </div>
+      <nav class="toc">
+        <strong>📋 목차</strong>
+        <ol>
+          <li><a href="#how-to-read">계산 결과를 어떻게 읽어야 할까</a></li>
+          <li><a href="#dog-age-calc">강아지 나이 변환기</a></li>
+          <li><a href="#cat-age-calc">고양이 나이 계산기</a></li>
+          <li><a href="#food-calc">사료 급여량 계산기</a></li>
+          <li><a href="#vaccination-calc">예방접종 일정 계산기</a></li>
+          <li><a href="#bcs-calc">비만도 자가진단 (BCS)</a></li>
+        </ol>
+      </nav>
 
-    <div class="box-tip" style="margin-top:2.5rem">
-      💡 <strong>이런 도구가 있으면 좋겠다?</strong> — 병원비 예상, 나이별 검진 체크 등 필요한
-      계산기가 있다면 <a href="contact">문의하기</a>로 알려주세요. 계속 추가해 나갈게요.
-    </div>
+      <h2 id="how-to-read">계산 결과를 어떻게 읽어야 할까</h2>
+      <p>
+        다섯 개 모두 여러 개체의 평균에서 나온 공식을 씁니다. 그래서 결과는 "우리 아이의 정답"이
+        아니라 <strong>출발점</strong>입니다. 실제로는 이렇게 쓰는 편이 낫습니다.
+      </p>
+      <ul>
+        <li><strong>사료량</strong>은 계산값으로 2~3주 먹여 보고 체중과 변 상태를 보며 조정합니다.
+          계산기는 처음 얼마를 덜지 정해 줄 뿐입니다.</li>
+        <li><strong>나이 변환</strong>에서 쓸모 있는 부분은 사람 나이 숫자보다 함께 나오는
+          생애 단계입니다. 단계가 바뀌면 검진 항목과 간격이 달라집니다.</li>
+        <li><strong>접종 일정</strong>은 표준 간격으로 계산한 예정일입니다. 병원과 백신 종류에 따라
+          달라지므로, 달력에 표시해 둘 기준일 정도로 쓰세요.</li>
+        <li><strong>비만도</strong>는 체중계 숫자가 아니라 만졌을 때의 느낌으로 판정합니다.
+          같은 4kg이라도 체형은 다릅니다.</li>
+      </ul>
+      <p>
+        건강과 얽힌 판단의 근거는 계산 결과가 아니라 검진 결과입니다. 숫자가 예상과 크게 다르거나
+        아이 상태가 평소와 다르면 병원에서 확인하세요.
+      </p>
+
+      <h2 id="dog-age-calc">🐶 강아지 나이 변환기</h2>
+      <p>
+        개는 다 자란 체중이 2kg에서 70kg까지 벌어져, 같은 나이라도 체구에 따라 노화 속도가
+        다릅니다. 나이와 함께 체구를 고르는 이유입니다.
+      </p>
+      <div class="widget">
+        <label for="dog-age">강아지 나이 (년)</label>
+        <input type="number" id="dog-age" min="0" max="30" step="0.5" placeholder="예: 3">
+        <label for="dog-size">체구</label>
+        <select id="dog-size">
+          <option value="small">소형견 (9kg 이하)</option>
+          <option value="medium">중형견 (10~22kg)</option>
+          <option value="large">대형견 (23kg 이상)</option>
+        </select>
+        <button id="age-btn" type="button">사람 나이로 변환하기</button>
+        <div class="result" id="age-result"></div>
+        <p class="note">※ 일반적인 환산표 기준의 근사치이며, 품종·건강 상태에 따라 다를 수 있습니다.</p>
+      </div>
+
+      <h2 id="cat-age-calc">🐱 고양이 나이 계산기</h2>
+      <p>
+        고양이는 대부분 3~6kg 안에 모여 있어 체구에 따른 편차가 크지 않습니다. 그래서 품종과
+        관계없이 같은 공식을 쓰고, 나이만 넣으면 사람 나이와 생애 단계가 함께 나옵니다.
+      </p>
+      <div class="widget">
+        <label for="cat-age">고양이 나이 (년)</label>
+        <input type="number" id="cat-age" min="0" max="30" step="0.5" placeholder="예: 3">
+        <button id="cat-age-btn" type="button">사람 나이로 변환하기</button>
+        <div class="result" id="cat-age-result"></div>
+        <p class="note">※ 일반적인 환산 공식 기준의 근사치이며, 품종·건강 상태에 따라 다를 수 있습니다.</p>
+      </div>
+      <p>
+        나이 변환표 전체와 생일을 모르는 고양이의 나이를 추정하는 법은
+        <a href="posts/cat-age-calculator">고양이 나이 계산기</a> 글에서 다룹니다.
+      </p>
+
+      <h2 id="food-calc">🍚 사료 급여량 계산기</h2>
+      <p>
+        체중으로 기초 에너지 요구량(RER)을 구한 뒤 생애 단계 계수를 곱해 하루 필요 칼로리를 내고,
+        사료 칼로리로 나눠 그램으로 바꿉니다. 시작하기 전에 사료 포장지 뒷면에서
+        <strong>100g당 kcal</strong> 숫자만 확인해 두세요. 같은 100g이라도 사료마다 열량이
+        20% 넘게 차이 나기 때문에, 이 값이 결과를 가장 크게 좌우합니다.
+      </p>
+      <div class="widget">
+        <label for="dog-weight">강아지 체중 (kg)</label>
+        <input type="number" id="dog-weight" min="0.5" max="90" step="0.1" placeholder="예: 4.5">
+
+        <label for="dog-stage">나이·상태</label>
+        <select id="dog-stage">
+          <option value="3.0">강아지 (생후 4개월 미만)</option>
+          <option value="2.0">강아지 (4개월 ~ 1살)</option>
+          <option value="1.6" selected>성견 · 중성화 함</option>
+          <option value="1.8">성견 · 중성화 안 함</option>
+          <option value="1.4">노령견 (7살 이상)</option>
+          <option value="1.0">다이어트 필요 (과체중)</option>
+        </select>
+
+        <label for="food-kcal">사료 칼로리 (kcal/100g) — 포장지에서 확인</label>
+        <input type="number" id="food-kcal" min="200" max="600" step="1" value="380" placeholder="모르면 380 그대로 두세요">
+
+        <button id="calc-btn" type="button">하루 급여량 계산하기</button>
+        <div class="result" id="calc-result"></div>
+        <p class="note">※ RER(기초 에너지 요구량) × 생애단계 계수 기준의 일반적 추정치입니다.
+        질병이 있거나 임신·수유 중이라면 수의사와 상담하세요.</p>
+      </div>
+      <p>
+        포장지 권장량과 결과가 다르게 나오는 이유, 간식을 포함해 계산하는 법은
+        <a href="posts/dog-food-calculator">사료 급여량 계산기</a> 글에서 자세히 설명합니다.
+      </p>
+
+      <h2 id="vaccination-calc">💉 예방접종 일정 계산기</h2>
+      <p>
+        생일을 넣으면 차수별 예정일을 표로 만들어 줍니다. 이미 지난 차수는 흐리게, 다음에 맞을
+        차수는 굵게 표시되니 "다음이 언제더라"를 바로 확인할 수 있어요. 생일을 모른다면
+        병원에서 추정해 준 날짜를 넣으면 됩니다.
+      </p>
+      <div class="widget">
+        <label for="vac-species">반려동물</label>
+        <select id="vac-species">
+          <option value="dog">🐶 강아지</option>
+          <option value="cat">🐱 고양이</option>
+        </select>
+        <label for="vac-birth">생일 (모르면 병원에서 추정한 날짜)</label>
+        <input type="date" id="vac-birth">
+        <button id="vac-btn" type="button">접종 일정 계산하기</button>
+        <div class="result" id="vac-result"></div>
+        <p class="note">※ 병원·백신 종류에 따라 시작 시기와 간격(강아지 2~3주, 고양이 3~4주)이
+        조정될 수 있습니다. 실제 일정은 담당 수의사와 확정하세요.</p>
+      </div>
+      <p>
+        차수별로 무엇을 맞는지, 일정을 놓쳤을 때 어떻게 하는지는
+        <a href="posts/vaccination-calculator">예방접종 일정 계산기</a> 글에 정리해 두었습니다.
+      </p>
+
+      <h2 id="bcs-calc">⚖️ 비만도 자가진단 (BCS)</h2>
+      <p>
+        수의사들이 쓰는 BCS(신체충실지수)는 체중계 숫자가 아니라 만졌을 때의 느낌으로 판정합니다.
+        아이를 옆에 두고 갈비뼈·허리·배 세 곳을 직접 확인하면서 답해 보세요. 강아지와 고양이
+        모두 같은 방식으로 봅니다.
+      </p>
+      <div class="widget">
+        <label for="bcs-rib">1. 옆구리를 만지면 갈비뼈가?</label>
+        <select id="bcs-rib">
+          <option value="1">눈으로도 보이고 아주 쉽게 만져져요</option>
+          <option value="2" selected>지방 아래로 살짝 눌러야 만져져요</option>
+          <option value="3">힘을 줘도 잘 만져지지 않아요</option>
+        </select>
+        <label for="bcs-waist">2. 위에서 내려다보면 허리 라인이?</label>
+        <select id="bcs-waist">
+          <option value="1">뼈가 드러날 만큼 확 들어가 있어요</option>
+          <option value="2" selected>갈비뼈 뒤가 완만하게 들어가 있어요</option>
+          <option value="3">일자거나 오히려 볼록해요</option>
+        </select>
+        <label for="bcs-belly">3. 옆에서 보면 배 라인이?</label>
+        <select id="bcs-belly">
+          <option value="1">뒤로 갈수록 가파르게 올라가요</option>
+          <option value="2" selected>완만하게 올라가요</option>
+          <option value="3">수평이거나 아래로 처져 있어요</option>
+        </select>
+        <button id="bcs-btn" type="button">비만도 확인하기</button>
+        <div class="result" id="bcs-result"></div>
+        <p class="note">※ BCS 기준의 자가진단 참고용입니다. 정확한 판정과 감량 계획은 병원에서 받아보세요.</p>
+      </div>
+      <p>
+        판정 단계별 관리 방법과 감량 속도 기준은
+        <a href="posts/pet-weight-check">비만도 자가진단</a> 글에서 확인하세요.
+      </p>
+
+      <div class="box-tip">
+        💡 <strong>이런 도구가 있으면 좋겠다?</strong> — 병원비 예상, 나이별 검진 체크 등 필요한
+        계산기가 있다면 <a href="contact">문의하기</a>로 알려주세요. 계속 추가해 나갈게요.
+      </div>
+
+      <div class="disclaimer-box">
+        ⚕️ <strong>안내</strong> — 이 페이지의 계산기는 일반적인 공식과 표준 일정 기준의 참고용이며,
+        수의학적 진단을 대체하지 않습니다. 사료 급여량, 접종 계획, 감량 계획은 질병이나 임신·수유 등
+        상황에 따라 달라지므로 담당 수의사와 상담해 정하세요.
+      </div>
+    </section>
 
   </div>
 </main>
@@ -92,5 +231,204 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+// 강아지 나이 → 사람 나이 변환기
+document.getElementById("age-btn").addEventListener("click", function () {
+  var age = parseFloat(document.getElementById("dog-age").value);
+  var size = document.getElementById("dog-size").value;
+  var box = document.getElementById("age-result");
+
+  if (isNaN(age) || age <= 0 || age > 30) {
+    box.textContent = "강아지 나이를 0.5~30 사이로 입력해 주세요.";
+    box.classList.add("show");
+    return;
+  }
+
+  var perYear = { small: 4, medium: 5, large: 6 }[size];
+  var human;
+  if (age <= 1) {
+    human = 15 * age;
+  } else if (age <= 2) {
+    human = 15 + 9 * (age - 1);
+  } else {
+    human = 24 + perYear * (age - 2);
+  }
+
+  var stage = human < 18 ? "어린이·청소년기" : human < 40 ? "청년기" : human < 60 ? "중년기" : "노년기";
+  box.innerHTML = "사람 나이로 약 <strong>" + Math.round(human) + "세</strong> — " + stage + "에 해당해요.";
+  box.classList.add("show");
+});
+
+// 고양이 나이 → 사람 나이 변환기
+document.getElementById("cat-age-btn").addEventListener("click", function () {
+  var age = parseFloat(document.getElementById("cat-age").value);
+  var box = document.getElementById("cat-age-result");
+
+  if (isNaN(age) || age <= 0 || age > 30) {
+    box.textContent = "고양이 나이를 0.5~30 사이로 입력해 주세요.";
+    box.classList.add("show");
+    return;
+  }
+
+  var human;
+  if (age <= 1) {
+    human = 15 * age;
+  } else if (age <= 2) {
+    human = 15 + 9 * (age - 1);
+  } else {
+    human = 24 + 4 * (age - 2);
+  }
+
+  var stage =
+    age < 1 ? "새끼 (Kitten)" :
+    age < 3 ? "청년기 (Junior)" :
+    age < 7 ? "한창때 (Prime)" :
+    age < 11 ? "성숙기 (Mature)" :
+    age < 15 ? "노령기 (Senior)" : "초고령기 (Geriatric)";
+
+  box.innerHTML = "사람 나이로 약 <strong>" + Math.round(human) + "세</strong> — " + stage + "에 해당해요.";
+  box.classList.add("show");
+});
+
+// 사료 급여량 계산기 (RER × 생애단계 계수 → 그램 환산)
+document.getElementById("calc-btn").addEventListener("click", function () {
+  var weight = parseFloat(document.getElementById("dog-weight").value);
+  var factor = parseFloat(document.getElementById("dog-stage").value);
+  var kcalPer100 = parseFloat(document.getElementById("food-kcal").value);
+  var box = document.getElementById("calc-result");
+
+  if (isNaN(weight) || weight < 0.5 || weight > 90) {
+    box.textContent = "체중을 0.5~90kg 사이로 입력해 주세요.";
+    box.classList.add("show");
+    return;
+  }
+  if (isNaN(kcalPer100) || kcalPer100 < 200 || kcalPer100 > 600) {
+    box.textContent = "사료 칼로리를 200~600 kcal/100g 사이로 입력해 주세요. (모르면 380)";
+    box.classList.add("show");
+    return;
+  }
+
+  var rer = 70 * Math.pow(weight, 0.75);
+  var der = rer * factor;
+  var grams = der / (kcalPer100 / 100);
+  var meals = factor >= 3.0 ? 4 : factor >= 2.0 ? 3 : 2;
+  var perMeal = grams / meals;
+
+  box.innerHTML =
+    "하루 필요 칼로리: <strong>" + Math.round(der) + " kcal</strong><br>" +
+    "하루 사료 급여량: <strong>약 " + Math.round(grams) + " g</strong><br>" +
+    "→ 하루 " + meals + "회, 한 끼 약 " + Math.round(perMeal) + "g씩 나눠 주세요.";
+  box.classList.add("show");
+});
+
+// 생일 → 접종 예정일 계산기
+document.getElementById("vac-btn").addEventListener("click", function () {
+  var birthStr = document.getElementById("vac-birth").value;
+  var species = document.getElementById("vac-species").value;
+  var box = document.getElementById("vac-result");
+
+  if (!birthStr) {
+    box.textContent = "생일을 선택해 주세요.";
+    box.classList.add("show");
+    return;
+  }
+  var birth = new Date(birthStr + "T00:00:00");
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  if (birth > today) {
+    box.textContent = "생일이 미래 날짜예요. 다시 확인해 주세요.";
+    box.classList.add("show");
+    return;
+  }
+
+  // 사이트 기준표와 동일 (강아지: 6주 시작·2~3주 간격 / 고양이: 8주 시작·3~4주 간격)
+  var plans = {
+    dog: { start: 42, gap: 14, rounds: [
+      "종합백신(DHPPL) 1차 + 코로나 장염 1차",
+      "종합백신 2차 + 코로나 장염 2차",
+      "종합백신 3차 + 켄넬코프 1차",
+      "종합백신 4차 + 켄넬코프 2차",
+      "종합백신 5차 + 인플루엔자 1차",
+      "인플루엔자 2차 + 광견병 + 항체가 검사"
+    ]},
+    cat: { start: 56, gap: 21, rounds: [
+      "종합백신(FVRCP) 1차",
+      "종합백신 2차",
+      "종합백신 3차 (+ 백혈병 1차, 환경에 따라)",
+      "백혈병 2차 + 광견병"
+    ]}
+  };
+  var plan = plans[species];
+
+  function fmt(d) {
+    return d.getFullYear() + "년 " + (d.getMonth() + 1) + "월 " + d.getDate() + "일";
+  }
+
+  var rowsHtml = "";
+  var nextMarked = false;
+  var lastDate = null;
+  for (var i = 0; i < plan.rounds.length; i++) {
+    var d = new Date(birth);
+    d.setDate(d.getDate() + plan.start + plan.gap * i);
+    lastDate = d;
+    var status, style = "";
+    if (d < today) {
+      status = "지남";
+      style = ' style="color:var(--muted)"';
+    } else if (!nextMarked) {
+      status = "👉 다음 접종";
+      style = ' style="font-weight:700"';
+      nextMarked = true;
+    } else {
+      status = "예정";
+    }
+    rowsHtml += "<tr" + style + "><td>" + (i + 1) + "차</td><td>" + fmt(d) + "</td><td>" +
+      plan.rounds[i] + "</td><td>" + status + "</td></tr>";
+  }
+  // 연간 추가 접종
+  var yearly = new Date(lastDate); yearly.setFullYear(yearly.getFullYear() + 1);
+  rowsHtml += '<tr><td>매년</td><td>' + fmt(yearly) + " 무렵</td><td>연간 추가 접종 + 건강검진</td><td>" +
+    (yearly < today ? "지남" : "예정") + "</td></tr>";
+
+  var note = "";
+  var allPast = lastDate < today;
+  if (allPast) {
+    note = '<p style="margin-top:0.8rem">기초 접종 시기가 모두 지났어요. 접종 기록이 없거나 불확실하면 ' +
+      '<strong>항체가 검사</strong>로 면역 상태를 확인한 뒤 병원과 계획을 세우세요.</p>';
+  }
+
+  box.innerHTML =
+    '<div class="table-wrap" style="margin:0"><table>' +
+    "<thead><tr><th>차수</th><th>예정일</th><th>접종 내용</th><th>상태</th></tr></thead>" +
+    "<tbody>" + rowsHtml + "</tbody></table></div>" + note;
+  box.classList.add("show");
+});
+
+// BCS 비만도 자가진단
+document.getElementById("bcs-btn").addEventListener("click", function () {
+  var score =
+    parseInt(document.getElementById("bcs-rib").value, 10) +
+    parseInt(document.getElementById("bcs-waist").value, 10) +
+    parseInt(document.getElementById("bcs-belly").value, 10);
+  var box = document.getElementById("bcs-result");
+
+  var grade, bcs, advice;
+  if (score <= 3) {
+    grade = "저체중 의심"; bcs = "BCS 1~3";
+    advice = "지방이 너무 적을 수 있어요. 급여량을 확인하고, 잘 먹는데도 마른다면 병원 검진을 받아보세요.";
+  } else if (score <= 5) {
+    grade = "적정 체형 👍"; bcs = "BCS 4~5";
+    advice = "이상적인 체형이에요! 지금의 급여량과 운동량을 그대로 유지하세요.";
+  } else if (score <= 7) {
+    grade = "과체중"; bcs = "BCS 6~7";
+    advice = "간식을 하루 열량의 10% 이내로 줄이고, 급여량을 5~10% 조절해 보세요. 산책·놀이 시간을 늘리는 것도 좋아요.";
+  } else {
+    grade = "비만"; bcs = "BCS 8~9";
+    advice = "관절·당뇨 위험이 높은 단계예요. 병원에서 목표 체중을 정하고 감량 계획을 세우는 것을 권해요. 고양이는 급격한 감량 금지!";
+  }
+
+  box.innerHTML = "판정: <strong>" + grade + "</strong> (" + bcs + " 추정)<br>" + advice;
+  box.classList.add("show");
+});
+</script>
 </body>
 </html>
