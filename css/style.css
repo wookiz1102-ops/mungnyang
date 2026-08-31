@@ -420,6 +420,10 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   margin-bottom: 1.8rem;
   font-feature-settings: "tnum";
 }
+/* 바이라인 — .article a 의 굵은 주황 밑줄이 메타 줄에서 튀므로 톤을 낮춘다 */
+.post-meta a { font-weight: 500; color: inherit; text-decoration-color: rgba(120, 113, 108, .45); }
+.post-meta a:hover { color: var(--orange-ink); text-decoration-color: var(--orange-ink); }
+
 .breed-photo {
   margin: 0 0 1.8rem;
 }
