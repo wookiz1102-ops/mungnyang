@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!-- NOVELTY
+  1. 개 5kg 하루 입원비의 시군구 평균은 전남 목포시 150,000원이 최고, 인천 강화군 26,000원이 최저로 5.77배 차이 | https://animalclinicfee.or.kr/info/payInfo.do | 2026-08-31
+  2. 개와 고양이 입원비가 함께 있는 173개 시군구 중 121곳에서 고양이 입원비가 개 5kg보다 비쌌고 개가 더 비싼 곳은 8곳뿐 | https://animalclinicfee.or.kr/info/payInfo.do | 2026-08-31
+  3. 초진 진찰료는 199개 시군구에 자료가 있지만 입원비는 174곳뿐이어서 부산 영도구와 충주시를 포함한 25개 시군구는 입원비 자료가 하나도 없다 | https://animalclinicfee.or.kr/info/payInfo.do | 2026-08-31
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동물병원 입원비 하루 얼마 — 목포 15만원, 강화 2만6천원 | 댕냥피디아</title>
+  <meta name="description" content="동물병원 입원비 하루 얼마일까. 정부 공개 자료를 229개 시군구로 정리했습니다. 개 5kg 전국 평균 51,468원, 시군구 최고 목포 150,000원 최저 강화 26,000원으로 5.77배 차이입니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="동물병원 입원비 하루 얼마 — 목포 15만원, 강화 2만6천원">
+  <meta property="og:description" content="정부가 공개한 입원비를 229개 시군구 단위로 정리했습니다. 지역 격차 5.77배, 고양이가 개보다 비싼 이유, 입원비 자료가 아예 없는 25곳까지.">
+  <meta property="og:image" content="https://daengnyangpedia.com/img/breeds/og-default.jpg">
+  <link rel="canonical" href="https://daengnyangpedia.com/posts/pet-hospitalization-cost">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "동물병원 입원비 하루 얼마 — 목포 15만원, 강화 2만6천원",
+    "description": "농림축산식품부 동물병원 진료비 공개 자료를 229개 시군구 단위로 정리해, 개·고양이 하루 입원비의 전국 평균과 지역 격차, 입원비 자료가 없는 시군구를 짚었습니다.",
+    "datePublished": "2026-08-31",
+    "author": { "@type": "Organization", "name": "댕냥피디아", "url": "https://daengnyangpedia.com/about" },
+    "publisher": { "@type": "Organization", "name": "댕냥피디아" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "동물병원 하루 입원비는 보통 얼마인가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "2026년 8월 31일 기준 정부 공개 자료에서 개 5kg 하루 입원비의 전국 평균은 51,468원, 중간값은 50,000원입니다. 10kg은 64,374원, 20kg은 84,589원, 고양이는 56,417원입니다. 다만 이건 전국을 하나로 묶은 숫자라서 실제로 낼 돈과는 거리가 있습니다. 시군구 평균만 봐도 전남 목포시 150,000원부터 인천 강화군 26,000원까지 벌어져 있으니, 사는 지역 숫자를 따로 확인하는 편이 훨씬 쓸모 있습니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "고양이 입원비가 강아지보다 비싼가요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "공개 자료에서는 그렇습니다. 고양이 하루 입원비 전국 평균은 56,417원으로 개 5kg의 51,468원보다 4,949원 높습니다. 개와 고양이 자료가 함께 있는 173개 시군구를 하나씩 맞춰 보면 121곳에서 고양이가 더 비쌌고, 44곳은 같았으며, 개가 더 비싼 곳은 8곳뿐이었습니다. 고양이는 개와 같은 공간에 두기 어려워 격리 입원실이 필요하다는 설명이 자주 나오지만, 이 자료는 금액만 담고 있어서 이유까지 확인해 주지는 않습니다. 여기까지는 추정입니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "입원비만 알면 총 진료비를 계산할 수 있나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "안 됩니다. 입원비는 자리와 관리에 대한 값이고, 그 위에 검사비, 처치비, 약값, 수액이 따로 붙습니다. 같은 자료에서 5kg 기준 엑스선은 41,026원, 초음파는 58,822원입니다. 게다가 수술비는 애초에 공개 대상 20종에 들어 있지 않아 미리 찾아볼 방법이 없습니다. 입원비에 일수를 곱한 값은 총액이 아니라 바닥값에 가깝습니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "우리 동네 입원비는 어디서 확인하나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "농림축산식품부의 동물병원 진료비 공개 시스템에서 시도와 시군구를 골라 항목별 최저, 최고, 평균, 중간값을 볼 수 있습니다. 다만 한 번에 한 지역씩만 보이기 때문에 옆 동네와 비교하려면 여러 번 조회해야 합니다. 병원별 금액은 나오지 않으니, 실제 가격은 병원 접수처에 게시된 진료비표나 전화로 확인하는 편이 정확합니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "입원비가 지역마다 왜 이렇게 차이가 나나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "자료 자체는 이유를 알려주지 않습니다. 다만 숫자를 뜯어보면 표본 문제가 크게 섞여 있습니다. 개 5kg 입원비가 있는 174개 시군구 중 22곳은 최저와 최고가 같은데, 이건 금액을 올린 병원이 사실상 한 곳이라는 뜻입니다. 목포시가 150,000원 하나로 최고를 차지한 것도 같은 경우입니다. 반대로 대구 달서구는 10,000원부터 200,000원까지 20배가 벌어져 있습니다. 지역 차이라기보다 병원마다 입원비에 포함하는 항목이 다른 영향이 커 보입니다." }
+      },
+      {
+        "@type": "Question",
+        "name": "입원 전에 무엇을 물어봐야 하나요?",
+        "acceptedAnswer": { "@type": "Answer", "text": "세 가지면 충분합니다. 하루 입원비가 얼마인지, 그 금액에 수액과 주사, 산소, 야간 관리가 포함되는지, 지금 예상하는 입원 일수가 며칠인지입니다. 여기에 예상 검사 항목까지 물어보면 대략적인 총액이 나옵니다. 진료비 게시는 의무이므로 금액을 묻는 것은 실례가 아닙니다. 급한 상황이라면 처치를 먼저 부탁하고, 안정된 뒤에 중간 정산 내역을 요청해도 됩니다." }
+      }
+    ]
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7190991508798677" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">🐾 댕냥피디아</a>
+    <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+    <nav class="site-nav">
+      <a href="../breeds">품종 백과</a>
+      <a href="../health">건강·증상</a>
+      <a href="../food">사료·용품</a>
+      <a href="../training">행동·훈련</a>
+      <a href="../life">생활 정보</a>
+      <a href="../tools">계산기</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<article class="article">
+  <p class="breadcrumb"><a href="/">홈</a> › <a href="../life">생활 정보</a></p>
+  <h1>동물병원 입원비 하루 얼마 — 목포 15만원, 강화 2만6천원</h1>
+  <p class="post-meta">생활 정보 · 글 <a href="../about">댕냥피디아</a> · 2026년 8월 31일</p>
+
+  <p class="lead">
+    "며칠 입원해야 할 것 같습니다"라는 말을 들으면 머릿속에서 제일 먼저 계산기가 돌아갑니다.
+    수술비는 정부 공개 대상이 아니라 미리 알아볼 방법이 없지만, 하루 입원비는 공개 항목에 들어 있습니다.
+    입원 일수를 금액으로 바꿔볼 수 있는 사실상 유일한 숫자라는 뜻입니다.
+    그래서 <a href="https://animalclinicfee.or.kr/info/payInfo.do" target="_blank" rel="noopener">농림축산식품부 동물병원 진료비 공개 자료</a>를
+    전국 229개 시군구 단위로 모아 봤습니다. 개 5kg 기준 하루 입원비의 시군구 평균은
+    전남 목포시 150,000원에서 인천 강화군 26,000원까지, <strong>5.77배</strong> 벌어져 있었습니다.
+  </p>
+
+  <div class="ad-slot"></div>
+
+  <nav class="toc">
+    <strong>📋 목차</strong>
+    <ol>
+      <li><a href="#base">하루 입원비, 전국 평균은 이 정도</a></li>
+      <li><a href="#gap">시군구로 내려가면 5.77배로 벌어진다</a></li>
+      <li><a href="#cat">고양이가 개보다 비싸다</a></li>
+      <li><a href="#blank">진찰은 되는데 입원비 자료가 없는 25곳</a></li>
+      <li><a href="#total">입원비 × 일수 = 총액이 아닌 이유</a></li>
+      <li><a href="#ask">입원 전에 물어볼 세 문장</a></li>
+      <li><a href="#limit">이 숫자를 읽을 때 주의할 점</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="base">하루 입원비, 전국 평균은 이 정도</h2>
+  <p>
+    농림축산식품부는 진료비 게시 의무화에 따라 2023년부터 매년 동물병원 진료비를 조사해 공개하고 있습니다.
+    2025년 12월 발표분은 전국 동물병원 3,950개소를 대상으로 했고, 공개 항목이 11종에서 20종으로 늘었습니다.
+    입원비는 그중 하나입니다.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>구분</th><th>평균</th><th>중간값</th><th>최저</th><th>최고</th></tr></thead>
+      <tbody>
+        <tr><td>개 5kg</td><td>51,468원</td><td>50,000원</td><td>10,000원</td><td>200,000원</td></tr>
+        <tr><td>개 10kg</td><td>64,374원</td><td>57,000원</td><td>10,000원</td><td>220,000원</td></tr>
+        <tr><td>개 20kg</td><td>84,589원</td><td>77,000원</td><td>15,000원</td><td>330,000원</td></tr>
+        <tr><td>고양이</td><td>56,417원</td><td>50,000원</td><td>10,000원</td><td>200,000원</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    눈에 띄는 건 체중이 붙는 속도입니다. 5kg에서 20kg으로 갈 때 초진 진찰료는 9,873원에서 11,227원으로
+    13.7% 오르는 데 그치는데, 입원비는 51,468원에서 84,589원으로 <strong>64.4%</strong> 뜁니다.
+    공개된 20개 항목 중 체중에 가장 민감하게 반응하는 항목이 입원비입니다.
+    대형견 보호자라면 같은 병, 같은 일수라도 청구서가 눈에 띄게 두꺼워진다고 보는 편이 맞습니다.
+  </p>
+
+  <h2 id="gap">시군구로 내려가면 5.77배로 벌어진다</h2>
+  <p>
+    정부 보도자료는 지역 편차를 <strong>시도 단위</strong>로 설명합니다. 17개 시도 평균끼리 비교하면
+    항목별 편차가 1.1배에서 1.7배 사이라고 되어 있고, 전년보다 좁혀졌다고 평가합니다.
+    그런데 같은 자료를 시군구 단위로 펼치면 그림이 달라집니다.
+  </p>
+  <figure class="breed-photo">
+    <div style="overflow-x:auto;">
+    <svg viewBox="0 0 760 330" role="img" aria-labelledby="chart1-title" style="width:100%;min-width:640px;height:auto;display:block;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:8px 0;">
+      <title id="chart1-title">개 5kg, 개 20kg, 고양이의 하루 입원비 시군구 평균 분포. 막대는 가장 싼 시군구부터 가장 비싼 시군구까지의 범위이고, 세로선은 전국 평균이다.</title>
+      <text x="696" y="26" text-anchor="end" font-size="12" fill="var(--muted)">단위: 만 원 · 시군구 평균 기준</text>
+      <g stroke="var(--line)" stroke-width="1">
+        <line x1="126" y1="40" x2="126" y2="266"/>
+        <line x1="316" y1="40" x2="316" y2="266"/>
+        <line x1="506" y1="40" x2="506" y2="266"/>
+        <line x1="696" y1="40" x2="696" y2="266"/>
+      </g>
+      <g font-size="12" fill="var(--muted)" text-anchor="middle">
+        <text x="126" y="284">0</text>
+        <text x="316" y="284">10만</text>
+        <text x="506" y="284">20만</text>
+        <text x="696" y="284">30만</text>
+      </g>
+
+      <text x="112" y="87" text-anchor="end" font-size="13" fill="var(--text)" font-weight="700">개 5kg</text>
+      <rect x="126" y="70" width="570" height="24" rx="4" fill="var(--line)" fill-opacity="0.5"/>
+      <rect x="175" y="70" width="236" height="24" rx="4" fill="var(--orange)" fill-opacity="0.5" stroke="var(--orange-ink)"/>
+      <text x="168" y="87" text-anchor="end" font-size="12" fill="var(--muted)">2.6만</text>
+      <text x="418" y="87" font-size="12" fill="var(--orange-ink)" font-weight="700">15.0만</text>
+      <line x1="224" y1="65" x2="224" y2="99" stroke="var(--navy)" stroke-width="3"/>
+      <text x="224" y="59" text-anchor="middle" font-size="12" fill="var(--navy)">평균 5.1만</text>
+      <text x="126" y="112" font-size="12" fill="var(--muted)">인천 강화군</text>
+      <text x="411" y="112" text-anchor="end" font-size="12" fill="var(--muted)">전남 목포시</text>
+
+      <text x="112" y="157" text-anchor="end" font-size="13" fill="var(--text)" font-weight="700">개 20kg</text>
+      <rect x="126" y="140" width="570" height="24" rx="4" fill="var(--line)" fill-opacity="0.5"/>
+      <rect x="196" y="140" width="500" height="24" rx="4" fill="var(--orange)" fill-opacity="0.5" stroke="var(--orange-ink)"/>
+      <text x="189" y="157" text-anchor="end" font-size="12" fill="var(--muted)">3.7만</text>
+      <text x="703" y="157" font-size="12" fill="var(--orange-ink)" font-weight="700">30.0만</text>
+      <line x1="287" y1="135" x2="287" y2="169" stroke="var(--navy)" stroke-width="3"/>
+      <text x="287" y="129" text-anchor="middle" font-size="12" fill="var(--navy)">평균 8.5만</text>
+      <text x="126" y="182" font-size="12" fill="var(--muted)">전남 화순군</text>
+      <text x="696" y="182" text-anchor="end" font-size="12" fill="var(--muted)">충남 서산시</text>
+
+      <text x="112" y="227" text-anchor="end" font-size="13" fill="var(--text)" font-weight="700">고양이</text>
+      <rect x="126" y="210" width="570" height="24" rx="4" fill="var(--line)" fill-opacity="0.5"/>
+      <rect x="183" y="210" width="228" height="24" rx="4" fill="var(--orange)" fill-opacity="0.5" stroke="var(--orange-ink)"/>
+      <text x="176" y="227" text-anchor="end" font-size="12" fill="var(--muted)">3.0만</text>
+      <text x="418" y="227" font-size="12" fill="var(--orange-ink)" font-weight="700">15.0만</text>
+      <line x1="233" y1="205" x2="233" y2="239" stroke="var(--navy)" stroke-width="3"/>
+      <text x="233" y="199" text-anchor="middle" font-size="12" fill="var(--navy)">평균 5.6만</text>
+      <text x="126" y="252" font-size="12" fill="var(--muted)">삼척·여수·화순·산청 4곳</text>
+      <text x="411" y="252" text-anchor="end" font-size="12" fill="var(--muted)">전남 목포시</text>
+    </svg>
+    </div>
+    <figcaption>하루 입원비 시군구 평균의 최저·최고 범위와 전국 평균. 농림축산식품부 동물병원 진료비 공개 자료를 229개 시군구 단위로 집계 · 2026년 8월 31일 확인</figcaption>
+  </figure>
+  <p>
+    개 5kg은 목포시 150,000원과 강화군 26,000원 사이에서 5.77배,
+    개 20kg은 충남 서산시 300,000원과 전남 화순군 36,667원 사이에서 8.18배,
+    고양이는 목포시 150,000원과 최저 30,000원 사이에서 5.00배 차이가 납니다.
+    고양이 최저는 한 곳이 아닙니다. 강원 삼척시, 전남 여수시와 화순군, 경남 산청군 네 곳이
+    나란히 30,000원으로 같습니다.
+    시도 평균끼리 비교했을 때의 1.1~1.7배와는 자릿수가 다른 이야기입니다.
+    평균을 넓게 묶을수록 격차가 지워진다는 뜻이기도 합니다.
+  </p>
+  <p>
+    흥미로운 건 서울입니다. 25개 자치구 모두 자료가 있는데, 가장 높은 강남구가 66,094원,
+    가장 낮은 강서구가 41,200원으로 1.60배에 그칩니다.
+    병원이 촘촘한 곳일수록 가격이 서로를 붙들어 두고, 병원이 한두 곳뿐인 지역일수록
+    그 병원의 게시 금액이 곧 지역 평균이 되어 튀는 구조입니다.
+    지방이 비싸다는 이야기가 아니라, 표본이 얇으면 숫자가 흔들린다는 이야기입니다.
+  </p>
+  <p>
+    체감으로 옮겨 보면 이렇습니다. 사흘 입원한다고 가정할 때 입원비만 목포시 기준 45만 원,
+    강화군 기준 7만 8천 원입니다. 같은 사흘인데 37만 원 넘게 벌어집니다.
+  </p>
+
+  <div class="ad-slot"></div>
+
+  <h2 id="cat">고양이가 개보다 비싸다</h2>
+  <p>
+    전국 평균만 봐도 고양이 하루 입원비는 56,417원으로 개 5kg의 51,468원보다 4,949원, 약 9.6% 높습니다.
+    체중으로는 고양이가 5kg 안팎인 경우가 많으니 직관과 어긋나는 결과입니다.
+  </p>
+  <p>
+    전국 평균 하나로는 우연일 수 있어서 시군구 단위로 하나씩 맞춰 봤습니다.
+    개 5kg과 고양이 입원비가 <strong>함께 있는 173개 시군구</strong> 중
+    고양이가 더 비싼 곳이 121곳, 두 금액이 같은 곳이 44곳,
+    개가 더 비싼 곳은 <strong>8곳</strong>뿐이었습니다.
+    지역을 가리지 않고 나타나는 방향이라는 뜻입니다.
+    격차가 큰 곳은 대전 대덕구가 50,000원 대 86,667원, 전북 부안군이 100,000원 대 140,000원이었습니다.
+  </p>
+  <p>
+    이유는 자료에 없습니다. 고양이는 개와 같은 공간에 두면 스트레스를 크게 받아
+    별도 입원실이나 격리 케이지가 필요하고, 그만큼 공간 단가가 올라간다는 설명이 자연스럽긴 합니다.
+    <a href="cat-kidney-disease">신부전</a>처럼 며칠씩 수액을 맞아야 하는 질환이 잦다는 점도 거론됩니다.
+    다만 이 자료가 담은 건 금액뿐이고, 병원이 왜 그렇게 정했는지는 들어 있지 않습니다.
+    여기까지는 추정으로 읽어 주세요.
+    확실한 건 하나입니다. 고양이 보호자가 "개보다 작으니 더 싸겠지"라고 잡아 두면 예산이 어긋납니다.
+  </p>
+
+  <h2 id="blank">진찰은 되는데 입원비 자료가 없는 25곳</h2>
+  <p>
+    자료를 시군구로 펼치자 예상하지 못한 게 하나 더 보였습니다. 항목마다 자료가 있는 지역 수가 다릅니다.
+  </p>
+  <figure class="breed-photo">
+    <div style="overflow-x:auto;"><svg aria-labelledby="fig-pet-hospitalization-cost" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Pretendard,'Malgun Gothic','Apple SD Gothic Neo',sans-serif"><title id="fig-pet-hospitalization-cost">전국 229개 시군구 중 자료가 있는 시군구 수를 항목별로 비교한 막대그래프. 초진 진찰료 199곳, 초음파 5kg 188곳, 입원비 개 5kg 174곳, 입원비 고양이 173곳, 입원비 개 20kg 172곳.</title><rect style="width:100%;height:auto" fill="#fffaf3"/><text x="40" y="46" font-size="21" font-weight="700" fill="#2e1b10">항목별로 자료가 있는 시군구 수</text><text x="40" y="72" font-size="13" fill="#6d635b">전국 229개 시군구 기준. 연한 부분은 게시 자료가 없는 시군구</text><line x1="700" y1="88" x2="700" y2="414" stroke="#c2410c" stroke-width="1" stroke-dasharray="4 4"/><text x="700" y="82" font-size="12" fill="#c2410c" text-anchor="middle">229</text><text x="215" y="123" font-size="14" fill="#2e1b10" text-anchor="end">초진 진찰료</text><rect x="230" y="100" width="470" height="34" rx="4" fill="#ece1d3"/><rect x="230" y="100" width="408" height="34" rx="4" fill="#f97316" fill-opacity="0.55" stroke="#c2410c"/><text x="648" y="123" font-size="14" font-weight="700" fill="#c2410c">199곳</text><text x="215" y="191" font-size="14" fill="#2e1b10" text-anchor="end">초음파 5kg</text><rect x="230" y="168" width="470" height="34" rx="4" fill="#ece1d3"/><rect x="230" y="168" width="386" height="34" rx="4" fill="#f97316" fill-opacity="0.55" stroke="#c2410c"/><text x="626" y="191" font-size="14" font-weight="700" fill="#c2410c">188곳</text><text x="215" y="259" font-size="14" fill="#2e1b10" text-anchor="end">입원비 개 5kg</text><rect x="230" y="236" width="470" height="34" rx="4" fill="#ece1d3"/><rect x="230" y="236" width="357" height="34" rx="4" fill="#f97316" fill-opacity="0.55" stroke="#c2410c"/><text x="597" y="259" font-size="14" font-weight="700" fill="#c2410c">174곳</text><text x="215" y="327" font-size="14" fill="#2e1b10" text-anchor="end">입원비 고양이</text><rect x="230" y="304" width="470" height="34" rx="4" fill="#ece1d3"/><rect x="230" y="304" width="355" height="34" rx="4" fill="#f97316" fill-opacity="0.55" stroke="#c2410c"/><text x="595" y="327" font-size="14" font-weight="700" fill="#c2410c">173곳</text><text x="215" y="395" font-size="14" fill="#2e1b10" text-anchor="end">입원비 개 20kg</text><rect x="230" y="372" width="470" height="34" rx="4" fill="#ece1d3"/><rect x="230" y="372" width="353" height="34" rx="4" fill="#f97316" fill-opacity="0.55" stroke="#c2410c"/><text x="593" y="395" font-size="14" font-weight="700" fill="#c2410c">172곳</text><text x="40" y="458" font-size="12" fill="#6d635b">자료: 농림축산식품부 동물병원 진료비 공개 시스템, 2026년 8월 31일 확인</text></svg></div>
+    <figcaption>같은 시군구라도 항목에 따라 자료가 있고 없고가 갈립니다. 입원비는 진찰료보다 25곳 적습니다 · 2026년 8월 31일 확인</figcaption>
+  </figure>
+  <p>
+    초진 진찰료는 <strong>199개</strong> 시군구에 자료가 있습니다. 초음파는 188곳입니다.
+    그런데 입원비는 개 5kg 기준 <strong>174곳</strong>, 고양이 173곳, 개 20kg 172곳으로 줄어듭니다.
+    세 항목 중 하나라도 자료가 있는 곳을 다 합쳐도 174곳입니다.
+    즉 초진 진찰료는 게시돼 있는데 입원비는 어느 항목도 없는 시군구가 <strong>25개</strong> 있습니다.
+  </p>
+  <p>
+    시골 소읍만의 이야기가 아닙니다. 부산 동구와 영도구, 충북 충주시, 강원 동해시,
+    충남 논산시와 보령시, 전남 해남군처럼 도시 이름이 섞여 있습니다.
+    시도별로는 강원과 전남이 각 5곳, 충남 4곳, 경남·전북·충북 각 3곳, 부산 2곳입니다.
+  </p>
+  <p>
+    오해하면 안 되는 부분이 있습니다. 자료가 없다는 건 <strong>게시된 금액이 수집되지 않았다</strong>는 뜻이지,
+    그 지역에서 입원이 불가능하다는 뜻이 아닙니다. 입원 설비를 두지 않은 병원만 있을 수도 있고,
+    게시 항목에서 빠졌을 수도 있습니다.
+    다만 보호자 입장에서 실용적인 함의는 분명합니다. 우리 동네 입원비가 조회되지 않는다면,
+    한밤중에 검색부터 시작하지 말고 <strong>지금</strong> 입원 가능한 병원과 거리를 확인해 두는 편이 낫습니다.
+    <a href="dog-pancreatitis">췌장염</a>처럼 하루이틀 만에 입원이 결정되는 병은 미리 알아볼 시간을 주지 않습니다.
+  </p>
+
+  <h2 id="total">입원비 × 일수 = 총액이 아닌 이유</h2>
+  <p>
+    입원비는 자리와 관리에 붙는 값입니다. 그 위에 얹히는 것들이 따로 있습니다.
+  </p>
+  <ul>
+    <li><strong>검사비</strong> — 같은 자료의 5kg 기준 전국 평균으로 엑스선 41,026원, 초음파 58,822원입니다.
+      입원 중에는 한 번으로 끝나지 않는 경우가 많습니다.</li>
+    <li><strong>처치·투약</strong> — 수액, 주사, 산소, 경관 급여 같은 항목이 날마다 붙습니다.
+      병원에 따라 입원비에 일부를 포함하기도 하고 전부 따로 잡기도 합니다.</li>
+    <li><strong>수술비</strong> — 공개 대상 20종에 <strong>들어 있지 않습니다</strong>.
+      진찰료, 입원비, 백신, 혈액검사, 영상검사, 투약·조제비까지가 공개 범위입니다.
+      수술이 걸리는 순간, 미리 조회해 볼 수 있는 숫자는 사라집니다.</li>
+  </ul>
+  <p>
+    그래서 입원비에 일수를 곱한 값은 총액이 아니라 <strong>바닥값</strong>에 가깝습니다.
+    "하루 5만 원이니까 사흘이면 15만 원"이라고 잡아 두면 실제 청구서에서 놀라게 됩니다.
+    입원비는 총액을 맞히는 도구가 아니라, 총액이 어느 자릿수에서 시작하는지를 알려주는 기준선으로 쓰는 게 맞습니다.
+    이 구조 때문에 <a href="dog-pet-insurance">펫보험</a>을 볼 때도 하루 입원 한도만 볼 게 아니라
+    검사와 처치가 보장 범위에 들어가는지를 함께 봐야 합니다.
+  </p>
+
+  <div class="ad-slot"></div>
+
+  <h2 id="ask">입원 전에 물어볼 세 문장</h2>
+  <p>
+    진료비 게시는 병원의 의무입니다. 금액을 묻는 건 실례가 아니라 정상적인 절차입니다.
+    다만 경황이 없을 때는 질문이 잘 안 나오므로, 세 문장만 외워 두면 됩니다.
+  </p>
+  <ol>
+    <li><strong>"하루 입원비가 얼마인가요?"</strong> — 가장 먼저, 가장 단순하게.
+      우리 지역 평균을 미리 봐 뒀다면 들은 금액이 어느 위치인지 바로 감이 옵니다.</li>
+    <li><strong>"그 금액에 무엇까지 포함되나요?"</strong> — 수액, 주사, 산소, 야간 관리 포함 여부를 짚습니다.
+      같은 5만 원이라도 포함 범위가 다르면 하루 총액은 두 배까지 벌어집니다.</li>
+    <li><strong>"지금 예상하는 입원 일수는 며칠인가요?"</strong> — 답이 "지켜봐야 한다"여도 괜찮습니다.
+      최소 며칠인지만 들어도 준비할 금액의 하한이 잡힙니다.</li>
+  </ol>
+  <p>
+    여기에 두 가지를 더하면 예산이 훨씬 또렷해집니다.
+    하나는 예상 검사 항목이고, 다른 하나는 중간 정산 가능 여부입니다.
+    며칠 이상 길어질 것 같으면 이틀에 한 번씩 중간 내역을 받아 보는 편이,
+    퇴원 날 한 장으로 받는 것보다 마음도 계획도 편합니다.
+    급한 상황이라면 순서를 바꿔도 됩니다. 처치를 먼저 부탁하고, 아이가 안정된 뒤에 금액을 물어보세요.
+  </p>
+
+  <h2 id="limit">이 숫자를 읽을 때 주의할 점</h2>
+  <p>
+    지금까지의 숫자는 전부 <strong>병원이 게시한 금액을 그대로 모아 계산한 값</strong>입니다.
+    진료 행위 자체가 표준화되어 있지 않기 때문에, 같은 "입원비 1일"이라도 병원마다 담는 내용이 다릅니다.
+    이 점을 빼고 읽으면 숫자가 사실보다 무섭게 보입니다.
+  </p>
+  <ul>
+    <li><strong>표본이 얇은 지역이 많습니다.</strong> 개 5kg 입원비가 있는 174곳 중 22곳은
+      최저와 최고가 같습니다. 금액을 올린 병원이 사실상 한 곳이라는 뜻입니다.
+      최고를 기록한 목포시도 150,000원 하나로 최저·최고·평균이 모두 같습니다.
+      "목포가 비싼 동네"가 아니라 "목포에서 수집된 게시 금액이 그 하나"라고 읽어야 맞습니다.</li>
+    <li><strong>평균은 병원을 고르는 기준이 아닙니다.</strong> 최저를 기록한 강화군의 26,000원도
+      10,000원부터 50,000원까지의 평균입니다. 같은 군 안에서도 다섯 배가 벌어집니다.</li>
+    <li><strong>같은 시군구 안 격차가 지역 간 격차보다 큽니다.</strong>
+      대구 달서구는 10,000원부터 200,000원까지 20배,
+      충남 천안시는 11,700원부터 150,000원까지, 서울 송파구는 10,000원부터 120,000원까지 벌어져 있습니다.
+      옆 동네를 비교하기 전에 우리 동네 안에서 비교하는 게 먼저입니다.</li>
+    <li><strong>시점이 있습니다.</strong> 2025년 조사분이고, 매년 갱신됩니다.
+      금액은 바뀌므로 실제로 필요할 때는 공개 시스템에서 다시 확인하세요.</li>
+  </ul>
+  <p>
+    정리하면 이 자료는 특정 병원의 가격표가 아니라 <strong>각오할 범위</strong>를 알려주는 지도입니다.
+    지도를 보고 나면 두 가지가 달라집니다.
+    하나는 병원에서 금액을 들었을 때 그게 어느 위치인지 감이 잡힌다는 것,
+    다른 하나는 우리 동네에 입원 가능한 병원이 어디인지 미리 알아보게 된다는 것입니다.
+    급할 때 필요한 건 정확한 예측이 아니라, 놀라지 않을 정도의 준비입니다.
+  </p>
+
+  <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
+  <div class="faq">
+    <details>
+      <summary>Q. 동물병원 하루 입원비는 보통 얼마인가요?</summary>
+      <p>2026년 8월 31일 기준 정부 공개 자료에서 개 5kg 하루 입원비의 전국 평균은 51,468원, 중간값은 50,000원입니다. 10kg은 64,374원, 20kg은 84,589원, 고양이는 56,417원입니다. 다만 이건 전국을 하나로 묶은 숫자라서 실제로 낼 돈과는 거리가 있습니다. 시군구 평균만 봐도 전남 목포시 150,000원부터 인천 강화군 26,000원까지 벌어져 있으니, 사는 지역 숫자를 따로 확인하는 편이 훨씬 쓸모 있습니다.</p>
+    </details>
+    <details>
+      <summary>Q. 고양이 입원비가 강아지보다 비싼가요?</summary>
+      <p>공개 자료에서는 그렇습니다. 고양이 하루 입원비 전국 평균은 56,417원으로 개 5kg의 51,468원보다 4,949원 높습니다. 개와 고양이 자료가 함께 있는 173개 시군구를 하나씩 맞춰 보면 121곳에서 고양이가 더 비쌌고, 44곳은 같았으며, 개가 더 비싼 곳은 8곳뿐이었습니다. 고양이는 개와 같은 공간에 두기 어려워 격리 입원실이 필요하다는 설명이 자주 나오지만, 이 자료는 금액만 담고 있어서 이유까지 확인해 주지는 않습니다. 여기까지는 추정입니다.</p>
+    </details>
+    <details>
+      <summary>Q. 입원비만 알면 총 진료비를 계산할 수 있나요?</summary>
+      <p>안 됩니다. 입원비는 자리와 관리에 대한 값이고, 그 위에 검사비, 처치비, 약값, 수액이 따로 붙습니다. 같은 자료에서 5kg 기준 엑스선은 41,026원, 초음파는 58,822원입니다. 게다가 수술비는 애초에 공개 대상 20종에 들어 있지 않아 미리 찾아볼 방법이 없습니다. 입원비에 일수를 곱한 값은 총액이 아니라 바닥값에 가깝습니다.</p>
+    </details>
+    <details>
+      <summary>Q. 우리 동네 입원비는 어디서 확인하나요?</summary>
+      <p>농림축산식품부의 동물병원 진료비 공개 시스템에서 시도와 시군구를 골라 항목별 최저, 최고, 평균, 중간값을 볼 수 있습니다. 다만 한 번에 한 지역씩만 보이기 때문에 옆 동네와 비교하려면 여러 번 조회해야 합니다. 병원별 금액은 나오지 않으니, 실제 가격은 병원 접수처에 게시된 진료비표나 전화로 확인하는 편이 정확합니다.</p>
+    </details>
+    <details>
+      <summary>Q. 입원비가 지역마다 왜 이렇게 차이가 나나요?</summary>
+      <p>자료 자체는 이유를 알려주지 않습니다. 다만 숫자를 뜯어보면 표본 문제가 크게 섞여 있습니다. 개 5kg 입원비가 있는 174개 시군구 중 22곳은 최저와 최고가 같은데, 이건 금액을 올린 병원이 사실상 한 곳이라는 뜻입니다. 목포시가 150,000원 하나로 최고를 차지한 것도 같은 경우입니다. 반대로 대구 달서구는 10,000원부터 200,000원까지 20배가 벌어져 있습니다. 지역 차이라기보다 병원마다 입원비에 포함하는 항목이 다른 영향이 커 보입니다.</p>
+    </details>
+    <details>
+      <summary>Q. 입원 전에 무엇을 물어봐야 하나요?</summary>
+      <p>세 가지면 충분합니다. 하루 입원비가 얼마인지, 그 금액에 수액과 주사, 산소, 야간 관리가 포함되는지, 지금 예상하는 입원 일수가 며칠인지입니다. 여기에 예상 검사 항목까지 물어보면 대략적인 총액이 나옵니다. 진료비 게시는 의무이므로 금액을 묻는 것은 실례가 아닙니다. 급한 상황이라면 처치를 먼저 부탁하고, 안정된 뒤에 중간 정산 내역을 요청해도 됩니다.</p>
+    </details>
+  </div>
+
+  <div class="related">
+    <strong>📎 함께 보면 좋은 글</strong>
+    <ul>
+      <li><a href="dog-pet-insurance">강아지 펫보험 필요할까? 가입 전 체크리스트 7가지</a></li>
+      <li><a href="dog-pancreatitis">강아지 췌장염 증상과 회복 — 기도 자세·구토 신호와 저지방 식단</a></li>
+      <li><a href="cat-kidney-disease">고양이 신부전 초기 증상 알아보기 (조기 발견이 수명을 바꿉니다)</a></li>
+    </ul>
+  </div>
+
+  <div class="related">
+    <strong>📚 참고한 자료</strong>
+    <ul>
+      <li><a href="https://animalclinicfee.or.kr/info/payInfo.do" target="_blank" rel="noopener">농림축산식품부 — 동물병원 진료비 조사·공개 시스템</a>
+      (개·고양이 하루 입원비의 전국·시도·시군구별 평균·중간·최저·최고값, 체중 구간별 진찰료와 영상검사비, 공개 대상 항목에 수술비가 포함되지 않는다는 점) · 확인 2026-08-31</li>
+      <li><a href="https://www.mafra.go.kr/bbs/home/792/592824/download.do" target="_blank" rel="noopener">농림축산식품부 — 전국 동물병원 진료비 현황조사 결과 발표 보도자료(2025.12.22)</a>
+      (조사 대상 3,950개소, 공개 항목 11종에서 20종으로 확대, 시도 단위 지역 간 평균 진료비 편차 1.1~1.7배) · 확인 2026-08-31</li>
+    </ul>
+    <p>
+      이 글의 시군구 단위 집계는 공개 시스템의 지역별 조회 결과를 229개 시군구 전체에 대해 모아
+      직접 계산한 것입니다. 금액은 매년 갱신되므로 실제로 필요할 때는 공개 시스템에서 다시 확인하세요.
+    </p>
+  </div>
+
+  <div class="disclaimer-box">
+    ⚕️ <strong>의료 면책 안내</strong> — 본 글은 진료비 정보를 정리한 참고용 자료이며, 수의학적 진단이나
+    처방을 대체하지 않습니다. 입원 여부와 치료 방침은 반드시 진료한 수의사와 상의해 결정하세요.
+  </div>
+
+  <div class="ad-slot"></div>
+</article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-links">
+      <a href="../about">소개</a> ·
+      <a href="../privacy">개인정보처리방침</a> ·
+      <a href="../disclaimer">이용약관·면책</a> ·
+      <a href="../contact">문의하기</a>
+    </p>
+    <p>© 2026 댕냥피디아. 본 사이트의 정보는 일반적인 참고용이며, 수의사의 진단·진료를 대체하지 않습니다.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
