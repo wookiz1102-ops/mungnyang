@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!-- NOVELTY
+  1. 농림축산식품부가 공개한 진료비 20종 가운데 체중 구간이 나뉘는 항목은 7종이고, 5kg에서 20kg으로 갈 때 평균 인상률은 입원비 64.4%, 초진 진찰료 13.7%로 4.7배 차이가 난다 | https://animalclinicfee.or.kr/info/payInfo.do | 2026-08-31
+  2. 영상검사는 장비가 비쌀수록 체중 반영률이 낮아져 엑스선 35.2%, 초음파 32.4%, CT 27.2%, MRI 22.2% 순으로 떨어지지만, 증가액은 반대로 MRI가 164,018원으로 가장 크다 | https://animalclinicfee.or.kr/info/payInfo.do | 2026-08-31
+  3. 초진 진찰료를 5kg과 20kg에 똑같이 받는 시군구가 199곳 중 41곳이고 그중 39곳이 도 지역인 반면, 입원비는 172곳 중 3곳만 같다 | https://animalclinicfee.or.kr/info/payInfo.do | 2026-08-31
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5kg과 20kg의 진료비 차이 — 대형견은 얼마나 더 내나 | 댕냥피디아</title>
+  <meta name="description" content="농림축산식품부 동물병원 진료비 공개 자료를 체중 구간별로 다시 계산했습니다. 5kg에서 20kg으로 갈 때 초진 진찰료는 13.7%, 입원비는 64.4% 오릅니다. 항목별 인상률과 대형견 준비 금액을 정리했습니다.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="5kg과 20kg의 진료비 차이 — 대형견은 얼마나 더 내나">
+  <meta property="og:description" content="진찰료는 13.7%, 입원비는 64.4%. 체중이 진료비에 반영되는 정도는 항목마다 다릅니다.">
+  <meta property="og:image" content="https://daengnyangpedia.com/img/breeds/og-default.jpg">
+  <link rel="canonical" href="https://daengnyangpedia.com/posts/dog-size-vet-cost">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "5kg과 20kg의 진료비 차이 — 대형견은 얼마나 더 내나",
+    "description": "농림축산식품부 동물병원 진료비 공개 자료를 체중 구간별로 계산해, 항목마다 체중이 반영되는 정도가 어떻게 다른지 정리했습니다.",
+    "datePublished": "2026-08-31",
+    "author": { "@type": "Organization", "name": "댕냥피디아", "url": "https://daengnyangpedia.com/about" },
+    "publisher": { "@type": "Organization", "name": "댕냥피디아" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "대형견은 진찰료도 훨씬 비싼가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "아닙니다. 전국 평균 초진 진찰료는 5kg 9,873원, 20kg 11,227원으로 차이가 1,354원입니다. 인상률로는 13.7%인데, 체중이 4배가 되는 것에 비하면 거의 붙지 않는 셈입니다. 시군구 단위로 보면 199곳 중 41곳은 5kg과 20kg 진찰료가 아예 같습니다. 대형견의 비용 부담은 진찰료가 아니라 입원비와 영상검사에서 생깁니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "대형견 입원비는 얼마나 더 드나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "전국 평균으로 5kg 51,468원, 20kg 84,589원입니다. 하루에 33,121원, 비율로는 64.4% 더 듭니다. 공개된 체중 구간 항목 7종 중 인상률이 가장 높습니다. 케이지 공간과 사람 손, 수액과 주사제 용량이 함께 늘어나는 항목이기 때문으로 보이지만, 공개 자료에 산정 근거가 실려 있지는 않습니다. 며칠 입원하면 차이가 그만큼 누적되므로, 입원이 예상되면 하루 단가를 미리 물어보는 것이 좋습니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "MRI는 인상률이 낮던데 대형견도 부담이 적은가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "반대입니다. MRI의 5kg 대비 20kg 인상률은 22.2%로 7종 중 낮은 편이지만, 원래 금액이 커서 증가액은 164,018원으로 가장 큽니다. 인상률 1위인 입원비의 증가액 33,121원의 약 5배입니다. 20kg 기준 MRI 전국 평균은 902,481원, CT는 686,204원입니다. 비율이 낮다는 말과 부담이 적다는 말은 다릅니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "심장사상충 예방비는 왜 체중별로 나뉘어 있지 않나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "공개 시스템에서 투약·조제비 3종(심장사상충 예방비, 외부기생충 예방비, 광범위 구충비)은 투약/조제비(체중 5kg 기준)으로 표기됩니다. 5kg 기준 금액 하나만 게시하도록 돼 있다는 뜻입니다. 심장사상충 예방비 전국 평균 16,542원도 5kg 기준값이므로, 대형견은 약 용량이 커지는 만큼 실제로 더 냅니다. 이 항목만큼은 공개 금액을 그대로 자기 비용으로 읽으면 안 됩니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "우리 동네 진료비는 어디서 확인하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "농림축산식품부의 동물병원 진료비 조사·공개 시스템에서 시도와 시군구를 고르고 항목을 선택하면 그 지역의 평균·중간·최저·최고값이 나옵니다. 다만 한 번에 한 지역, 한 항목씩만 볼 수 있습니다. 그리고 병원 수가 적은 지역은 한두 곳의 게시 금액이 그대로 지역 평균이 되므로, 최저값과 최고값이 같은지를 함께 확인하세요. 같다면 사실상 한 곳의 금액입니다."
+        }
+      }
+    ]
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7190991508798677" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">🐾 댕냥피디아</a>
+    <button class="nav-toggle" aria-label="메뉴 열기">☰</button>
+    <nav class="site-nav">
+      <a href="../breeds">품종 백과</a>
+      <a href="../health">건강·증상</a>
+      <a href="../food">사료·용품</a>
+      <a href="../training">행동·훈련</a>
+      <a href="../life">생활 정보</a>
+      <a href="../tools">계산기</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<article class="article">
+  <p class="breadcrumb"><a href="/">홈</a> › <a href="../life">생활 정보</a></p>
+  <h1>5kg과 20kg의 진료비 차이 — 대형견은 얼마나 더 내나</h1>
+  <p class="post-meta">생활 정보 · 글 <a href="../about">댕냥피디아</a> · 2026년 8월 31일</p>
+
+  <p class="lead">
+    대형견을 키우면 병원비가 더 나온다는 말은 맞습니다. 다만 <strong>얼마나 더</strong> 나오는지는
+    항목마다 크게 다릅니다. 농림축산식품부가 공개한 전국 동물병원 진료비를 체중 구간별로 계산해 보면,
+    5kg에서 20kg으로 갈 때 초진 진찰료는 13.7% 오르는 데 그치지만 입원비는 64.4% 오릅니다.
+    체중이 4배가 되어도 진찰료는 거의 그대로인데, 하루 입원비는 3만 원 넘게 벌어집니다.
+  </p>
+
+  <div class="ad-slot"></div>
+
+  <nav class="toc">
+    <strong>📋 목차</strong>
+    <ol>
+      <li><a href="#items">체중이 붙는 항목은 20종 중 7종뿐</a></li>
+      <li><a href="#rate">항목별 5kg → 20kg 인상률</a></li>
+      <li><a href="#why">왜 항목마다 반영 정도가 다른가</a></li>
+      <li><a href="#reversal">인상률과 실제 금액은 반대로 간다</a></li>
+      <li><a href="#region">같은 20kg인데 지역마다 다르다</a></li>
+      <li><a href="#prepare">대형견 보호자가 준비할 금액</a></li>
+      <li><a href="#limits">이 숫자를 읽을 때 조심할 것</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="items">체중이 붙는 항목은 20종 중 7종뿐</h2>
+  <p>
+    농식품부는 2025년 12월 22일 <a href="https://www.mafra.go.kr/bbs/home/792/592824/download.do" target="_blank" rel="noopener">전국 동물병원 진료비 현황조사 결과</a>를
+    발표하면서 공개 항목을 전년 11종에서 20종으로 늘렸습니다. 조사 대상은 전국 동물병원 3,950개소입니다.
+    이 20종을 <a href="https://animalclinicfee.or.kr/info/payInfo.do" target="_blank" rel="noopener">진료비 조사·공개 시스템</a>에서
+    하나씩 열어 보면, 체중 구간으로 나뉘는 항목과 그렇지 않은 항목이 분명하게 갈립니다.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>구분</th><th>항목</th></tr></thead>
+      <tbody>
+        <tr><td>체중 5·10·20kg으로 나뉨 (7종)</td>
+            <td>초진 진찰료, 재진 진찰료, 입원비(개 기준), 엑스선 촬영비, 초음파 검사비, CT, MRI</td></tr>
+        <tr><td>체중 구분 없음 (10종)</td>
+            <td>상담료, 종합백신(개), 종합백신(고양이), 광견병·켄넬코프·코로나바이러스·인플루엔자 백신, 전혈구·혈액화학·전해질 검사</td></tr>
+        <tr><td>체중 5kg 기준 단일값 (3종)</td>
+            <td>심장사상충 예방비, 외부기생충 예방비, 광범위 구충비</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    맨 아래 칸을 눈여겨보세요. 투약·조제비 3종은 공개 시스템에 <strong>‘투약/조제비(체중 5kg 기준)’</strong>라고
+    적혀 있습니다. 심장사상충약이나 외부기생충약은 체중에 따라 용량이 정해지는 약인데,
+    공개된 금액은 5kg 기준 하나뿐입니다. 20kg 개를 키운다면 게시된 심장사상충 예방비 평균 16,542원을
+    그대로 자기 비용으로 읽으면 안 됩니다.
+  </p>
+  <p>
+    농식품부는 이 20종을 보도자료에서 ‘진찰료 2종, 상담료, 입원비, 예방접종비 6종,
+    혈액검사비 3종, 영상검사비 4종, 투약·조제비 3종’으로 묶어 발표했습니다.
+    입원비는 개 체중 5·10·20kg과 고양이 한 값이 <strong>한 항목</strong>으로 묶여 있어서,
+    고양이 입원비에는 체중 구분이 없습니다. 체중이 붙는 것은 위 표의 7종뿐이고,
+    나머지 13종은 체중과 관계없이 한 값으로만 게시됩니다.
+    그중 투약·조제비 3종은 그 한 값이 5kg 기준입니다.
+  </p>
+
+  <h2 id="rate">항목별 5kg → 20kg 인상률</h2>
+  <p>
+    체중 구간이 있는 7종의 전국 평균을 나란히 놓으면 이렇습니다.
+    체중은 4배가 되지만, 금액이 따라 오르는 정도는 항목마다 완전히 다릅니다.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>항목</th><th>5kg</th><th>10kg</th><th>20kg</th><th>5→20kg 인상률</th><th>증가액</th></tr></thead>
+      <tbody>
+        <tr><td>입원비(개)</td><td>51,468원</td><td>64,374원</td><td>84,589원</td><td>+64.4%</td><td>+33,121원</td></tr>
+        <tr><td>엑스선 촬영비</td><td>41,026원</td><td>46,234원</td><td>55,451원</td><td>+35.2%</td><td>+14,425원</td></tr>
+        <tr><td>초음파 검사비</td><td>58,822원</td><td>64,817원</td><td>77,903원</td><td>+32.4%</td><td>+19,081원</td></tr>
+        <tr><td>CT 촬영비</td><td>539,411원</td><td>590,026원</td><td>686,204원</td><td>+27.2%</td><td>+146,793원</td></tr>
+        <tr><td>MRI 촬영비</td><td>738,463원</td><td>792,058원</td><td>902,481원</td><td>+22.2%</td><td>+164,018원</td></tr>
+        <tr><td>초진 진찰료</td><td>9,873원</td><td>10,332원</td><td>11,227원</td><td>+13.7%</td><td>+1,354원</td></tr>
+        <tr><td>재진 진찰료</td><td>7,931원</td><td>8,318원</td><td>9,010원</td><td>+13.6%</td><td>+1,079원</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    가장 많이 오르는 입원비(64.4%)와 가장 적게 오르는 재진 진찰료(13.6%) 사이에는 4.7배 차이가 있습니다.
+    같은 ‘체중 4배’인데 항목에 따라 이만큼 다르게 반영됩니다.
+  </p>
+  <p>
+    한 가지 더 눈에 띄는 규칙이 있습니다. 7개 항목 <strong>전부</strong>에서 10kg 값이
+    5kg과 20kg을 직선으로 이었을 때의 중간점보다 아래에 있습니다.
+    입원비를 예로 들면 5kg 51,468원과 20kg 84,589원의 중간은 68,029원인데,
+    실제 10kg 값은 64,374원입니다. 5kg에서 10kg으로 갈 때보다
+    10kg에서 20kg으로 갈 때 더 가파르게 오른다는 뜻입니다.
+    중형견까지는 완만하다가 대형견 구간에서 비용이 꺾여 올라갑니다.
+  </p>
+
+  <figure class="breed-photo">
+    <svg viewBox="0 0 420 300" role="img" aria-labelledby="c1t c1d"
+         style="display:block;width:100%;max-width:520px;height:auto;margin:0 auto">
+      <title id="c1t">항목별 5kg 대비 20kg 진료비 평균 인상률 막대그래프</title>
+      <desc id="c1d">입원비 64.4퍼센트, 엑스선 35.2퍼센트, 초음파 32.4퍼센트, CT 27.2퍼센트, MRI 22.2퍼센트, 초진 진찰료 13.7퍼센트, 재진 진찰료 13.6퍼센트 순으로 인상률이 낮아집니다.</desc>
+      <rect x="0.5" y="0.5" width="419" height="299" rx="12" fill="var(--card, #ffffff)" stroke="var(--line, #ece1d3)"/><text x="14" y="26" font-size="16" font-weight="700" fill="var(--text, #2e1b10)">5kg → 20kg 평균 진료비 인상률</text><text x="14" y="45" font-size="12" fill="var(--muted, #6d635b)">체중은 4배인데, 오르는 폭은 항목마다 다릅니다</text><g stroke="var(--line, #ece1d3)" stroke-width="1"><line x1="104.0" y1="60" x2="104.0" y2="262"/><line x1="161.1" y1="60" x2="161.1" y2="262"/><line x1="218.3" y1="60" x2="218.3" y2="262"/><line x1="275.4" y1="60" x2="275.4" y2="262"/></g><g font-size="15" fill="var(--text, #2e1b10)" text-anchor="end"><text x="96" y="82">입원비(개)</text><text x="96" y="110">엑스선</text><text x="96" y="138">초음파</text><text x="96" y="166">CT</text><text x="96" y="194">MRI</text><text x="96" y="222">초진 진찰료</text><text x="96" y="250">재진 진찰료</text></g><g><rect x="104" y="70" width="184.0" height="16" rx="3" fill="var(--orange-ink, #c2410c)"/><rect x="104" y="98" width="100.6" height="16" rx="3" fill="var(--navy, #181242)"/><rect x="104" y="126" width="92.6" height="16" rx="3" fill="var(--navy, #181242)"/><rect x="104" y="154" width="77.7" height="16" rx="3" fill="var(--navy, #181242)"/><rect x="104" y="182" width="63.4" height="16" rx="3" fill="var(--navy, #181242)"/><rect x="104" y="210" width="39.1" height="16" rx="3" fill="var(--muted, #6d635b)"/><rect x="104" y="238" width="38.9" height="16" rx="3" fill="var(--muted, #6d635b)"/></g><g font-size="13" fill="var(--muted, #6d635b)"><text x="294.0" y="83">+64.4%</text><text x="210.6" y="111">+35.2%</text><text x="202.6" y="139">+32.4%</text><text x="187.7" y="167">+27.2%</text><text x="173.4" y="195">+22.2%</text><text x="149.1" y="223">+13.7%</text><text x="148.9" y="251">+13.6%</text></g><g font-size="11.5" fill="var(--muted, #6d635b)" text-anchor="middle"><text x="104.0" y="277">0%</text><text x="161.1" y="277">20%</text><text x="218.3" y="277">40%</text><text x="275.4" y="277">60%</text></g><text x="14" y="294" font-size="10" fill="var(--muted, #6d635b)">자료: 농림축산식품부 동물병원 진료비 현황조사(2025) 전국 평균</text>
+    </svg>
+    <figcaption>주황은 입원비, 남색은 영상검사, 회색은 진찰료입니다. 자료: 농림축산식품부 동물병원 진료비 현황조사(2025) 전국 평균 · 2026-08-31 확인</figcaption>
+  </figure>
+
+  <div class="ad-slot"></div>
+
+  <h2 id="why">왜 항목마다 반영 정도가 다른가</h2>
+  <p>
+    공개 자료는 병원들이 게시한 금액을 모아 놓은 것이고, 각 병원이 왜 그렇게 정했는지는 담겨 있지 않습니다.
+    그래서 아래는 <strong>숫자의 패턴에서 역산한 설명</strong>이지, 농식품부나 병원이 밝힌 산정 근거가 아닙니다.
+    다만 세 갈래로 나눠 보면 표의 순서가 꽤 깔끔하게 설명됩니다.
+  </p>
+  <ul>
+    <li><strong>진찰료 — 원가의 중심은 시간</strong>. 수의사가 청진하고 촉진하고 보호자와 이야기하는 시간은
+      20kg 개라고 해서 5kg의 4배가 걸리지 않습니다. 인상률이 13.7%로 가장 낮은 이유가 여기 있을 겁니다.</li>
+    <li><strong>입원비 — 공간과 인력, 약 용량이 함께 늘어남</strong>. 20kg 개는 대형 케이지 한 칸을 차지하고,
+      들어 옮기는 데 사람 손이 더 들고, 수액과 주사제도 체중에 비례해 들어갑니다.
+      세 가지가 동시에 커지는 유일한 항목이고, 인상률도 64.4%로 가장 높습니다.</li>
+    <li><strong>영상검사 — 장비 가동시간이 원가의 큰 몫</strong>. 촬영 범위가 넓어지면 시간과 조영제가 늘지만,
+      장비 자체의 비용은 환자 체중과 무관합니다. 그래서 체중이 붙는 폭이 진찰료보다는 크고 입원비보다는 작습니다.</li>
+  </ul>
+  <p>
+    이 설명이 맞는지 확인할 수 있는 자료는 공개돼 있지 않습니다.
+    다만 뒤에 나오는 지역별 수치를 보면, 같은 항목이라도 병원마다 체중을 반영하는 방식이 제각각이라는 점은 분명합니다.
+  </p>
+
+  <h2 id="reversal">인상률과 실제 금액은 반대로 간다</h2>
+  <p>
+    영상검사 4종만 따로 보면 이상한 순서가 나옵니다. 장비가 비쌀수록 체중 반영률이 <em>낮아집니다</em>.
+    엑스선 35.2%, 초음파 32.4%, CT 27.2%, MRI 22.2% 순으로 내려갑니다.
+    가장 비싼 장비인 MRI가 체중에 가장 둔감합니다.
+  </p>
+  <p>
+    그런데 여기서 백분율만 보고 안심하면 곤란합니다. 인상률이 낮아도 원래 금액이 크면 증가액도 큽니다.
+    5kg 대비 20kg의 <strong>증가액</strong>을 큰 순서로 다시 세우면 순서가 뒤집힙니다.
+  </p>
+
+  <figure class="breed-photo">
+    <svg aria-labelledby="fig-dog-size-vet-cost" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" style="width:100%;height:auto" font-family="'Pretendard Variable',Pretendard,'Malgun Gothic',sans-serif"><title id="fig-dog-size-vet-cost">5kg에서 20kg으로 갈 때의 평균 진료비 증가액 막대그래프. MRI 164,018원, CT 146,793원, 입원비 33,121원, 초음파 19,081원, 엑스선 14,425원, 초진 진찰료 1,354원, 재진 진찰료 1,079원 순입니다.</title><rect x="0.5" y="0.5" width="419" height="299" rx="12" fill="#ffffff" stroke="#ece1d3"/><text x="14" y="26" font-size="16" font-weight="700" fill="#2e1b10">5kg → 20kg 평균 진료비 증가액</text><text x="14" y="45" font-size="12" fill="#6d635b">인상률이 가장 낮은 MRI가 실제 부담은 가장 크게 늘어납니다</text><g stroke="#ece1d3" stroke-width="1"><line x1="104.0" y1="60" x2="104.0" y2="262"/><line x1="165.0" y1="60" x2="165.0" y2="262"/><line x1="225.9" y1="60" x2="225.9" y2="262"/><line x1="286.9" y1="60" x2="286.9" y2="262"/></g><g font-size="15" fill="#2e1b10" text-anchor="end"><text x="96" y="82">MRI</text><text x="96" y="110">CT</text><text x="96" y="138">입원비(개)</text><text x="96" y="166">초음파</text><text x="96" y="194">엑스선</text><text x="96" y="222">초진 진찰료</text><text x="96" y="250">재진 진찰료</text></g><g><rect x="104" y="70" width="200.0" height="16" rx="3" fill="#181242"/><rect x="104" y="98" width="179.0" height="16" rx="3" fill="#181242"/><rect x="104" y="126" width="40.4" height="16" rx="3" fill="#c2410c"/><rect x="104" y="154" width="23.3" height="16" rx="3" fill="#181242"/><rect x="104" y="182" width="17.6" height="16" rx="3" fill="#181242"/><rect x="104" y="210" width="2.0" height="16" rx="3" fill="#6d635b"/><rect x="104" y="238" width="2.0" height="16" rx="3" fill="#6d635b"/></g><g font-size="13" fill="#6d635b"><text x="310.0" y="83">+164,018원</text><text x="289.0" y="111">+146,793원</text><text x="150.4" y="139">+33,121원</text><text x="133.3" y="167">+19,081원</text><text x="127.6" y="195">+14,425원</text><text x="112.0" y="223">+1,354원</text><text x="112.0" y="251">+1,079원</text></g><g font-size="11.5" fill="#6d635b" text-anchor="middle"><text x="104.0" y="277">0</text><text x="165.0" y="277">5만</text><text x="225.9" y="277">10만</text><text x="286.9" y="277">15만</text></g><text x="14" y="294" font-size="10" fill="#6d635b">자료: 농림축산식품부 동물병원 진료비 현황조사(2025) 전국 평균</text></svg>
+    <figcaption>인상률 순서(앞 그래프)와 증가액 순서가 서로 뒤집힙니다. 자료: 농림축산식품부 동물병원 진료비 현황조사(2025) 전국 평균 · 2026-08-31 확인</figcaption>
+  </figure>
+
+  <p>
+    인상률 1위였던 입원비의 증가액은 33,121원입니다. 인상률이 꼴찌에 가까웠던 MRI의 증가액은 164,018원으로,
+    입원비의 약 5배입니다. 백분율로는 입원비가 제일 무섭게 보이지만,
+    한 번 찍었을 때 지갑에서 실제로 더 빠지는 쪽은 MRI입니다.
+    비율과 금액은 다른 이야기라는 점을 기억해 두면, 견적을 들었을 때 놀라는 일이 줄어듭니다.
+  </p>
+
+  <h2 id="region">같은 20kg인데 지역마다 다르다</h2>
+  <p>
+    전국 평균은 평균일 뿐입니다. 공개 시스템은 시군구 단위까지 금액을 보여 주는데,
+    229개 시군구 가운데 초진 진찰료가 집계된 곳은 199곳입니다.
+    이 199곳을 5kg과 20kg으로 나란히 놓고 비교하면 체중을 대하는 태도가 지역마다 갈립니다.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>비교</th><th>초진 진찰료</th><th>입원비(개)</th></tr></thead>
+      <tbody>
+        <tr><td>양쪽 다 집계된 시군구</td><td>199곳</td><td>172곳</td></tr>
+        <tr><td>5kg과 20kg 금액이 같은 곳</td><td>41곳 (20.6%)</td><td>3곳 (1.7%)</td></tr>
+        <tr><td>시군구별 인상률 중앙값</td><td>+11.4%</td><td>+64.4%</td></tr>
+        <tr><td>20kg 최고 ÷ 최저 (시군구 평균)</td><td>6.00배</td><td>8.18배</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    초진 진찰료를 5kg과 20kg에 똑같이 받는 시군구가 41곳입니다. 다섯 곳 중 한 곳꼴입니다.
+    그런데 이 41곳 가운데 39곳이 도 지역이고, 광역시는 부산 동구와 인천 중구 둘뿐입니다.
+    서울 25개 구는 <strong>한 곳도 없습니다</strong>. 24개 구에서 20kg 진찰료가 5kg보다 비싸고,
+    나머지 한 곳인 중랑구는 오히려 20kg 평균이 10,043원으로 5kg의 10,138원보다 95원 낮습니다.
+    같은 서울 안에서도 20kg 기준 평균은 강남구 16,021원, 구로구 9,165원으로 1.75배 벌어집니다.
+  </p>
+  <p>
+    입원비는 사정이 다릅니다. 172곳 중 5kg과 20kg이 같은 곳은 3곳(전북 정읍시, 경기 여주시, 강원 영월군)뿐이고,
+    나머지는 전부 오릅니다. 시군구별 인상률 중앙값이 64.4%로 전국 평균과 거의 같고,
+    가장 가파른 곳은 충남 예산군으로 5kg 48,000원이 20kg 140,000원이 됩니다. 191.7% 인상입니다.
+    지역 격차도 체중이 커질수록 벌어져서, 5kg 입원비의 최고·최저 배수는 5.77배인데
+    20kg에서는 8.18배가 됩니다.
+  </p>
+  <p>
+    정리하면, 대형견 보호자에게 지역 차이는 진찰료보다 입원비에서 훨씬 크게 다가옵니다.
+    이사나 여행처럼 다른 지역 병원을 쓸 일이 생긴다면, 하루 입원비를 미리 확인해 두는 편이 낫습니다.
+  </p>
+
+  <div class="ad-slot"></div>
+
+  <h2 id="prepare">대형견 보호자가 준비할 금액</h2>
+  <p>
+    숫자를 실제 상황에 얹어 보겠습니다. 구토가 이어져 병원에 갔고,
+    초진 진찰 후 엑스선과 초음파를 찍고 하루 입원했다고 해 보죠.
+    전국 평균으로 계산하면 이렇습니다.
+  </p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>항목</th><th>5kg 소형견</th><th>20kg 대형견</th></tr></thead>
+      <tbody>
+        <tr><td>초진 진찰료</td><td>9,873원</td><td>11,227원</td></tr>
+        <tr><td>엑스선 촬영비</td><td>41,026원</td><td>55,451원</td></tr>
+        <tr><td>초음파 검사비</td><td>58,822원</td><td>77,903원</td></tr>
+        <tr><td>입원비 1일</td><td>51,468원</td><td>84,589원</td></tr>
+        <tr><td><strong>합계</strong></td><td><strong>161,189원</strong></td><td><strong>229,170원</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    차이는 67,981원, 비율로는 42.2%입니다. 중간값으로 같은 계산을 하면 150,000원과 203,000원으로
+    53,000원 차이가 납니다. 하루짜리 입원에서 이 정도면 견딜 만합니다.
+    문제는 여기에 <strong>영상검사가 하나 더 얹힐 때</strong>입니다.
+  </p>
+  <p>
+    <a href="dog-disc-herniation">디스크(추간판탈출증)</a>처럼 신경 증상이 있으면 MRI로 가는데,
+    20kg 기준 전국 평균이 902,481원, 중간값이 900,000원입니다.
+    CT는 20kg 평균 686,204원입니다. 대형견의 비용 부담은 매달 나가는 돈보다
+    이런 <strong>한 번의 검사와 입원</strong>에서 벌어집니다.
+    대형견을 맞을 준비를 한다면 월 유지비 계산보다, 100만 원 안팎의 목돈을 어떻게 마련할지를
+    먼저 정해 두는 편이 현실적입니다. <a href="dog-pet-insurance">펫보험</a>을 고민한다면
+    입원과 영상검사 보장 한도를 가장 먼저 확인하세요.
+  </p>
+  <p>
+    반대로 매달·매년 나가는 정기 비용은 체중과 관계없이 게시됩니다.
+    종합백신(개) 접종비 평균은 26,337원이고, 체중 구분 없이 한 값으로만 공개됩니다.
+    다만 앞에서 봤듯 심장사상충 예방비 16,542원은 5kg 기준값이므로,
+    <a href="breed-labrador">래브라도 리트리버</a>나 골든리트리버처럼 30kg에 가까운 아이라면
+    약 용량이 올라가는 만큼 실제 금액은 더 나옵니다.
+  </p>
+
+  <h2 id="limits">이 숫자를 읽을 때 조심할 것</h2>
+  <p>
+    이 글의 모든 금액은 병원이 <strong>게시한 금액을 단순 집계</strong>한 값입니다.
+    진료 행위 자체가 표준화돼 있지 않기 때문에, 같은 초음파 검사라도 병원마다 보는 장기와 걸리는 시간이 다릅니다.
+    금액이 싸다고 같은 것을 더 싸게 받는다는 뜻은 아닙니다.
+  </p>
+  <ul>
+    <li><strong>표본이 아주 작은 시군구가 있습니다.</strong> 초진 진찰료 5kg에서 최저와 최고가 같은,
+      즉 사실상 한 병원의 금액만 잡힌 시군구가 199곳 중 11곳입니다.
+      20kg 입원비가 가장 비쌌던 충남 서산시도 최저·최고가 모두 300,000원으로 같습니다.
+      한 곳의 게시 금액이 그 지역의 대표값처럼 보이는 것입니다.</li>
+    <li><strong>비어 있는 지역이 많습니다.</strong> 229개 시군구 중 초진 진찰료는 199곳,
+      20kg 입원비는 172곳만 집계됐습니다. 병원이 없거나 해당 항목을 게시하지 않은 지역은 표에 나타나지 않습니다.</li>
+    <li><strong>게시 금액과 청구액은 다릅니다.</strong> 마취, 처치, 약제, 재진 횟수에 따라 최종 금액은 달라집니다.
+      농식품부 자료도 지역 간 편차를 시·도 단위로만 발표했을 뿐, 개별 병원의 청구액을 담고 있지는 않습니다.</li>
+  </ul>
+  <p>
+    그러니 이 표는 우리 아이가 얼마를 낼지 맞히는 용도가 아닙니다.
+    이 정도를 예상 범위로 잡아 두면 되겠다고 정하고, 병원에서 견적을 들었을 때
+    무엇을 물어볼지 찾는 데 쓰는 것이 맞습니다.
+    진료비를 먼저 설명해 주는 병원이 좋은 병원입니다. 궁금하면 물어보세요.
+  </p>
+
+  <h2 id="faq">자주 묻는 질문 (FAQ)</h2>
+  <div class="faq">
+    <details>
+      <summary>Q. 대형견은 진찰료도 훨씬 비싼가요?</summary>
+      <p>아닙니다. 전국 평균 초진 진찰료는 5kg 9,873원, 20kg 11,227원으로 차이가 1,354원입니다. 인상률로는 13.7%인데, 체중이 4배가 되는 것에 비하면 거의 붙지 않는 셈입니다. 시군구 단위로 보면 199곳 중 41곳은 5kg과 20kg 진찰료가 아예 같습니다. 대형견의 비용 부담은 진찰료가 아니라 입원비와 영상검사에서 생깁니다.</p>
+    </details>
+    <details>
+      <summary>Q. 대형견 입원비는 얼마나 더 드나요?</summary>
+      <p>전국 평균으로 5kg 51,468원, 20kg 84,589원입니다. 하루에 33,121원, 비율로는 64.4% 더 듭니다. 공개된 체중 구간 항목 7종 중 인상률이 가장 높습니다. 케이지 공간과 사람 손, 수액과 주사제 용량이 함께 늘어나는 항목이기 때문으로 보이지만, 공개 자료에 산정 근거가 실려 있지는 않습니다. 며칠 입원하면 차이가 그만큼 누적되므로, 입원이 예상되면 하루 단가를 미리 물어보는 것이 좋습니다.</p>
+    </details>
+    <details>
+      <summary>Q. MRI는 인상률이 낮던데 대형견도 부담이 적은가요?</summary>
+      <p>반대입니다. MRI의 5kg 대비 20kg 인상률은 22.2%로 7종 중 낮은 편이지만, 원래 금액이 커서 증가액은 164,018원으로 가장 큽니다. 인상률 1위인 입원비의 증가액 33,121원의 약 5배입니다. 20kg 기준 MRI 전국 평균은 902,481원, CT는 686,204원입니다. 비율이 낮다는 말과 부담이 적다는 말은 다릅니다.</p>
+    </details>
+    <details>
+      <summary>Q. 심장사상충 예방비는 왜 체중별로 나뉘어 있지 않나요?</summary>
+      <p>공개 시스템에서 투약·조제비 3종(심장사상충 예방비, 외부기생충 예방비, 광범위 구충비)은 투약/조제비(체중 5kg 기준)으로 표기됩니다. 5kg 기준 금액 하나만 게시하도록 돼 있다는 뜻입니다. 심장사상충 예방비 전국 평균 16,542원도 5kg 기준값이므로, 대형견은 약 용량이 커지는 만큼 실제로 더 냅니다. 이 항목만큼은 공개 금액을 그대로 자기 비용으로 읽으면 안 됩니다.</p>
+    </details>
+    <details>
+      <summary>Q. 우리 동네 진료비는 어디서 확인하나요?</summary>
+      <p>농림축산식품부의 동물병원 진료비 조사·공개 시스템에서 시도와 시군구를 고르고 항목을 선택하면 그 지역의 평균·중간·최저·최고값이 나옵니다. 다만 한 번에 한 지역, 한 항목씩만 볼 수 있습니다. 그리고 병원 수가 적은 지역은 한두 곳의 게시 금액이 그대로 지역 평균이 되므로, 최저값과 최고값이 같은지를 함께 확인하세요. 같다면 사실상 한 곳의 금액입니다.</p>
+    </details>
+  </div>
+
+  <div class="related">
+    <strong>📎 함께 보면 좋은 글</strong>
+    <ul>
+      <li><a href="dog-pet-insurance">강아지 펫보험 필요할까? 가입 전 체크리스트 7가지</a></li>
+      <li><a href="breed-labrador">래브라도 리트리버 키우기 완벽 가이드 — 성격·수명·고관절·식탐 관리</a></li>
+      <li><a href="dog-disc-herniation">강아지 디스크(추간판탈출증) 증상과 1~5등급 — 뒷다리 마비 응급 기준</a></li>
+      <li><a href="pet-weight-check">강아지·고양이 비만도 자가진단 — 3가지 질문이면 충분해요</a></li>
+    </ul>
+  </div>
+
+  <div class="related">
+    <strong>📚 참고한 자료</strong>
+    <ul>
+      <li><a href="https://animalclinicfee.or.kr/info/payInfo.do" target="_blank" rel="noopener">농림축산식품부 — 동물병원 진료비 조사·공개 시스템(진료비용 상세 검색)</a>
+      (체중 구간이 붙는 항목 7종과 붙지 않는 항목, 투약/조제비의 체중 5kg 기준 표기, 전국·시군구 평균·중간·최저·최고값) · 확인 2026-08-31</li>
+      <li><a href="https://www.mafra.go.kr/bbs/home/792/592824/download.do" target="_blank" rel="noopener">농림축산식품부 — 전국 동물병원 진료비 현황조사 결과 발표(2025.12.22. 보도자료)</a>
+      (조사 대상 3,950개소, 공개 항목 11종에서 20종으로 확대, 지역 간 편차를 시·도 단위로 발표) · 확인 2026-08-31</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer-box">
+    💰 <strong>비용 정보 안내</strong> — 본 글의 금액은 동물병원이 게시한 진료비를 집계한 공개 자료이며,
+    실제 청구액은 진료 범위·마취·약제·병원에 따라 달라집니다. 특정 병원의 비용을 보증하지 않으며,
+    검사와 입원 여부는 수의사와 상의해 결정하세요.
+  </div>
+
+  <div class="ad-slot"></div>
+</article>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-links">
+      <a href="../about">소개</a> ·
+      <a href="../privacy">개인정보처리방침</a> ·
+      <a href="../disclaimer">이용약관·면책</a> ·
+      <a href="../contact">문의하기</a>
+    </p>
+    <p>© 2026 댕냥피디아. 본 사이트의 정보는 일반적인 참고용이며, 수의사의 진단·진료를 대체하지 않습니다.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

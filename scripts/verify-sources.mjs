@@ -50,9 +50,20 @@ function check(file) {
   });
 
   // alt 없는 img 는 접근성에도 검색에도 기여하지 않으므로 세지 않는다.
-  const images = [...article.matchAll(/<img\b[^>]*>/gi)]
+  const imgTags = [...article.matchAll(/<img\b[^>]*>/gi)]
     .map((m) => m[0])
     .filter((tag) => /\balt="[^"]+"/i.test(tag));
+
+  // 직접 만든 인라인 SVG 도표도 이미지로 센다.
+  // 이 규칙이 없던 동안 집필 에이전트가 게이트를 통과하려고 SVG 를 base64 data URI 로
+  // 인코딩해 <img> 로 넣었다 — 사람이 고칠 수 없고 사이트 색·폰트도 못 물려받는 형태다.
+  // 게이트가 잘못된 코드를 만들어낸 것이라 판정 쪽을 고친다.
+  // 접근성 있는 것만 인정한다: role="img" + <title> 또는 aria-label.
+  const svgFigures = [...article.matchAll(/<svg\b[^>]*>[\s\S]*?<\/svg>/gi)]
+    .map((m) => m[0])
+    .filter((tag) => /role="img"/i.test(tag) && /(<title[\s>]|aria-label=")/i.test(tag));
+
+  const images = [...imgTags, ...svgFigures];
 
   // 기존 88편은 목록 끝에 "(링크 확인일: 2026년 8월 28일)" 한 줄을 두지만,
   // post-template.html 은 링크마다 "· 확인 2026-08-30" 을 붙인다. 둘 다 인정한다.
